@@ -1,3 +1,3 @@
 # Documentation
 
-To compile the docs, simply issue `pdflatex acl2014.tex`.
+To compile the docs, simply issue `pdflatex new_acl_template.tex`.
