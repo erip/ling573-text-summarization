@@ -45,6 +45,9 @@ class Topic(object):
         self.narrative = narrative
         self.docset = docset
 
+    def id(self):
+        return self._id
+
 if __name__ == "__main__":
     base_path = "/dropbox/17-18/573/AQUAINT/"
     #id = "NYT_ENG_20041001.0042"

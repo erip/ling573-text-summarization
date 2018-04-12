@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 
 from doc_utils import Document, Docset, Topic
 
+
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
     def __init__(self, topics):
@@ -22,7 +23,7 @@ class Corpus(object):
         xml_root = ET.parse(xml_path)
         topics = set()
         for topic in xml_root.findall("topic"):
-            topic_id = topic.get(id)
+            topic_id = topic.get("id")
             topic_title = topic.find("title").text.strip()
             topic_narrative = topic.find("narrative").text.strip()
             docsetA_element = topic.find("docsetA")
@@ -39,5 +40,6 @@ if __name__ == "__main__":
     reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
 
     for topic in reader.topics:
+        print("topic id: {0}, topic title: {1}, topic narrative: {2}".format(topic.id(), topic.title, topic.narrative))
         for doc in topic.docset:
             print("doc id: {0}, doc path: {1}".format(doc.id(), doc.get_path()))
