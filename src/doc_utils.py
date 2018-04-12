@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 class Document(object):
     def __init__(self, base_paths, _id):
         self.base_paths = base_paths
@@ -30,6 +31,7 @@ class Document(object):
             # data/$src_$lang/$src_$lang_$YYYY$mm.xml
             return self.base_paths["aquaint2"] + "data/{0}_{1}/{0}_{1}_{2}{3}.xml".format(self.src, self.lang, self.yyyy, self.mm).lower()
 
+
 class Docset(object):
     def __init__(self, docset_id, docset):
         self.docset_id = docset_id
@@ -38,15 +40,39 @@ class Docset(object):
     def __iter__(self):
         yield from self.docset
 
+    def __len__(self):
+        return len(self.docset)
+
+
 class Topic(object):
     def __init__(self, _id, title, narrative, docset):
         self._id = _id
         self.title = title
         self.narrative = narrative
         self.docset = docset
+        self.stories = set()
 
     def id(self):
         return self._id
+
+    def add_story(self, story):
+        self.stories.add(story)
+
+    def add_stories(self, stories):
+        self.stories.update(stories)
+
+
+class Story(object):
+    def __init__(self, headline, sentences):
+        self.headline = headline
+        self.sentences = sentences
+
+    def get_sentences(self):
+        return self.sentences
+
+    def get_headline(self):
+        return self.headline
+
 
 if __name__ == "__main__":
     base_path = "/dropbox/17-18/573/AQUAINT/"
