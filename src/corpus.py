@@ -48,23 +48,32 @@ class Corpus(object):
         of stories) because for current implementation, we don't care what Document a story comes from, just what Topic
         it belongs to.
 
-        :param topic_ids: an optional list of strings matching topic ids. If not provided, preprocesses entire corpus.
+        :param topic_ids: an optional set of strings matching topic ids. If not provided, preprocesses entire corpus.
         :return: None, modifies Corpus object
         """
-        print("Processing {0} Topics in Corpus".format(len(self.topics)), file=sys.stderr)
-        for topic in self.topics:
+        # filter the IDS to preprocess
+        if topic_ids:
+            all_topics = [topic for topic in self.topics if topic.id() in topic_ids]
+        else:
+            all_topics = self.topics
+        print("Processing {0} Topics in Corpus".format(len(all_topics)), file=sys.stderr)
+        for topic in all_topics:
             print("Processing {0} Docs in Topic".format(len(topic.docset)), file=sys.stderr)
             for doc in topic.docset:
-                #TODO add is AQUAINT vs AQUAINT2 to the docset object since traversal will be different. The below is AQUAINT-2 ONLY
-                xml_root = ET.parse(doc.get_path())
-                curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
-                headline = preprocess_text(curr_doc.find("HEADLINE").text)
-                body = []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
-                for t in curr_doc.find("TEXT").itertext():
-                    if t.strip():
-                        body.extend(preprocess_text(t))
-                #body = [preprocess_text(t) for t in curr_doc.find("TEXT").itertext() if t.strip()]
-                topic.add_story(Story(headline, body))
+                if doc.is_aquaint2:
+                    xml_root = ET.parse(doc.get_path())
+                    curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+                    headline = preprocess_text(curr_doc.find("HEADLINE").text)
+                    body = []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
+                    for t in curr_doc.find("TEXT").itertext():
+                        if t.strip():
+                            body.extend(preprocess_text(t))
+                    #body = [preprocess_text(t) for t in curr_doc.find("TEXT").itertext() if t.strip()]
+                    topic.add_story(Story(headline, body))
+                    #TODO might also want to store date? For recency...? To make the system extensible to other uses
+                else:
+                    print('fuck this xml nonsense')
+                    # TODO add AQUAINT docset object handling since traversal will be different (diff schemas)
 
 
 def preprocess_text(text_block):
@@ -82,11 +91,14 @@ if __name__ == "__main__":
     #reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
     reader = Corpus.from_config("../conf/local_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
 
-    reader.preprocess_topic_docs()
+    topic_ids = {"D0903A", "D0909B"}
+    reader.preprocess_topic_docs(topic_ids)
+
     for topic in reader.topics:
-        print("\ntopic id: {0}, topic title: {1}, topic narrative: {2}".format(topic.id(), topic.title, topic.narrative))
-        for s in topic.stories:
-            print("\nHEADLINE: {0}\n".format(" ".join(list(chain.from_iterable(s.get_headline())))))
-            print(" ".join(list(chain.from_iterable(s.get_sentences()))))
+        if topic.id() in topic_ids:
+            print("\ntopic id: {0}, topic title: {1}, topic narrative: {2}".format(topic.id(), topic.title, topic.narrative))
+            for s in topic.stories:
+                print("\nHEADLINE: {0}\n".format(" ".join(list(chain.from_iterable(s.get_headline())))))
+                print(" ".join(list(chain.from_iterable(s.get_sentences()))))
         #for doc in topic.docset:
         #    print("doc id: {0}, doc path: {1}".format(doc.id(), doc.get_path()))
