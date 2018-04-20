@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import yaml
-import xml.etree.ElementTree as ET
-import lxml.etree as LET
+import lxml.etree as ET
 
 from itertools import chain
 from nltk import word_tokenize, sent_tokenize
@@ -38,6 +37,7 @@ class Corpus(object):
             docset = Docset(docset_id, docsetA)
             topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
         return cls(topics)
+
 
     def preprocess_topic_docs(self, topic_ids=None):
         """
@@ -93,8 +93,9 @@ if __name__ == "__main__":
     #reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
     reader = Corpus.from_config("../conf/local_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
 
-    topic_ids = {"D09git03A", "D0909B"}
+    topic_ids = {"D0903A", "D0909B"}
     reader.preprocess_topic_docs(topic_ids)
+    #reader.preprocess_topic_docs()  # this version does whole corpus
 
     for topic in reader.topics:
         if topic.id() in topic_ids:
