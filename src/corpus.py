@@ -2,6 +2,7 @@
 import sys
 import yaml
 import xml.etree.ElementTree as ET
+import lxml.etree as LET
 
 from itertools import chain
 from nltk import word_tokenize, sent_tokenize
@@ -70,9 +71,10 @@ class Corpus(object):
                             body.extend(preprocess_text(t))
                     #body = [preprocess_text(t) for t in curr_doc.find("TEXT").itertext() if t.strip()]
                     topic.add_story(Story(headline, body))
-                    #TODO might also want to store date? For recency...? To make the system extensible to other uses
                 else:
-                    print('fuck this xml nonsense')
+                    print('fuck this xml nonsense', file=sys.stderr)
+                    #curr_doc = DOCNO = doc.id()
+                    #the rest should be the same actually, save the iD thing since there are no attributes
                     # TODO add AQUAINT docset object handling since traversal will be different (diff schemas)
 
 
@@ -91,7 +93,7 @@ if __name__ == "__main__":
     #reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
     reader = Corpus.from_config("../conf/local_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
 
-    topic_ids = {"D0903A", "D0909B"}
+    topic_ids = {"D09git03A", "D0909B"}
     reader.preprocess_topic_docs(topic_ids)
 
     for topic in reader.topics:
