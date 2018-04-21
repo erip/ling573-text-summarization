@@ -106,4 +106,4 @@ venv.bak/
 *.aux
 *.pdf
 
-.idea/workspace.xml
+.idea
