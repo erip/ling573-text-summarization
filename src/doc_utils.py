@@ -82,8 +82,12 @@ class Story(object):
     def get_headline(self):
         return self.headline
 
-    def get_raw(self):
-        return self.raw_text
+    def get_raw(self, span=None):
+        """Return the raw text. If tuple is provided, return only raw text that spans over those indices"""
+        if not span:
+            return self.raw_text
+        else:
+            return self.raw_text[span[0]:span[1]]
 
     def get_spans(self):
         return self.spans

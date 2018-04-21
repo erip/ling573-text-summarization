@@ -1,10 +1,11 @@
 '''
 A script that creates the stupidest possible baselines for muliple document summarization.
 Either random or single sentences.
-Command to run: baseline.py baseline_type -n num_words
+Command to run: baseline.py baseline_type -n num_words -d dir
 
 baseline_type: "first" or "random"
-num_words: integer of max word length
+num_words: integer of max word length. If unspecified will not limit length.
+dir: directory to write files too. If unspecified, will default
 '''
 
 import argparse
@@ -33,15 +34,27 @@ def get_candidate_sentences(topic, baseline_type):
             index = random.randint(0, s.num_sentences()-1)
         else:
             print("Out of luck mate, your only options are 'first' or 'random'", file=sys.stderr)
-        selected_sent.append(s.get_sentences()[index])
+        #selected_sent.append(s.get_sentences()[index])
+        span = s.get_spans()[index]
+        selected_sent.append(s.get_raw(span))
 
     return selected_sent
 
 
-def check_above_threshold(sentences, num_words):
-    """Take nested list of sentences and word, return boolean of whether the total word count is above threshold"""
-    # currently only counts things with alphanumeric characters as words
-    if sum([len(list(filter(str.isalnum, sent))) for sent in sentences]) > num_words:
+def check_above_threshold(sentences, num_words, pretokenized=False):
+    """
+    Take list of sentences return boolean of whether the total word count is above threshold
+    :param sentences: a list of sentences, or a nested list of sentences that have been tokenized
+    :param num_words: int for max words in summary
+    :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
+    """
+    if pretokenized:
+        # currently only counts things with alphanumeric characters as words
+        word_count = sum([len(list(filter(str.isalnum, sent))) for sent in sentences])
+    else:
+        # consider whitespace for wordcount
+        word_count = sum([len(sent.split()) for sent in sentences])
+    if word_count > num_words:
         return True
     else:
         return False
@@ -53,7 +66,8 @@ if __name__ == "__main__":
     p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int)
     p.add_argument('-d', dest='output_dir', default='../outputs/D2/', help='dir to write output summaries to')
     args = p.parse_args()
-        
+
+    # topic_ids = {"D0903A", "D0909B"}
     # reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
     reader = Corpus.from_config("../conf/local_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
     reader.preprocess_topic_docs()
@@ -65,5 +79,5 @@ if __name__ == "__main__":
                 candidates = candidates[:-1]
 
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), args.num_words)), 'w') as outfile:
-            for i in range(len(candidates)):
-                outfile.write('{}\n'.format(" ".join(candidates[i])))
+            for sentence in candidates:
+                outfile.write('{}\n'.format(sentence))

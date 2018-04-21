@@ -67,12 +67,14 @@ class Corpus(object):
                     curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
                     headline = preprocess_text(curr_doc.find("HEADLINE").text)
                     body, raw_body = [], []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
-                    for t in curr_doc.find("TEXT").itertext():
-                        if t.strip():
-                            body.extend(preprocess_text(t))
-                            raw_body.append(t)
+                    for text in curr_doc.find("TEXT").itertext():
+                        text = ' '.join(text.strip().split())  # this split and join is to get rid of all the weird kinds of whitespace characters from the xml parse
+                        if text:
+                            body.extend(preprocess_text(text))
+                            raw_body.append(text)
                     #body = [preprocess_text(t) for t in curr_doc.find("TEXT").itertext() if t.strip()]
-                    topic.add_story(Story(headline, body, raw_body, PunktSentenceTokenizer().span_tokenize(" ".join(raw_body))))
+                    raw_body = " ".join(raw_body)
+                    topic.add_story(Story(headline, body, raw_body, PunktSentenceTokenizer().span_tokenize(raw_body)))
                 else:
                     print('fuck this xml nonsense', file=sys.stderr)
                     #curr_doc = DOCNO = doc.id()
