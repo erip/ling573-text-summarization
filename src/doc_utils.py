@@ -92,8 +92,8 @@ class Story(object):
     def get_spans(self):
         return self.spans
 
-    def num_sentences(self):
-        return len(self.sentences)
+    def num_sentences(self):  # this counts based on spans because sometimes they disagree. Which is weird since it's the same tokenizer, but will add that to backlog
+        return len(self.spans)
 
 
 if __name__ == "__main__":
