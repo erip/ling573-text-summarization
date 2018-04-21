@@ -63,15 +63,33 @@ class Topic(object):
 
 
 class Story(object):
-    def __init__(self, headline, sentences):
+    def __init__(self, headline, sentences, raw_text, spans):
+        """
+        A single story from a newspaper
+        :param headline: string
+        :param sentences: nested list of lists (tokenized into both sentences and words)
+        :param raw_text: a block string of the story
+        :param spans: a list of tuples of the sentence boundaries
+        """
         self.headline = headline
         self.sentences = sentences
+        self.raw_text = raw_text
+        self.spans = spans
 
     def get_sentences(self):
         return self.sentences
 
     def get_headline(self):
         return self.headline
+
+    def get_raw(self):
+        return self.raw_text
+
+    def get_spans(self):
+        return self.spans
+
+    def num_sentences(self):
+        return len(self.sentences)
 
 
 if __name__ == "__main__":
