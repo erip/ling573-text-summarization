@@ -49,7 +49,44 @@ class AbstractSummarizer(object):
     def normalize_word(self, word):
         return word.lower()
 
-    def _get_best_sentences(self, sentences, count, rating, *args, **kwargs):
+    def check_below_threshold(self,sent_list,max_word_count,pretokenized=False):
+        """
+        Take list of sentences return boolean of whether the total word count is below threshold
+        :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
+        :param max_word_count: int for max words in summary
+        :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
+        """
+        if pretokenized:
+            # currently only counts things with alphanumeric characters as words
+            word_count = sum([len(list(filter(str.isalnum, sent))) for sent in sent_list])
+        else:
+            # consider whitespace for wordcount
+            word_count = sum([len(sent.split()) for sent in sent_list])
+
+        if word_count <= max_word_count:
+            return True
+        else:
+            return False
+
+    def get_output_sentence_count(self,sent_list,num_words):
+        """Computes the number of sentences in lexrank output that are below or equal to summary word count threshold
+        :return: int of number of sentences
+        """
+        if num_words:
+            while not(self.check_below_threshold(sent_list, num_words)):
+                sent_list = sent_list[:-1]
+
+    def _get_best_sentences(self, sentences, count, max_word_count, rating, *args, **kwargs):
+        """
+
+        :param sentences: input document to be summarized - TODO - add here what format of document
+        :param count: int for number of best sentences to be chosen from sentences list
+        :param max_word_count: int for max words in summary
+        :param rating: sentence rating
+        :param args:
+        :param kwargs: tuple of final summary sentences
+        :return:
+        """
         rate = rating
         if isinstance(rating, dict):
             assert not args and not kwargs
@@ -60,14 +97,23 @@ class AbstractSummarizer(object):
 
         # sort sentences by rating in descending order
         infos = sorted(infos, key=attrgetter("rating"), reverse=True)
-        # get `count` first best rated sentences
         if not isinstance(count, ItemsCount):
             count = ItemsCount(count)
+
         infos = count(infos)
         # sort sentences by their order in document
         infos = sorted(infos, key=attrgetter("order"))
+        sent_list = [i.sentence for i in infos]
 
-        return tuple(i.sentence for i in infos)
+        #output word count check
+        if self.check_below_threshold(sent_list):
+            # get `count` first best rated sentences
+            #TODO: add more sentences if word count below 100
+            return tuple(sent_list)
+        else:
+            #clipped summary
+            n = self.get_output_sentence_count(sent_list)
+            return tuple(sent_list[:n+1])
 
 class LexRankSummarizer(AbstractSummarizer):
     """
@@ -80,8 +126,16 @@ class LexRankSummarizer(AbstractSummarizer):
         self.epsilon = epsilon
         self.stop_words = stop_words if stop_words is not None else frozenset()
 
-    def summarize(self, document, num_sentences_count):
+    def summarize(self, document, num_sentences_count,max_word_count):
+        """
+        Generate summary of the document
+        :param document: Input document to be summarized
+        :param num_sentences_count: number of best sentences to be returned
+        :return: num_sentences_count number of best sentences as determined by LexRank
+        """
         sentences_words = [self._to_words_set(sent) for sent in document]
+        #TODO: modify the document param to suit the input from lexrank_driver or change input to lexrank_driver to suit the document style of summarize()
+
         if not sentences_words:
             return tuple()
 
@@ -92,7 +146,7 @@ class LexRankSummarizer(AbstractSummarizer):
         scores = self.power_method(matrix, self.epsilon)
         ratings = dict(zip(document, scores))
 
-        return self._get_best_sentences(document, num_sentences_count, ratings)
+        return self._get_best_sentences(document, num_sentences_count, max_word_count, ratings)
 
     def _to_words_set(self, words):
         words = map(self.normalize_word, words)
