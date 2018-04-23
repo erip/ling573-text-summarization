@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
 # example run command:
+#training
 # ./run_summarization.sh first ../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/training/2009/
+#devtest
+# ./run_summarization.sh first ../conf/patas_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/devtest/
+
 sum_type=$1
 config_file=$2
 topic_cluster_file=$3
 output_dir=$4
 model_dir=$5
 rouge_dir="/mnt/dropbox/17-18/573/code/ROUGE/"
-rouge_config_file="rouge_config.xml"
-rouge_output_file="D2_rouge_scores.out"
+rouge_config_file="../results/rouge_config.xml"
+rouge_output_file="../results/D2_rouge_scores.out"
 
 # generate output files
 if [ ${sum_type} = "first" ]

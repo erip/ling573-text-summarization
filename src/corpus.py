@@ -30,7 +30,7 @@ class Corpus(object):
             topic_id = topic.get("id")
             topic_title = topic.find("title").text.strip()
             topic_narrative = topic.find("narrative")
-            if topic_narrative:
+            if topic_narrative is not None:
                 topic_narrative = topic_narrative.text.strip()
             docsetA_element = topic.find("docsetA")
             docsetA = set()
@@ -65,9 +65,13 @@ class Corpus(object):
             print("Processing {0} Docs in Topic".format(len(topic.docset)), file=sys.stderr)
             for doc in topic.docset:
                 if doc.is_aquaint2:
+                    #print(doc.id(), doc.get_path())
                     xml_root = ET.parse(doc.get_path())
                     curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
-                    headline = preprocess_text(curr_doc.find("HEADLINE").text)
+                    #print(doc.id(), doc.is_aquaint2)
+                    headline = curr_doc.find("HEADLINE")
+                    if headline is not None:
+                        headline = headline.text.strip() # CURRENTLY NOT PREPROCESSING HEADLINE
                     body, raw_body = [], []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
                     for text in curr_doc.find("TEXT").itertext():
                         text = ' '.join(text.strip().split())  # this split and join is to get rid of all the weird kinds of whitespace characters from the xml parse
@@ -78,7 +82,7 @@ class Corpus(object):
                     raw_body = " ".join(raw_body)
                     topic.add_story(Story(headline, body, raw_body, PunktSentenceTokenizer().span_tokenize(raw_body)))
                 else:
-                    print('fuck this xml nonsense', file=sys.stderr)
+                    print('ACQUAINT 1...sigh...', file=sys.stderr)
                     #curr_doc = DOCNO = doc.id()
                     #the rest should be the same actually, save the iD thing since there are no attributes
                     # TODO add AQUAINT docset object handling since traversal will be different (diff schemas)
