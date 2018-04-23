@@ -25,7 +25,7 @@ import numpy as np
 class ContentSelection():
     """Not quite sure yet """
     def __init__(self, all_content):
-        self.all_content = all_content #list of content from each doc in docSetA - [sent1, sent2, ...],[],]
+        self.all_content = all_content #list of content from each doc in docSetA - [sent1, sent2, ...]
         self.d_size = len(all_content) #|D|
         self.word_freq_table = Counter()
         self.sent_freq_table = defaultdict(lambda: defaultdict(int))
@@ -109,4 +109,3 @@ if __name__ == "__main__":
 
 
 
-    

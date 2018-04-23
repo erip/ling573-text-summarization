@@ -1,0 +1,2 @@
+Ayushi and Seraphina worked as a pair on the following files which were then committed from a single person's account: 
+- contentSelection.py
