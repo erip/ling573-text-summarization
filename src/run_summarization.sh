@@ -4,7 +4,7 @@
 #training
 # ./run_summarization.sh first ../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/training/2009/
 #devtest
-# ./run_summarization.sh first ../conf/patas_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/devtest/
+# ./run_summarization.sh first ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/devtest/
 
 sum_type=$1
 config_file=$2
@@ -21,14 +21,14 @@ then
     python3 baseline.py ${sum_type} -c ${config_file} -t ${topic_cluster_file} -n 100 -d ${output_dir}
 elif [ ${sum_type} = "lexrank" ]
 then
-    python3 lexrank__driver.py -c ${config_file} -t ${topic_cluster_file} -n 100 -d ${output_dir}
+    python3 lexrank_driver.py -c ${config_file} -t ${topic_cluster_file} -n 100 -d ${output_dir}
 fi
 
 # generate ROUGE config file
-python3 ${rouge_dir}create_config.py ${output_dir} ${model_dir} ${rouge_config_file}
+python3 "${rouge_dir}/create_config.py" ${output_dir} ${model_dir} ${rouge_config_file}
 
 # generate ROUGE results
-python3 ${rouge_dir}run_rouge.py ${rouge_config_file} > ${rouge_output_file}
+python3 "${rouge_dir}/run_rouge.py" ${rouge_config_file} > ${rouge_output_file}
 
 
 
