@@ -25,9 +25,13 @@ class Document(object):
     def get_path(self):
         if self.is_aquaint:
             # $SRC/$YYYY/$YYYY$mm$dd_$SRC for NYT, $SRC/$YYYY/$YYYY$mm$dd_$SRC_$LANG for xie and apw
+            # xie is soemtimes xin so hardcoding that too :(
             if self.src == "NYT":
                 return self.base_paths["aquaint"] + \
                        "{0}/{1}/{1}{2}{3}_{4}".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
+            elif self.src == "XIE":
+                return self.base_paths["aquaint"] + \
+                       "{0}/{1}/{1}{2}{3}_XIN_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd)
             else:
                 return self.base_paths["aquaint"] + \
                        "{0}/{1}/{1}{2}{3}_{4}_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
