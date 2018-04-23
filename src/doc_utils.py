@@ -24,9 +24,13 @@ class Document(object):
 
     def get_path(self):
         if self.is_aquaint:
-            # $SRC/$YYYY/$YYYY$mm$dd_$SRC
-            return self.base_paths["aquaint"] + \
-                   "{0}/{1}/{1}{2}{3}_{4}".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
+            # $SRC/$YYYY/$YYYY$mm$dd_$SRC for NYT, $SRC/$YYYY/$YYYY$mm$dd_$SRC_$LANG for xie and apw
+            if self.src == "NYT":
+                return self.base_paths["aquaint"] + \
+                       "{0}/{1}/{1}{2}{3}_{4}".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
+            else:
+                return self.base_paths["aquaint"] + \
+                       "{0}/{1}/{1}{2}{3}_{4}_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
         else:
             # data/$src_$lang/$src_$lang_$YYYY$mm.xml
             return self.base_paths["aquaint2"] + "data/{0}_{1}/{0}_{1}_{2}{3}.xml".format(self.src, self.lang, self.yyyy, self.mm).lower()
