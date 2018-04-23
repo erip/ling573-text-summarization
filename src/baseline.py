@@ -84,5 +84,8 @@ if __name__ == "__main__":
                 candidates = candidates[:-1]
 
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), args.num_words)), 'w') as outfile:
-            for sentence in candidates:
-                outfile.write('{}\n'.format(sentence))
+            if candidates:
+                for sentence in candidates:
+                    outfile.write('{}\n'.format(sentence))
+            else:
+                outfile.write('\n')  # write blank file if no candidates
