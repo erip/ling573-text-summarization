@@ -25,10 +25,10 @@ then
 fi
 
 # generate ROUGE config file
-python3 ${rouge_dir}create_config.py ${output_dir} ${model_dir} ${rouge_config_file}
+python3 "${rouge_dir}/create_config.py" ${output_dir} ${model_dir} ${rouge_config_file}
 
 # generate ROUGE results
-python3 ${rouge_dir}run_rouge.py ${rouge_config_file} > ${rouge_output_file}
+python3 "${rouge_dir}/run_rouge.py" ${rouge_config_file} > ${rouge_output_file}
 
 
 
