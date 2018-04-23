@@ -66,7 +66,7 @@ if __name__ == "__main__":
     p.add_argument('-c', dest='config_file', default='../conf/patas_config.yaml',
                    help='an xml config mapping the topic clustering to file locations')
     p.add_argument('-t', dest='topic_file', default='../conf/UpdateSumm09_test_topics.xml',
-                   help='an ACQUAINT config file with topic clustering')
+                   help='an AQUAINT config file with topic clustering')
     p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int)
     p.add_argument('-d', dest='output_dir', default='../outputs/D2/', help='dir to write output summaries to')
     args = p.parse_args()
