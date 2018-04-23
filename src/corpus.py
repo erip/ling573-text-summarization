@@ -29,7 +29,9 @@ class Corpus(object):
         for topic in xml_root.findall("topic"):
             topic_id = topic.get("id")
             topic_title = topic.find("title").text.strip()
-            topic_narrative = topic.find("narrative").text.strip()
+            topic_narrative = topic.find("narrative")
+            if topic_narrative:
+                topic_narrative = topic_narrative.text.strip()
             docsetA_element = topic.find("docsetA")
             docsetA = set()
             docset_id = docsetA_element.get("id")
