@@ -63,13 +63,18 @@ def check_above_threshold(sentences, num_words, pretokenized=False):
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument('baseline_type', help='the type of baseline, either "random" or "first"')
+    p.add_argument('-c', dest='config_file', default='../conf/patas_config.yaml',
+                   help='an xml config mapping the topic clustering to file locations')
+    p.add_argument('-t', dest='topic_file', default='../conf/UpdateSumm09_test_topics.xml',
+                   help='an ACQUAINT config file with topic clustering')
     p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int)
     p.add_argument('-d', dest='output_dir', default='../outputs/D2/', help='dir to write output summaries to')
     args = p.parse_args()
 
     # topic_ids = {"D0903A", "D0909B"}
-    # reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
-    reader = Corpus.from_config("../conf/local_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
+    # reader = Corpus.from_config("../conf/local_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
+
+    reader = Corpus.from_config(args.config_file, args.topic_file)
     reader.preprocess_topic_docs()
 
     for topic in reader.topics:
