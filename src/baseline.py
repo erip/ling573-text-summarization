@@ -20,7 +20,7 @@ def make_filename(topic_id, num_words):
     """Given topic id and max num words, return filename for storing summary
     :param topic_id: A string representing the unique topic id
     :param num_words: A maximum number of words for the summary length"""
-    some_unique_alphanum = 1  # this is a placeholder until instructor specifies what kind of ID he wants here
+    some_unique_alphanum = 4  # this is our groupnumber for identification
     return '{0}-A.M.{2}.{1}.{3}'.format(topic_id[:-1], topic_id[-1], num_words, some_unique_alphanum)
 
 
