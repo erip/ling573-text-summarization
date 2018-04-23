@@ -21,14 +21,14 @@ then
     python3 baseline.py ${sum_type} -c ${config_file} -t ${topic_cluster_file} -n 100 -d ${output_dir}
 elif [ ${sum_type} = "lexrank" ]
 then
-    python3 lexrank.py # Add lexrank stuff here
+    python3 lexrank_driver.py -c ${config_file} -t ${topic_cluster_file} -n 100 -d ${output_dir}
 fi
 
 # generate ROUGE config file
-python3 ${rouge_dir}create_config.py ${output_dir} ${model_dir} ${rouge_config_file}
+python3 "${rouge_dir}/create_config.py" ${output_dir} ${model_dir} ${rouge_config_file}
 
 # generate ROUGE results
-python3 ${rouge_dir}run_rouge.py ${rouge_config_file} > ${rouge_output_file}
+python3 "${rouge_dir}/run_rouge.py" ${rouge_config_file} > ${rouge_output_file}
 
 
 
