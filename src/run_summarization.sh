@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # example run command:
-# ./run_summarization.sh first ../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2 /dropbox/17-18/573/Data/models/training/2009/
+# ./run_summarization.sh first ../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/training/2009/
 sum_type=$1
 config_file=$2
 topic_cluster_file=$3
@@ -12,12 +12,12 @@ rouge_config_file="rouge_config.xml"
 rouge_output_file="D2_rouge_scores.out"
 
 # generate output files
-if [sum_type = "first"]
+if [ ${sum_type} = "first" ]
 then
     python3 baseline.py ${sum_type} -c ${config_file} -t ${topic_cluster_file} -n 100 -d ${output_dir}
-elif [sum_type = "lexrank"]
+elif [ ${sum_type} = "lexrank" ]
 then
-    # Add lexrank stuff here
+    python3 lexrank.py # Add lexrank stuff here
 fi
 
 # generate ROUGE config file
