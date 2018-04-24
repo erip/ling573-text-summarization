@@ -50,35 +50,6 @@ class AbstractSummarizer(object):
     def normalize_word(self, word):
         return word.lower()
 
-    #TODO: Move to driver - post summarize() output, if reqd
-    def check_below_threshold(self,sent_list,max_word_count,pretokenized=False):
-        """
-        Take list of sentences return boolean of whether the total word count is below threshold
-        :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
-        :param max_word_count: int for max words in summary
-        :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
-        """
-        if pretokenized:
-            # currently only counts things with alphanumeric characters as words
-            word_count = sum([len(list(filter(str.isalnum, sent))) for sent in sent_list])
-        else:
-            # consider whitespace for wordcount
-            word_count = sum([len(sent.split()) for sent in sent_list])
-
-        if word_count <= max_word_count:
-            return True
-        else:
-            return False
-
-    #TODO: Move to driver - post summarize() output, if reqd
-    def get_output_sentence_count(self,sent_list,num_words):
-        """Computes the number of sentences in lexrank output that are below or equal to summary word count threshold
-        :return: int of number of sentences
-        """
-        if num_words:
-            while not(self.check_below_threshold(sent_list, num_words)):
-                sent_list = sent_list[:-1]
-
     def _get_best_sentences(self, sentences, count, max_word_count, rating, *args, **kwargs):
         """
 
@@ -139,7 +110,6 @@ class LexRankSummarizer(AbstractSummarizer):
         :return: num_sentences_count number of best sentences as determined by LexRank
         """
         sentences_words = [self._to_words_set(sent) for sent in document]  #sent is the variable for list of words in each sentence
-        #TODO: modify the document param to suit the input from lexrank_driver or change input to lexrank_driver to suit the document style of summarize()
 
         if not sentences_words:
             return tuple()
