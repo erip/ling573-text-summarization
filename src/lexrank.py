@@ -49,6 +49,7 @@ class AbstractSummarizer(object):
     def normalize_word(self, word):
         return word.lower()
 
+    #TODO: Move to driver - post summarize() output, if reqd
     def check_below_threshold(self,sent_list,max_word_count,pretokenized=False):
         """
         Take list of sentences return boolean of whether the total word count is below threshold
@@ -68,6 +69,7 @@ class AbstractSummarizer(object):
         else:
             return False
 
+    #TODO: Move to driver - post summarize() output, if reqd
     def get_output_sentence_count(self,sent_list,num_words):
         """Computes the number of sentences in lexrank output that are below or equal to summary word count threshold
         :return: int of number of sentences
@@ -79,7 +81,7 @@ class AbstractSummarizer(object):
     def _get_best_sentences(self, sentences, count, max_word_count, rating, *args, **kwargs):
         """
 
-        :param sentences: input document to be summarized - TODO - add here what format of document
+        :param sentences: input document to be summarized - TODO - add here the format of document
         :param count: int for number of best sentences to be chosen from sentences list
         :param max_word_count: int for max words in summary
         :param rating: sentence rating
@@ -106,7 +108,7 @@ class AbstractSummarizer(object):
         sent_list = [i.sentence for i in infos]
 
         #output word count check
-        if self.check_below_threshold(sent_list):
+        '''if self.check_below_threshold(sent_list):
             # get `count` first best rated sentences
             #TODO: add more sentences if word count below 100
             return tuple(sent_list)
@@ -114,6 +116,8 @@ class AbstractSummarizer(object):
             #clipped summary
             n = self.get_output_sentence_count(sent_list)
             return tuple(sent_list[:n+1])
+        '''
+        return tuple(sent_list)
 
 class LexRankSummarizer(AbstractSummarizer):
     """
@@ -133,7 +137,7 @@ class LexRankSummarizer(AbstractSummarizer):
         :param num_sentences_count: number of best sentences to be returned
         :return: num_sentences_count number of best sentences as determined by LexRank
         """
-        sentences_words = [self._to_words_set(sent) for sent in document]
+        sentences_words = [self._to_words_set(sent) for sent in document]  #sent is the variable for list of words in each sentence
         #TODO: modify the document param to suit the input from lexrank_driver or change input to lexrank_driver to suit the document style of summarize()
 
         if not sentences_words:
@@ -149,6 +153,10 @@ class LexRankSummarizer(AbstractSummarizer):
         return self._get_best_sentences(document, num_sentences_count, max_word_count, ratings)
 
     def _to_words_set(self, words):
+        """
+        :param words: all words in a sentence
+        :return:  set of all words in sentence minus stop-words
+        """
         words = map(self.normalize_word, words)
         return [self.stem_word(w) for w in words if w not in self.stop_words]
 

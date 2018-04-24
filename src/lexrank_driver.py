@@ -35,7 +35,7 @@ def get_candidate_sentences(lexrank_input_doc,max_word_count):
     :return: List of candidate sentences
     """
 
-    sent_num = 6  #random number to get the best 'sent_num' count of sentences from lexrank matrix calculations
+    sent_num = 2  #random number to get the best 'sent_num' count of sentences from lexrank matrix calculations
 
     ''' 
     result_list = []
