@@ -1,0 +1,618 @@
+<ROUGE_EVAL version="1.5.5">
+  <EVAL ID="D0901-A.M.100.A">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0901-A.M.100.A.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="F">D0901-A.M.100.A.F</M>
+      <M ID="H">D0901-A.M.100.A.H</M>
+      <M ID="A">D0901-A.M.100.A.A</M>
+      <M ID="C">D0901-A.M.100.A.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0902-A.M.100.A">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0902-A.M.100.A.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0902-A.M.100.A.B</M>
+      <M ID="G">D0902-A.M.100.A.G</M>
+      <M ID="H">D0902-A.M.100.A.H</M>
+      <M ID="A">D0902-A.M.100.A.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0903-A.M.100.A">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0903-A.M.100.A.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0903-A.M.100.A.A</M>
+      <M ID="E">D0903-A.M.100.A.E</M>
+      <M ID="D">D0903-A.M.100.A.D</M>
+      <M ID="G">D0903-A.M.100.A.G</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0904-A.M.100.A">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0904-A.M.100.A.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="C">D0904-A.M.100.A.C</M>
+      <M ID="A">D0904-A.M.100.A.A</M>
+      <M ID="D">D0904-A.M.100.A.D</M>
+      <M ID="F">D0904-A.M.100.A.F</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0905-A.M.100.A">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0905-A.M.100.A.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0905-A.M.100.A.A</M>
+      <M ID="H">D0905-A.M.100.A.H</M>
+      <M ID="D">D0905-A.M.100.A.D</M>
+      <M ID="G">D0905-A.M.100.A.G</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0906-A.M.100.B">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0906-A.M.100.B.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0906-A.M.100.B.B</M>
+      <M ID="A">D0906-A.M.100.B.A</M>
+      <M ID="D">D0906-A.M.100.B.D</M>
+      <M ID="C">D0906-A.M.100.B.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0907-A.M.100.B">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0907-A.M.100.B.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="C">D0907-A.M.100.B.C</M>
+      <M ID="B">D0907-A.M.100.B.B</M>
+      <M ID="H">D0907-A.M.100.B.H</M>
+      <M ID="F">D0907-A.M.100.B.F</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0908-A.M.100.B">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0908-A.M.100.B.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0908-A.M.100.B.H</M>
+      <M ID="E">D0908-A.M.100.B.E</M>
+      <M ID="F">D0908-A.M.100.B.F</M>
+      <M ID="B">D0908-A.M.100.B.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0909-A.M.100.B">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0909-A.M.100.B.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="F">D0909-A.M.100.B.F</M>
+      <M ID="B">D0909-A.M.100.B.B</M>
+      <M ID="G">D0909-A.M.100.B.G</M>
+      <M ID="E">D0909-A.M.100.B.E</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0910-A.M.100.B">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0910-A.M.100.B.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0910-A.M.100.B.H</M>
+      <M ID="A">D0910-A.M.100.B.A</M>
+      <M ID="E">D0910-A.M.100.B.E</M>
+      <M ID="B">D0910-A.M.100.B.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0911-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0911-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0911-A.M.100.C.A</M>
+      <M ID="E">D0911-A.M.100.C.E</M>
+      <M ID="C">D0911-A.M.100.C.C</M>
+      <M ID="B">D0911-A.M.100.C.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0912-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0912-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="C">D0912-A.M.100.C.C</M>
+      <M ID="B">D0912-A.M.100.C.B</M>
+      <M ID="G">D0912-A.M.100.C.G</M>
+      <M ID="D">D0912-A.M.100.C.D</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0913-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0913-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="C">D0913-A.M.100.C.C</M>
+      <M ID="E">D0913-A.M.100.C.E</M>
+      <M ID="H">D0913-A.M.100.C.H</M>
+      <M ID="B">D0913-A.M.100.C.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0914-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0914-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="E">D0914-A.M.100.C.E</M>
+      <M ID="F">D0914-A.M.100.C.F</M>
+      <M ID="D">D0914-A.M.100.C.D</M>
+      <M ID="C">D0914-A.M.100.C.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0915-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0915-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="F">D0915-A.M.100.C.F</M>
+      <M ID="G">D0915-A.M.100.C.G</M>
+      <M ID="H">D0915-A.M.100.C.H</M>
+      <M ID="C">D0915-A.M.100.C.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0916-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0916-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="E">D0916-A.M.100.C.E</M>
+      <M ID="C">D0916-A.M.100.C.C</M>
+      <M ID="F">D0916-A.M.100.C.F</M>
+      <M ID="B">D0916-A.M.100.C.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0917-A.M.100.C">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0917-A.M.100.C.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="F">D0917-A.M.100.C.F</M>
+      <M ID="B">D0917-A.M.100.C.B</M>
+      <M ID="C">D0917-A.M.100.C.C</M>
+      <M ID="G">D0917-A.M.100.C.G</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0918-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0918-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0918-A.M.100.D.H</M>
+      <M ID="D">D0918-A.M.100.D.D</M>
+      <M ID="F">D0918-A.M.100.D.F</M>
+      <M ID="A">D0918-A.M.100.D.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0919-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0919-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0919-A.M.100.D.H</M>
+      <M ID="G">D0919-A.M.100.D.G</M>
+      <M ID="F">D0919-A.M.100.D.F</M>
+      <M ID="D">D0919-A.M.100.D.D</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0920-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0920-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="G">D0920-A.M.100.D.G</M>
+      <M ID="C">D0920-A.M.100.D.C</M>
+      <M ID="D">D0920-A.M.100.D.D</M>
+      <M ID="A">D0920-A.M.100.D.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0921-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0921-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0921-A.M.100.D.B</M>
+      <M ID="H">D0921-A.M.100.D.H</M>
+      <M ID="C">D0921-A.M.100.D.C</M>
+      <M ID="D">D0921-A.M.100.D.D</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0922-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0922-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="D">D0922-A.M.100.D.D</M>
+      <M ID="E">D0922-A.M.100.D.E</M>
+      <M ID="B">D0922-A.M.100.D.B</M>
+      <M ID="A">D0922-A.M.100.D.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0923-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0923-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="E">D0923-A.M.100.D.E</M>
+      <M ID="G">D0923-A.M.100.D.G</M>
+      <M ID="D">D0923-A.M.100.D.D</M>
+      <M ID="C">D0923-A.M.100.D.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0924-A.M.100.D">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0924-A.M.100.D.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0924-A.M.100.D.A</M>
+      <M ID="D">D0924-A.M.100.D.D</M>
+      <M ID="E">D0924-A.M.100.D.E</M>
+      <M ID="F">D0924-A.M.100.D.F</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0925-A.M.100.E">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0925-A.M.100.E.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="E">D0925-A.M.100.E.E</M>
+      <M ID="F">D0925-A.M.100.E.F</M>
+      <M ID="H">D0925-A.M.100.E.H</M>
+      <M ID="A">D0925-A.M.100.E.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0926-A.M.100.E">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0926-A.M.100.E.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="E">D0926-A.M.100.E.E</M>
+      <M ID="D">D0926-A.M.100.E.D</M>
+      <M ID="G">D0926-A.M.100.E.G</M>
+      <M ID="B">D0926-A.M.100.E.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0927-A.M.100.E">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0927-A.M.100.E.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0927-A.M.100.E.A</M>
+      <M ID="G">D0927-A.M.100.E.G</M>
+      <M ID="E">D0927-A.M.100.E.E</M>
+      <M ID="B">D0927-A.M.100.E.B</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0928-A.M.100.E">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0928-A.M.100.E.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="C">D0928-A.M.100.E.C</M>
+      <M ID="E">D0928-A.M.100.E.E</M>
+      <M ID="A">D0928-A.M.100.E.A</M>
+      <M ID="F">D0928-A.M.100.E.F</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0929-A.M.100.E">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0929-A.M.100.E.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="D">D0929-A.M.100.E.D</M>
+      <M ID="H">D0929-A.M.100.E.H</M>
+      <M ID="G">D0929-A.M.100.E.G</M>
+      <M ID="E">D0929-A.M.100.E.E</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0930-A.M.100.F">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0930-A.M.100.F.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0930-A.M.100.F.B</M>
+      <M ID="F">D0930-A.M.100.F.F</M>
+      <M ID="E">D0930-A.M.100.F.E</M>
+      <M ID="A">D0930-A.M.100.F.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0931-A.M.100.F">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0931-A.M.100.F.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="F">D0931-A.M.100.F.F</M>
+      <M ID="G">D0931-A.M.100.F.G</M>
+      <M ID="D">D0931-A.M.100.F.D</M>
+      <M ID="C">D0931-A.M.100.F.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0932-A.M.100.F">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0932-A.M.100.F.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0932-A.M.100.F.B</M>
+      <M ID="H">D0932-A.M.100.F.H</M>
+      <M ID="G">D0932-A.M.100.F.G</M>
+      <M ID="F">D0932-A.M.100.F.F</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0933-A.M.100.F">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0933-A.M.100.F.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0933-A.M.100.F.B</M>
+      <M ID="A">D0933-A.M.100.F.A</M>
+      <M ID="F">D0933-A.M.100.F.F</M>
+      <M ID="D">D0933-A.M.100.F.D</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0934-A.M.100.G">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0934-A.M.100.G.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="G">D0934-A.M.100.G.G</M>
+      <M ID="D">D0934-A.M.100.G.D</M>
+      <M ID="H">D0934-A.M.100.G.H</M>
+      <M ID="C">D0934-A.M.100.G.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0935-A.M.100.G">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0935-A.M.100.G.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0935-A.M.100.G.H</M>
+      <M ID="G">D0935-A.M.100.G.G</M>
+      <M ID="E">D0935-A.M.100.G.E</M>
+      <M ID="F">D0935-A.M.100.G.F</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0936-A.M.100.G">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0936-A.M.100.G.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="F">D0936-A.M.100.G.F</M>
+      <M ID="D">D0936-A.M.100.G.D</M>
+      <M ID="E">D0936-A.M.100.G.E</M>
+      <M ID="G">D0936-A.M.100.G.G</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0937-A.M.100.G">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0937-A.M.100.G.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0937-A.M.100.G.B</M>
+      <M ID="A">D0937-A.M.100.G.A</M>
+      <M ID="G">D0937-A.M.100.G.G</M>
+      <M ID="C">D0937-A.M.100.G.C</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0938-A.M.100.G">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0938-A.M.100.G.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="G">D0938-A.M.100.G.G</M>
+      <M ID="E">D0938-A.M.100.G.E</M>
+      <M ID="C">D0938-A.M.100.G.C</M>
+      <M ID="A">D0938-A.M.100.G.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0939-A.M.100.H">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0939-A.M.100.H.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="E">D0939-A.M.100.H.E</M>
+      <M ID="H">D0939-A.M.100.H.H</M>
+      <M ID="F">D0939-A.M.100.H.F</M>
+      <M ID="D">D0939-A.M.100.H.D</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0940-A.M.100.H">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0940-A.M.100.H.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0940-A.M.100.H.H</M>
+      <M ID="B">D0940-A.M.100.H.B</M>
+      <M ID="F">D0940-A.M.100.H.F</M>
+      <M ID="D">D0940-A.M.100.H.D</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0941-A.M.100.H">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0941-A.M.100.H.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0941-A.M.100.H.A</M>
+      <M ID="G">D0941-A.M.100.H.G</M>
+      <M ID="C">D0941-A.M.100.H.C</M>
+      <M ID="H">D0941-A.M.100.H.H</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0942-A.M.100.H">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0942-A.M.100.H.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="B">D0942-A.M.100.H.B</M>
+      <M ID="H">D0942-A.M.100.H.H</M>
+      <M ID="C">D0942-A.M.100.H.C</M>
+      <M ID="A">D0942-A.M.100.H.A</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0943-A.M.100.H">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0943-A.M.100.H.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="A">D0943-A.M.100.H.A</M>
+      <M ID="D">D0943-A.M.100.H.D</M>
+      <M ID="H">D0943-A.M.100.H.H</M>
+      <M ID="E">D0943-A.M.100.H.E</M>
+    </MODELS>
+  </EVAL>
+  <EVAL ID="D0944-A.M.100.H">
+    <PEER-ROOT>../outputs/D2/</PEER-ROOT>
+    <MODEL-ROOT>/dropbox/17-18/573/Data/models/training/2009/</MODEL-ROOT>
+    <INPUT-FORMAT TYPE="SPL"/>
+    <PEERS>
+      <P ID="4">D0944-A.M.100.H.4</P>
+    </PEERS>
+    <MODELS>
+      <M ID="H">D0944-A.M.100.H.H</M>
+      <M ID="B">D0944-A.M.100.H.B</M>
+      <M ID="C">D0944-A.M.100.H.C</M>
+      <M ID="G">D0944-A.M.100.H.G</M>
+    </MODELS>
+  </EVAL>
+</ROUGE_EVAL>
