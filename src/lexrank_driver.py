@@ -47,13 +47,13 @@ def get_candidate_sentences(lexrank_input_doc,max_word_count):
     sent_list = summarizer.summarize(lexrank_input_doc, sent_num, max_word_count)
 
     if max_word_count:
-        while not(check_below_threshold(sent_list, max_word_count)):
+        while check_above_threshold(sent_list, max_word_count):
             sent_list = sent_list[:-1]
 
     return sent_list
 
 
-def check_below_threshold(sent_list,max_word_count,pretokenized=False):
+def check_above_threshold(sent_list,max_word_count,pretokenized=False):
     """
     Take list of sentences return boolean of whether the total word count is below threshold
     :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
@@ -67,7 +67,7 @@ def check_below_threshold(sent_list,max_word_count,pretokenized=False):
        # consider whitespace for wordcount
        word_count = sum([len(sent.split()) for sent in sent_list])
 
-    if word_count <= max_word_count:
+    if word_count > max_word_count:
        return True
     else:
        return False
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument('-c', dest='config_file', default='../conf/local_config.yaml',
                    help='a yaml config mapping the topic clustering to file locations')
-    p.add_argument('-t', dest='topic_file', default='../conf/GuidedSumm10_test_topics.xml',
+    p.add_argument('-t', dest='topic_file', default='../conf/GuidedSumm_MINE_test_topics.xml',
                    help='an AQUAINT config file with topic clustering')
     p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int, default=100)
     p.add_argument('-th', dest='threshold', default=0.1, type=float, help='threshold for when to draw a edge between sentences in lexrank')
