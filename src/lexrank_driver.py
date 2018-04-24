@@ -61,9 +61,9 @@ if __name__ == "__main__":
                    help='a yaml config mapping the topic clustering to file locations')
     p.add_argument('-t', dest='topic_file', default='../conf/UpdateSumm09_test_topics.xml',
                    help='an AQUAINT config file with topic clustering')
-    p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int)
-    p.add_argument('-th', dest='threshold', default=0.1, help='threshold for when to draw a edge between sentences in lexrank')
-    p.add_argument('-e', dest='epsilon', default=0.1, help='epsilon value to control convergence of eigenvectors in lexrank matrix')
+    p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int, default=100)
+    p.add_argument('-th', dest='threshold', default=0.1, type=float, help='threshold for when to draw a edge between sentences in lexrank')
+    p.add_argument('-e', dest='epsilon', default=0.1, type=float, help='epsilon value to control convergence of eigenvectors in lexrank matrix')
     p.add_argument('-d', dest='output_dir', default='../outputs/D2/', help='dir to write output summaries to')
     args = p.parse_args()
 
