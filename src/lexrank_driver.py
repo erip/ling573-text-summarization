@@ -58,7 +58,7 @@ if __name__ == "__main__":
     #READ Command line arguments
     p = argparse.ArgumentParser()
     p.add_argument('-c', dest='config_file', default='../conf/patas_config.yaml',
-                   help='an xml config mapping the topic clustering to file locations')
+                   help='a yaml config mapping the topic clustering to file locations')
     p.add_argument('-t', dest='topic_file', default='../conf/UpdateSumm09_test_topics.xml',
                    help='an AQUAINT config file with topic clustering')
     p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int)
