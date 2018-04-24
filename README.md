@@ -29,9 +29,21 @@ The currently supported summarization methods are:
 1. **random**, use a random sentence as the summary.
 1. **lexrank**, use lexrank to determine the summary.
 
+
+The lexrank method relies on detokenizing input, for which we use the Moses detokenizer.
+
+If `nltk_data` have not been downloaded before, it may be necessary to first download them:
+
+```python3
+>>> import nltk
+>>> nltk.download('perluniprops')
+```
+
 To run `run_summarization.sh` on condor: 
 
-``` condor_submit D2.cmd```
+```bash
+condor_submit D2.cmd
+```
 
 ### Results
 
