@@ -44,7 +44,7 @@ def get_candidate_sentences(lexrank_input_doc,max_word_count):
     return result_list
     '''
 
-    sent_list = summarizer.summarize(lexrank_input_doc, max_word_count)
+    sent_list = summarizer.summarize(lexrank_input_doc, sent_num, max_word_count)
 
     if max_word_count:
         while not(check_below_threshold(sent_list, max_word_count)):
