@@ -1,7 +1,7 @@
 from lexrank import LexRankSummarizer
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
-import src.corpus.Corpus as Corpus
+from corpus import Corpus
 import argparse
 
 
