@@ -7,6 +7,7 @@ from collections import namedtuple, Counter
 from operator import attrgetter
 
 import numpy as np
+from nltk.tokenize.moses import MosesDetokenizer
 
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
 
@@ -148,9 +149,12 @@ class LexRankSummarizer(AbstractSummarizer):
 
         matrix = self._create_matrix(sentences_words, self.threshold, tf_metrics, idf_metrics)
         scores = self.power_method(matrix, self.epsilon)
-        ratings = dict(zip(document, scores))
+        detokenizer = MosesDetokenizer()
+        detokenized_sents = [detokenizer.detokenize(sent, return_str=True) for sent in document]
 
-        return self._get_best_sentences(document, num_sentences_count, max_word_count, ratings)
+        ratings = dict(zip(detokenized_sents, scores))
+
+        return self._get_best_sentences(detokenized_sents, num_sentences_count, max_word_count, ratings)
 
     def _to_words_set(self, words):
         """
