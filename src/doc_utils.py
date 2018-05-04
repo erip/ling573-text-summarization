@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 
 class Document(object):
     def __init__(self, base_paths, _id):
@@ -25,19 +26,22 @@ class Document(object):
     def get_path(self):
         if self.is_aquaint:
             # $SRC/$YYYY/$YYYY$mm$dd_$SRC for NYT, $SRC/$YYYY/$YYYY$mm$dd_$SRC_$LANG for xie and apw
-            # xie is soemtimes xin so hardcoding that too :(
+            # xie is sometimes xin so hardcoding that too :(
             if self.src == "NYT":
-                return self.base_paths["aquaint"] + \
-                       "{0}/{1}/{1}{2}{3}_{4}".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
+                groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_{3}".format(self.yyyy, self.mm, self.dd, self.src))
             elif self.src == "XIE":
-                return self.base_paths["aquaint"] + \
-                       "{0}/{1}/{1}{2}{3}_XIN_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd)
+                groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_XIN_ENG".format(self.yyyy, self.mm, self.dd))
             else:
-                return self.base_paths["aquaint"] + \
-                       "{0}/{1}/{1}{2}{3}_{4}_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
+                groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_{3}_ENG".format(self.yyyy, self.mm, self.dd, self.src))
+
+                # return self.base_paths["aquaint"] + \
+                #        "{0}/{1}/{1}{2}{3}_{4}_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
+            return os.path.join(self.base_paths["aquaint"], *groups)
+
         else:
-            # data/$src_$lang/$src_$lang_$YYYY$mm.xml
-            return self.base_paths["aquaint2"] + "data/{0}_{1}/{0}_{1}_{2}{3}.xml".format(self.src, self.lang, self.yyyy, self.mm).lower()
+            groups = ("data", "{0}_{1}".format(self.src, self.lang), "{0}_{1}_{2}{3}.xml".format(self.src, self.lang, self.yyyy, self.mm))
+
+            return os.path.join(self.base_paths["aquaint2"], *groups).lower()
 
 
 class Docset(object):
