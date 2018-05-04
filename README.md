@@ -45,6 +45,10 @@ To run `run_summarization.sh` on condor:
 condor_submit D2.cmd
 ```
 
+### Testing
+
+Once all dependencies are installed, running `nosetests` from the project root shoudl run all unit tests.
+
 ### Results
 
 Results can be found in the [results/](./results/) directory.
