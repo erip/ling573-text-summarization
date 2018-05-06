@@ -6,7 +6,6 @@ class Expert(ABC):
     """The abstract base class for information ordering experts."""
 
     @property
-    @abstractmethod
     def name(self):
         return self._name
 

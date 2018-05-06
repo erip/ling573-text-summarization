@@ -17,7 +17,7 @@ class InformationOrderer(object):
         self.threshold = 0.5
 
         self.logger.debug("Running information ordering with {0}".format(
-            ', '.join(expert.name() for expert in self.experts))
+            ', '.join(expert.name for expert in self.experts))
         )
 
         self.threshold = threshold
@@ -32,7 +32,7 @@ class InformationOrderer(object):
         """Given two documents, this method will use the provided experts to order the documents"""
 
         # Given an expert, its contribution will be its weight times its ordering score.
-        expert_weighted_contribution = lambda expert: self.expert_weights.get(expert.name(), 0.0) * \
+        expert_weighted_contribution = lambda expert: self.expert_weights.get(expert.name, 0.0) * \
                                                       expert.order(doc1, doc2, partial_summary)
 
         ordered_weight = sum(expert_weighted_contribution(e) for e in self.experts)
