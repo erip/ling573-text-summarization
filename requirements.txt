@@ -4,4 +4,6 @@ lxml==4.1.1
 nltk==3.2.5
 numpy==1.14.2
 PyYAML==3.12
+scikit-learn==0.19.1
 six==1.11.0
+spacy==2.0.11
