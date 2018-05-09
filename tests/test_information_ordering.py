@@ -19,9 +19,9 @@ class InformationOrderingTestCase(TestCase):
 
     def test_example_expert_orders_first_doc_first(self):
         expert = ExampleExpert()
-        experts = {expert}
+        experts = { expert }
 
-        weights = {expert.name: 1.0}
+        weights = { expert.name: 1.0 }
 
         doc1 = "first"
         doc2 = "second"
