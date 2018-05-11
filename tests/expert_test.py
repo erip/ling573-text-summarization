@@ -23,13 +23,6 @@ class Document:
     def get_sent_index(self):
         return self.index
 
-"""
-        
-        elif d1.get_timestamp() == d2.get_timestamp() and not sents_from_same_doc:
-            return 0.5
-        # otherwise
-        return 0"""
-
 class ExpertTestCase(TestCase):
 
     def test_prefer_older_doc(self):
