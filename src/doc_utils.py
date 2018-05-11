@@ -33,9 +33,6 @@ class Document(object):
                 groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_XIN_ENG".format(self.yyyy, self.mm, self.dd))
             else:
                 groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_{3}_ENG".format(self.yyyy, self.mm, self.dd, self.src))
-
-                # return self.base_paths["aquaint"] + \
-                #        "{0}/{1}/{1}{2}{3}_{4}_ENG".format(self.src.lower(), self.yyyy, self.mm, self.dd, self.src)
             return os.path.join(self.base_paths["aquaint"], *groups)
 
         else:
