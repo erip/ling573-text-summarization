@@ -30,7 +30,7 @@ class ChronologicalExpert(Expert):
         elif sents_from_same_doc and doc1_sent_index < doc2_sent_index:
             return 1
         # [T(u) == T(v)] & [D(u) != D(v)]
-        elif d1.get_timestamp() == d2.get_timestamp() and not sents_from_same_doc:
+        elif both_docs_have_time_stamp and d1.get_timestamp() == d2.get_timestamp() and not sents_from_same_doc:
             return 0.5
         # otherwise
         return 0

@@ -91,7 +91,7 @@ class ExpertTestCase(TestCase):
         doc2 = Document(doc2_id, "some other dummy string", doc2_sent_idx, t2)
         self.assertEqual(0.5, expert.order(doc1, doc2, []))
 
-    def test_no_order_if_no_timestamp(self):
+    def test_no_order_if_one_doc_has_no_timestamp(self):
         expert = ChronologicalExpert()
 
         doc1_id = "doc1"
@@ -103,6 +103,25 @@ class ExpertTestCase(TestCase):
         t1 = datetime.now()
         t2 = None
 
+        self.assertIsNone(t2)
+
+        doc1 = Document(doc1_id, "some dummy string", doc1_sent_idx, t1)
+        doc2 = Document(doc2_id, "some other dummy string", doc2_sent_idx, t2)
+        self.assertEqual(0, expert.order(doc1, doc2, []))
+
+    def test_no_order_if_neither_doc_has_a_timestamp(self):
+        expert = ChronologicalExpert()
+
+        doc1_id = "doc1"
+        doc2_id = "doc2"
+
+        doc1_sent_idx = 0
+        doc2_sent_idx = 1
+
+        t1 = None
+        t2 = None
+
+        self.assertIsNone(t1)
         self.assertIsNone(t2)
 
         doc1 = Document(doc1_id, "some dummy string", doc1_sent_idx, t1)
