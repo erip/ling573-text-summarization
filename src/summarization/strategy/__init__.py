@@ -1,2 +1,7 @@
-from .summarization_strategy import SummarizationStrategy, LexRankSummarizationStrategy, \
-    RandomSummarizationStrategy, FirstSentenceSummarizationStrategy
+from ..utils.document import Document
+
+from .summarization_strategy import SummarizationStrategy
+from .lexrank_summarization_strategy import LexRankSummarizationStrategy
+from .random_summarization_strategy import RandomSummarizationStrategy
+from .first_sentence_summarization_strategy import FirstSentenceSummarizationStrategy
+

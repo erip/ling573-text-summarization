@@ -44,25 +44,6 @@ def get_candidate_sentences(lexrank_input_doc, max_word_count=None):
     return sent_list
 
 
-def check_above_threshold(sent_list, max_word_count, pretokenized=False):
-    """
-    Take list of sentences return boolean of whether the total word count is below threshold
-    :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
-    :param max_word_count: int for max words in summary
-    :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
-    """
-    if pretokenized:
-       # currently only counts things with alphanumeric characters as words
-       word_count = sum([len(list(filter(str.isalnum, sent))) for sent in sent_list])
-    else:
-       # consider whitespace for wordcount
-       word_count = sum([len(sent.split()) for sent in sent_list])
-
-    if word_count > max_word_count:
-       return True
-    else:
-       return False
-
 if __name__ == "__main__":
 
     """

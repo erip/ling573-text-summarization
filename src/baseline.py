@@ -24,22 +24,6 @@ def make_filename(topic_id, num_words):
     return '{0}-A.M.{2}.{1}.{3}'.format(topic_id[:-1], topic_id[-1], num_words, some_unique_alphanum)
 
 
-def get_candidate_sentences(topic, baseline_type):
-    """Take Topic & baseline type, return a nested list of sentences selected and their indices in original text"""
-    selected_sent = []
-    for s in topic.stories:
-        if baseline_type == "first":
-            index = 0
-        elif baseline_type == "random":
-            index = random.randint(0, s.num_sentences()-1)
-        else:
-            print("Out of luck mate, your only options are 'first' or 'random'", file=sys.stderr)
-        #selected_sent.append(s.get_sentences()[index])
-        span = s.get_spans()[index]
-        selected_sent.append(s.get_raw(span))
-
-    return selected_sent
-
 
 def check_above_threshold(sentences, num_words, pretokenized=False):
     """

@@ -14,7 +14,7 @@ class InformationOrderer(object):
         self.logger = logging.getLogger(__name__)
 
         self.experts = experts
-        self.threshold = 0.5
+        self.threshold = threshold
 
         self.logger.debug("Running information ordering with {0}".format(
             ', '.join(expert.name for expert in self.experts))

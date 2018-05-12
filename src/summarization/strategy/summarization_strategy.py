@@ -30,7 +30,7 @@ class SummarizationStrategy(metaclass=ABCMeta):
 
     @classmethod
     def from_config(cls: Type[T], config: Dict) -> T:
-        """Reads the summarization strategy from a yaml config."""
+        """Reads the summarization strategy from a dictionary."""
 
         # Get the name of the strategy to be used for summarization from the strategy configuration.
         strategy_name = config.get(SummarizationStrategy.CONFIG_STRATEGY_NAME_KEY)
@@ -55,38 +55,6 @@ class SummarizationStrategy(metaclass=ABCMeta):
     def summarize(self, docs: Set[Document], word_limit: int) -> str:
         """Summarize a set of documents within a given word limit."""
 
-@SummarizationStrategy.register_strategy
-class LexRankSummarizationStrategy(SummarizationStrategy):
-
-    name = "lexrank"
-
-    @classmethod
-    def from_strategy_config(cls: Type[T], config: Dict[str, dict]) -> T:
-        return cls()
-
-    def summarize(self, docs: Set[Document], word_limit: int) -> str:
-        return ""
-
-@SummarizationStrategy.register_strategy
-class RandomSummarizationStrategy(SummarizationStrategy):
-
-    name = "random"
-
-    @classmethod
-    def from_strategy_config(cls: Type[T], config: Dict[str, dict]) -> T:
-        return cls()
-
-    def summarize(self, docs: Set[Document], word_limit: int) -> str:
-        return ""
-
-@SummarizationStrategy.register_strategy
-class FirstSentenceSummarizationStrategy(SummarizationStrategy):
-
-    name = "first"
-
-    @classmethod
-    def from_strategy_config(cls: Type[T], config: Dict[str, dict]) -> T:
-        return cls()
-
-    def summarize(self, docs: Set[Document], word_limit: int) -> str:
-        return ""
+    @abstractmethod
+    def get_candidate_sentences(self, topic, word_limit):
+        """Gets candidate sentences that describe the topic within the word limit"""
