@@ -1,4 +1,4 @@
-from src.experts import Expert
+from src.summarization.information_ordering.expert import Expert
 
 class ExampleExpert(Expert):
     def __init__(self):

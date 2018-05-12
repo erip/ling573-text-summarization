@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 
-from src.information_ordering import InformationOrderer
+from src.summarization.information_ordering.information_ordering import InformationOrderer
 
 from .example_expert import ExampleExpert
 
