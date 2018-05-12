@@ -1,20 +1,35 @@
 #!/usr/bin/env python3
 
-"""Borrow heavily from https://github.com/miso-belica/sumy/blob/dev/sumy/summarizers/_summarizer.py
+"""
+Borrow heavily from https://github.com/miso-belica/sumy/blob/dev/sumy/summarizers/_summarizer.py
+
 """
 
+import sys
 from collections import namedtuple, Counter
 from operator import attrgetter
 
 import numpy as np
-from nltk.tokenize.moses import MosesDetokenizer
+from sklearn.metrics import pairwise
+import spacy
+from gensim.models import Doc2Vec
 
+from embeddings import SentenceEmbedding, make_tfidf_embeddings
+
+#GLOBAL SETTINGS
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
+nlp = spacy.load('en_vectors_web_lg')  #TODO this has to be downloaded in advance and is enormous, need to add to readme
+nlp.add_pipe(nlp.create_pipe('sentencizer')) #necessary to recovering sentence boundaries. If we want to speed things up later we can fuck with the sentence boundaries
+
 
 class ItemsCount(object):
     """This is absolute black magick.
+    serif: It appears to be an object oriented way of ensuring we get the top x sentences regardless of whether a
+    hard number or a percentage is given. It could almost certainly be done more simply. But apart from headspinning is
+    not causing problems.
     """
     def __init__(self, value):
+        """a number, or a percentage"""
         self._value = value
 
     def __call__(self, sequence):
@@ -43,17 +58,18 @@ class AbstractSummarizer(object):
     def __call__(self, document, sentences_count):
         raise NotImplementedError("This method should be overriden in subclass")
 
-    def stem_word(self, word):
+    def stem_word(self, word):  #TODO this is now in embeddings
         s = self._stemmer.stem(word)
         return s
 
-    def normalize_word(self, word):
+    def normalize_word(self, word): #TODO this is now in embeddings
         return word.lower()
 
     def _get_best_sentences(self, sentences, count, max_word_count, rating, *args, **kwargs):
         """
 
-        :param sentences: input document to be summarized - TODO - add here the format of document
+        :param sentences: list of SentenceEmbedding objects. If we prefer later on, this could be raw
+        sentences, there is no reason they *need* to be objects at this point.
         :param count: int for number of best sentences to be chosen from sentences list
         :param max_word_count: int for max words in summary
         :param rating: sentence rating
@@ -61,6 +77,8 @@ class AbstractSummarizer(object):
         :param kwargs: tuple of final summary sentences
         :return:
         """
+        #TODO consider moving max_word_count here from the lexrank driver. Post discussion around where it belongs. Leaving here for now as changing it is not important
+        #TODO why args and kwargs??
         rate = rating
         if isinstance(rating, dict):
             assert not args and not kwargs
@@ -75,9 +93,10 @@ class AbstractSummarizer(object):
             count = ItemsCount(count)
 
         infos = count(infos)
-        # sort sentences by their order in document
-        infos = sorted(infos, key=attrgetter("order"))
-        sent_list = [i.sentence for i in infos]
+        # sort sentences by their order in document.
+        #TODO either make it so "document" ordering has meaning, or remove this line.
+        #infos = sorted(infos, key=attrgetter("order"))
+        sent_list = [i.sentence.raw for i in infos]
 
         #output word count check
         '''if self.check_below_threshold(sent_list):
@@ -91,99 +110,88 @@ class AbstractSummarizer(object):
         '''
         return tuple(sent_list)
 
-class LexRankSummarizer(AbstractSummarizer):
+class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now in embeddings
     """
     LexRank: Graph-based Centrality as Salience in Text Summarization
     Source: http://tangra.si.umich.edu/~radev/lexrank/lexrank.pdf
     """
-    def __init__(self, stemmer, threshold=0.1, epsilon=0.1, stop_words=None):
+    def __init__(self, stemmer, threshold=0.1, epsilon=0.1, stop_words=None, model=None):
         super().__init__(stemmer)
         self.threshold = threshold
         self.epsilon = epsilon
         self.stop_words = stop_words if stop_words is not None else frozenset()
+        self.model = model
+        self.idf_metrics = None
 
-    def summarize(self, document, num_sentences_count,max_word_count):
+    def summarize(self, document, num_sentences_count, max_word_count, vec_type):
         """
         Generate summary of the document
-        :param document: Input document to be summarized
-        :param num_sentences_count: number of best sentences to be returned
-        :return: num_sentences_count number of best sentences as determined by LexRank
+        :param document: Input document to be summarized - raw string
+        :param num_sentences_count: integer number of best sentences to be returned
+        :param max_word_count: integer max number of words in summary
+        :param vec_type: string to identify the type of vector representation to use for sentences
+        :param model: if using a model to generate embeddings, can include it here
+        :return: number of best sentences as determined by LexRank
         """
-        sentences_words = [self._to_words_set(sent) for sent in document]  #sent is the variable for list of words in each sentence
 
-        if not sentences_words:
-            return tuple()
+        #tokenize the input document. This requires a full (not very fast) spacy load as it uses a dependency parse
+        spacy_doc = nlp(document)
 
-        tf_metrics = self._compute_tf(sentences_words)
-        idf_metrics = self._compute_idf(sentences_words)
+        # this is a list of SentenceEmbedding objects where the vector is vec_type
+        if vec_type == 'spacy':
+            sentences = [SentenceEmbedding(sent.string.strip(), [tok.text for tok in sent], vec_type, sent.vector)
+                         for sent in spacy_doc.sents]
+        elif vec_type == 'tfidf':
+            all_sentences, tok_sentences = [], []
+            for sent in spacy_doc.sents:  # get sentence strings and tokenized sents
+                tok_sentences.append([tok.text for tok in sent])
+                all_sentences.append(sent.string.strip())
+            sentences, self.idf_metrics = make_tfidf_embeddings(all_sentences, tok_sentences)
+            # when vec_type is tfidf, the SentenceEmbedding.embedding will be the tf_metrics dict and tokens will be tfidf processed
+        else:
+            # make sentence embeddings in a generic way before setting the vectors
+            sentences = [SentenceEmbedding(raw=sent.string.strip(),
+                                           tokens=[tok.text for tok in sent],
+                                           embed_type=vec_type) for sent in spacy_doc.sents]
+            if vec_type == 'doc2vec':
+                doc2vec_model = self.model
+                for sent_embed in sentences:
+                    sent_embed.set_embedding(doc2vec_model.infer_vector(sent_embed.tokens))
+            elif vec_type == 'word2vec':
+                # TODO implement this. Should not be blocker as it is extra
+                pass
+            else:
+                sys.exit('No valid vector representations found. Aborting')
 
-        matrix = self._create_matrix(sentences_words, self.threshold, tf_metrics, idf_metrics)
+        matrix = self._create_matrix(sentences, self.threshold)
         scores = self.power_method(matrix, self.epsilon)
-        detokenizer = MosesDetokenizer()
-        detokenized_sents = [detokenizer.detokenize(sent, return_str=True) for sent in document]
+        ratings = dict(zip(sentences, scores))
 
-        ratings = dict(zip(detokenized_sents, scores))
+        return self._get_best_sentences(sentences, num_sentences_count, max_word_count, ratings)
 
-        return self._get_best_sentences(detokenized_sents, num_sentences_count, max_word_count, ratings)
 
-    def _to_words_set(self, words):
+    def _create_matrix(self, sentences, threshold):
         """
-        :param words: all words in a sentence
-        :return:  set of all words in sentence minus stop-words
-        """
-        words = map(self.normalize_word, words)
-        return [self.stem_word(w) for w in words if w not in self.stop_words]
+        Creates matrix of shape |sentences|×|sentences|. Based on cosine similarity between sentences
 
-    def _compute_tf(self, sentences):
-        tf_values = map(Counter, sentences)
-
-        tf_metrics = []
-        for sentence in tf_values:
-            metrics = {}
-            max_tf = self._find_tf_max(sentence)
-
-            for term, tf in sentence.items():
-                metrics[term] = tf / max_tf
-
-            tf_metrics.append(metrics)
-
-        return tf_metrics
-
-    @staticmethod
-    def _find_tf_max(terms):
-        return max(terms.values()) if terms else 1
-
-    @staticmethod
-    def _compute_idf(sentences):
-        idf_metrics = {}
-        sentences_count = len(sentences)
-
-        for sentence in sentences:
-            for term in sentence:
-                if term not in idf_metrics:
-                    n_j = sum(1 for s in sentences if term in s)
-                    idf_metrics[term] = np.log(sentences_count / (1 + n_j))
-
-        return idf_metrics
-
-    def _create_matrix(self, sentences, threshold, tf_metrics, idf_metrics):
-        """
-        Creates matrix of shape |sentences|×|sentences|.
+        :param sentences: a list of sentence embedding objects
+        :param threshold: float, lexrank hyperparameter
         """
         # create matrix |sentences|×|sentences| filled with zeroes
         sentences_count = len(sentences)
         matrix = np.zeros((sentences_count, sentences_count))
         degrees = np.zeros((sentences_count, ))
 
-        for row, (sentence1, tf1) in enumerate(zip(sentences, tf_metrics)):
-            for col, (sentence2, tf2) in enumerate(zip(sentences, tf_metrics)):
-                matrix[row, col] = self.cosine_similarity(sentence1, sentence2, tf1, tf2, idf_metrics)
+        for row_idx in range(sentences_count):
+            for col_idx in range(sentences_count):
+                matrix[row_idx, col_idx] = self._cosine_similarity(sentences[row_idx],
+                                                                  sentences[col_idx])
 
-                if matrix[row, col] > threshold:
-                    matrix[row, col] = 1.0
-                    degrees[row] += 1
+                if matrix[row_idx, col_idx] > threshold:
+                    matrix[row_idx, col_idx] = 1.0
+                    degrees[row_idx] += 1
                 else:
-                    matrix[row, col] = 0
+                    matrix[row_idx, col_idx] = 0
 
         for row in range(sentences_count):
             for col in range(sentences_count):
@@ -194,44 +202,36 @@ class LexRankSummarizer(AbstractSummarizer):
 
         return matrix
 
-    @staticmethod
-    def cosine_similarity(sentence1, sentence2, tf1, tf2, idf_metrics):
+    def _cosine_similarity(self, sentence1, sentence2):
         """
-        We compute idf-modified-cosine(sentence1, sentence2) here.
+        Take 2 sentence vectors, compute cosine similarity.
         It's cosine similarity of these two sentences (vectors) A, B computed as cos(x, y) = A . B / (|A| . |B|)
-        Sentences are represented as vector TF*IDF metrics.
-        :param sentence1:
-            Iterable object where every item represents word of 1st sentence.
-        :param sentence2:
-            Iterable object where every item represents word of 2nd sentence.
-        :type tf1: dict
-        :param tf1:
-            Term frequencies of words from 1st sentence.
-        :type tf2: dict
-        :param tf2:
-            Term frequencies of words from 2nd sentence
-        :type idf_metrics: dict
-        :param idf_metrics:
-            Inverted document metrics of the sentences. Every sentence is treated as document for this algorithm.
+
+        :param sentence1: vector representation of first sentence
+        :param sentence2: vector representation of second sentence
         :rtype: float
-        :return:
-            Returns -1.0 for opposite similarity, 1.0 for the same sentence and zero for no similarity between sentences.
+        :return: Returns -1.0 for opposite similarity, 1.0 for the same sentence and zero for no similarity between sentences.
         """
-        unique_words1 = frozenset(sentence1)
-        unique_words2 = frozenset(sentence2)
-        common_words = unique_words1 & unique_words2
+        if self.idf_metrics:  # this will only be set if type is tfidf. A bit hacky.
+            unique_words1 = frozenset(sentence1.tokens)
+            unique_words2 = frozenset(sentence2.tokens)
+            common_words = unique_words1 & unique_words2
 
-        numerator = 0.0
-        for term in common_words:
-            numerator += tf1[term]*tf2[term] * idf_metrics[term]**2
+            numerator = 0.0
+            for term in common_words:
+               numerator += sentence1.embedding[term]*sentence2.embedding[term] * self.idf_metrics[term]**2
 
-        denominator1 = sum((tf1[t]*idf_metrics[t])**2 for t in unique_words1)
-        denominator2 = sum((tf2[t]*idf_metrics[t])**2 for t in unique_words2)
+            denominator1 = sum((sentence1.embedding[t]*self.idf_metrics[t])**2 for t in unique_words1)
+            denominator2 = sum((sentence2.embedding[t]*self.idf_metrics[t])**2 for t in unique_words2)
 
-        if denominator1 > 0 and denominator2 > 0:
-            return numerator / (np.sqrt(denominator1) * np.sqrt(denominator2))
+            if denominator1 > 0 and denominator2 > 0:
+                return numerator / (np.sqrt(denominator1) * np.sqrt(denominator2))
+            else:
+                return 0.0
         else:
-            return 0.0
+            return pairwise.cosine_similarity([sentence1.embedding],
+                                            [sentence2.embedding])  # TODO forcing these to be 2D is janky. cleanup
+
 
     @staticmethod
     def power_method(matrix, epsilon):

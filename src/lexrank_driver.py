@@ -1,3 +1,12 @@
+"""
+Example commands to run:
+python lexrank_driver.py -c ../conf/patas_devtest_config.yaml -t ../conf/GuidedSumm10_test_topics.xml -n 100 -v tfidf -th 0.1 -e 0.1 -d ../outputs/D3/
+python lexrank_driver.py -c ../conf/patas_devtest_config.yaml -t ../conf/GuidedSumm10_test_topics.xml -n 100 -v spacy -th 0.1 -e 0.1 -d ../outputs/D3/
+python lexrank_driver.py -c ../conf/patas_devtest_config.yaml -t ../conf/GuidedSumm10_test_topics.xml -n 100 -v doc2vec -th 0.1 -e 0.1 -d ../outputs/D3/ -m /dropbox/17-18/573/other_resources/word_embeddings/eng_gw/dw100M_cased.vecs
+
+"""
+
+from gensim.models import Doc2Vec
 from lexrank import LexRankSummarizer
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
@@ -17,34 +26,26 @@ def combine_all_sentences(topic):
     """
     Form one document of all stories for given topic
     :param topic: Topic object
-    :return: List of all sentences in every document in docSet A for input to lexrank summarize
+    :return: string of all sentences in every document in docSet A for input to lexrank summarize
     """
-    all_sent_list = []
-
+    all_sent = ''
     for s in topic.stories:
-        this_list = s.get_sentences() #get a nested list of outer list representing sentences and inner list the list of words in each sentence
-        all_sent_list += this_list
+        all_sent += s.get_raw()  # TODO change this to .format so that it is faster
+    return all_sent
 
-    return all_sent_list
 
-def get_candidate_sentences(lexrank_input_doc,max_word_count):
+def get_candidate_sentences(lexrank_input_doc, max_word_count=None, vector_type='tfidf'):
     """
     Runs lexrank summarizer and creates list of candidate sentences for the final summary
-    :param lexrank_input_doc: ??? #TODO: list/nested list??
-    :param max_word_count: int denoting maximum number of words possible in output summary for 1 topic
-    :return: List of candidate sentences
+    :param lexrank_input_doc: a single string representing the doc or multiple docs to summarize
+    :param max_word_count: int denoting maximum number of words possible in output summary for 1 topic. Optional.
+    :param vector_type: the type of sentence representation to use
+    :return: A list of candidate sentences, truncated to be below the max word count
     """
-
+    #TODO make this so it isn't hard coded
     sent_num = 10  #random number to get the best 'sent_num' count of sentences from lexrank matrix calculations
 
-    ''' 
-    result_list = []
-    for sent in summarizer.summarize(lexrank_input_doc, sent_num, max_word_count):
-        result_list += sent
-    return result_list
-    '''
-
-    sent_list = summarizer.summarize(lexrank_input_doc, sent_num, max_word_count)
+    sent_list = summarizer.summarize(lexrank_input_doc, sent_num, max_word_count, vector_type)
 
     if max_word_count:
         while check_above_threshold(sent_list, max_word_count):
@@ -53,7 +54,7 @@ def get_candidate_sentences(lexrank_input_doc,max_word_count):
     return sent_list
 
 
-def check_above_threshold(sent_list,max_word_count,pretokenized=False):
+def check_above_threshold(sent_list, max_word_count, pretokenized=False):
     """
     Take list of sentences return boolean of whether the total word count is below threshold
     :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
@@ -87,24 +88,38 @@ if __name__ == "__main__":
     p.add_argument('-t', dest='topic_file', default='../conf/GuidedSumm_MINE_test_topics.xml',
                    help='an AQUAINT config file with topic clustering')
     p.add_argument('-n', dest='num_words', help='maximum number of words allowed in summary', type=int, default=100)
+    p.add_argument('-v', dest='vector_type', help='the type of vector representation to use for sentences. Choose from:'
+                                                  'spacy, doc2vec, tfidf, word2vec',  default='tfidf')
     p.add_argument('-th', dest='threshold', default=0.1, type=float, help='threshold for when to draw a edge between sentences in lexrank')
     p.add_argument('-e', dest='epsilon', default=0.1, type=float, help='epsilon value to control convergence of eigenvectors in lexrank matrix')
     p.add_argument('-d', dest='output_dir', default='../outputs/D2/', help='dir to write output summaries to')
+    p.add_argument('-m', dest='model_path', default='', help='path for a pre-trained embedding model')
     args = p.parse_args()
 
-    #create stemmer and summarizer objects
+    #check for model params
+    if args.model_path:
+        if args.vector_type == 'doc2vec':
+            model = Doc2Vec.load(args.model_path)
+        elif args.vector_type == 'word2vec':
+            pass
+            #TODO add word2vec support
+    else:
+        model = None
+
+
+    #create summarizer objects
     stemmer = PorterStemmer()
-    summarizer = LexRankSummarizer(stemmer, threshold=args.threshold, epsilon=args.epsilon, stop_words=set(stopwords.words('english')))
+    summarizer = LexRankSummarizer(stemmer, threshold=args.threshold, epsilon=args.epsilon, stop_words=set(stopwords.words('english')), model=model)
 
     #get all documents in docSet 'X'
     corpusInfoObj = Corpus.from_config(args.config_file, args.topic_file)
-    corpusInfoObj.preprocess_topic_docs() #preprocess docs for all topic ids
+    corpusInfoObj.preprocess_topic_docs()
 
     for topic in corpusInfoObj.topics:
 
         #generate a combined doc of text in all stories for this topic
         lexrank_input_doc = combine_all_sentences(topic)
-        candidates = get_candidate_sentences(lexrank_input_doc,args.num_words)
+        candidates = get_candidate_sentences(lexrank_input_doc, args.num_words, args.vector_type)
 
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), args.num_words)), 'w') as outfile:
             if candidates:

@@ -30,13 +30,19 @@ The currently supported summarization methods are:
 1. **lexrank**, use lexrank to determine the summary.
 
 
-The lexrank method relies on detokenizing input, for which we use the Moses detokenizer.
+Different methods of sentence representation for lexrank are also now supported, and are:
+1. **tfidf**, use tfidf metrics for sentence salience.
+1. **spacy**, use spacy sentence vectors for sentence salience. Soacy sentence vectors are the averaged GloVe embeddings 
+of words
+1. **doc2vec**, use doc2vec vectors for sentence salience. This trains word vectors on the Gigaword corpus in the 
+context of the paragraph that the words appear in.
+1. TBA **word2vec**, use word2vec metrics, trained on Google News, for sentence salience.
 
-If `nltk_data` have not been downloaded before, it may be necessary to first download them:
 
-```python3
->>> import nltk
->>> nltk.download('perluniprops')
+
+If `en_vectors_web_lg` hasn't been downloaded from spacy before, it may be necessary to first download it. It is ~600MB.
+In the environment you intend to use:
+```python -m spacy download en_vectors_web_lg
 ```
 
 To run `run_summarization.sh` on condor: 
