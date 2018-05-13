@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 
 import sys
 import yaml
@@ -9,13 +8,16 @@ from itertools import chain
 from nltk import word_tokenize, sent_tokenize
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 
-from doc_utils import Document, Docset, Topic, Story
-
+from .corpus_document import CorpusDocument
+from .story import Story
+from .topic import Topic
+from .docset import Docset
 
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
     def __init__(self, topics):
         self.topics = topics
+        self.preprocess_topic_docs()
 
     @classmethod
     def from_config(cls, yaml_file, xml_path):
@@ -23,7 +25,7 @@ class Corpus(object):
         information about the corpus and return a Corpus object.
         :param yaml_file: filesystem configuration information (e.g., where the data live, etc.)
         :param xml_path: the task description
-        :return: A Corpus object 
+        :return: A Corpus object
         """
         yaml_conf = yaml.load(open(yaml_file))
         xml_root = ET.parse(xml_path)
@@ -38,7 +40,7 @@ class Corpus(object):
             docsetA = set()
             docset_id = docsetA_element.get("id")
             for doc in docsetA_element:
-                docsetA.add(Document(yaml_conf['documentCollections'], doc.get("id")))
+                docsetA.add(CorpusDocument(yaml_conf['documentCollections'], doc.get("id")))
             docset = Docset(docset_id, docsetA)
             topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
         return cls(topics)
@@ -96,32 +98,3 @@ class Corpus(object):
                 #body = [preprocess_text(t) for t in curr_doc.find("TEXT").itertext() if t.strip()]
                 raw_body = " ".join(raw_body)
                 topic.add_story(Story(headline, body, raw_body, PunktSentenceTokenizer().span_tokenize(raw_body)))
-
-
-def preprocess_text(text_block):
-    """Tokenize and lowercase a block of text, return nested list of sentences and words
-
-    :param text_block: a block of English text whitespace separated
-    :return a nested list of lists of tokenized text [[w1,w2...wn],[w1,w2...wn]] where the outer list sentences and the
-    inner is words int that sentence. Note that if text_block was only one sentence, it will still be nested.
-    """
-    words = [word_tokenize(sent.lower()) for sent in sent_tokenize(text_block.strip())]
-    return words
-
-
-if __name__ == "__main__":
-    #reader = Corpus.from_config("../conf/patas_config.yaml", "../conf/UpdateSumm09_test_topics.xml")
-    reader = Corpus.from_config("../conf/local_config.yaml", "../conf/GuidedSumm10_test_topics.xml")
-
-    topic_ids = {"D1002A", "D1003A"}  # {"D0903A", "D0909B"}
-    reader.preprocess_topic_docs(topic_ids)
-    #reader.preprocess_topic_docs()  # this version does whole corpus
-
-    for topic in reader.topics:
-        if topic.id() in topic_ids:
-            print("\ntopic id: {0}, topic title: {1}, topic narrative: {2}".format(topic.id(), topic.title, topic.narrative))
-            for s in topic.stories:
-                print("\nHEADLINE: {0}\n".format(s.get_headline()))
-                print(" ".join(list(chain.from_iterable(s.get_sentences()))))
-        #for doc in topic.docset:
-        #    print("doc id: {0}, doc path: {1}".format(doc.id(), doc.get_path()))

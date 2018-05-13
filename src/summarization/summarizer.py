@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from src.summarization.utils.document import Document
+from .utils.document import Document
 from .strategy import SummarizationStrategy
 
 from typing import Set, Dict

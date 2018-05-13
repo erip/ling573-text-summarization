@@ -5,15 +5,8 @@ Command to run:
 """
 
 import argparse
-import sys
 
 import spacy
-
-# GLOBALS
-#necessary for spacy package
-nlp = spacy.load('en_vectors_web_lg')
-nlp.add_pipe(nlp.create_pipe('sentencizer'))
-
 
 class SentenceEmbedding(object):
     """A sentence embedding.
@@ -40,6 +33,9 @@ class SentenceEmbedding(object):
 
 
 if __name__ == "__main__":
+    nlp = spacy.load('en_vectors_web_lg')
+    nlp.add_pipe(nlp.create_pipe('sentencizer'))
+
     p = argparse.ArgumentParser()
     p.add_argument('type', help='Options: '
                                 'tfidf '

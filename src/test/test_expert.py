@@ -3,7 +3,7 @@ from unittest import TestCase
 
 from datetime import datetime, timedelta
 
-from src.summarization.information_ordering.expert import *
+from summarization.information_ordering.expert import ChronologicalExpert
 
 class Document:
     """A stub document. Actual documents passed into the experts must conform to this interface.
