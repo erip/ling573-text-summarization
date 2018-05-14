@@ -73,7 +73,7 @@ def order_sentences(orderer, sentences):
             # Add a vote for doc2
             ordering[doc2] += 1
 
-    return list(sorted(ordering, key=d.get, reverse=True))
+    return list(sorted(ordering, key=ordering.get, reverse=True))
 
 if __name__ == "__main__":
 
