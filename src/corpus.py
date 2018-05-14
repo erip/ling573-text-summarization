@@ -9,16 +9,18 @@ from itertools import chain
 from nltk import word_tokenize, sent_tokenize
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 
-from doc_utils import Document, Docset, Topic, Story
+from doc_utils import Document, Docset, Topic, Story, Sentence
 
+from datetime import datetime
 
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
-    def __init__(self, topics):
+    def __init__(self, topics, nlp):
         self.topics = topics
+        self.nlp = nlp
 
     @classmethod
-    def from_config(cls, yaml_file, xml_path):
+    def from_config(cls, yaml_file, xml_path, nlp):
         """Given a yaml config file and xml path, this will read
         information about the corpus and return a Corpus object.
         :param yaml_file: filesystem configuration information (e.g., where the data live, etc.)
@@ -41,7 +43,7 @@ class Corpus(object):
                 docsetA.add(Document(yaml_conf['documentCollections'], doc.get("id")))
             docset = Docset(docset_id, docsetA)
             topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
-        return cls(topics)
+        return cls(topics, nlp)
 
 
     def preprocess_topic_docs(self, topic_ids=None):
@@ -72,6 +74,7 @@ class Corpus(object):
                     xml_root = ET.parse(doc.get_path(), parser=parser)
                     #xml_root = ET.parse(doc.get_path())
                     curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+                    doc_timestamp = None
                     headline_text = "HEADLINE"
                     text_text = "TEXT"
                     text_iterator = curr_doc.find("TEXT").itertext()
@@ -81,6 +84,13 @@ class Corpus(object):
                     with open(doc.get_path(), "r") as infile:
                         xml_root = BeautifulSoup(infile, "lxml")
                     curr_doc = xml_root.find("docno", text=" {} ".format(doc.id())).parent
+                    time = curr_doc.find("date_time")
+                    if time is None:
+                        doc_timestamp = None
+                    else:
+                        date = time.text.strip().split()[0]
+                        format = "%Y-%m-%d" if '-' in date else "%m/%d/%Y"
+                        doc_timestamp = datetime.strptime(date, format)
                     headline_text = "headline"
                     text_iterator = [tag.text for tag in curr_doc.find_all("text")]
 
@@ -95,7 +105,12 @@ class Corpus(object):
                         raw_body.append(text)
                 #body = [preprocess_text(t) for t in curr_doc.find("TEXT").itertext() if t.strip()]
                 raw_body = " ".join(raw_body)
-                topic.add_story(Story(headline, body, raw_body, PunktSentenceTokenizer().span_tokenize(raw_body)))
+                # doc_id, doc_timestamp, raw_text, sent_number, nlp
+                sents = {
+                    Sentence(doc.id(), doc_timestamp, sent, i, self.nlp)
+                    for i, sent in enumerate(self.nlp(raw_body).sents)
+                }
+                topic.add_story(Story(headline, sents))
 
 
 def preprocess_text(text_block):
