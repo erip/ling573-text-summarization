@@ -3,9 +3,9 @@
 # example run command:
 #first sentences
 #training
-# ./run_summarization.sh first ../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D#/ /dropbox/17-18/573/Data/models/training/2009/
+# ./run_summarization.sh lexrank tfidf ../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D3/ /dropbox/17-18/573/Data/models/training/2009/
 #devtest
-# ./run_summarization.sh first ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D#/ /dropbox/17-18/573/Data/models/devtest/
+# ./run_summarization.sh lexrank tfidf ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D#/ /dropbox/17-18/573/Data/models/devtest/
 
 #example run command with pretrained model
 #TODO add this
@@ -15,7 +15,8 @@ vec_type=$2
 config_file=$3
 topic_cluster_file=$4
 output_dir=$5
-model_path=${6:-""}
+model_dir=$6
+vec_model_path=${7:-""}
 rouge_dir="/mnt/dropbox/17-18/573/code/ROUGE/"
 rouge_config_file="../results/rouge_config.xml"
 rouge_output_file="../results/D3_rouge_scores.out"
@@ -28,7 +29,7 @@ elif [ ${sum_type} = "lexrank" ]
 then
     if [ ${vec_type} = "doc2vec" ] || [ ${vec_type} = "word2vec" ]
     then
-        python3 lexrank_driver.py -c ${config_file} -t ${topic_cluster_file} -n 100 -v ${vec_type} -th 0.1 -e 0.1 -d ${output_dir} -m ${model_path}
+        python3 lexrank_driver.py -c ${config_file} -t ${topic_cluster_file} -n 100 -v ${vec_type} -th 0.1 -e 0.1 -d ${output_dir} -m ${vec_model_path}
     else
         python3 lexrank_driver.py -c ${config_file} -t ${topic_cluster_file} -n 100 -v ${vec_type} -th 0.1 -e 0.1 -d ${output_dir}
     fi
