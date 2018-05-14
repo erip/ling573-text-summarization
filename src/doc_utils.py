@@ -70,9 +70,29 @@ class Topic(object):
     def add_stories(self, stories):
         self.stories.update(stories)
 
+class Sentence(object):
+    def __init__(self, doc_id, doc_timestamp, sentence_object, sent_number, nlp):
+        self.document_id = doc_id
+        self.doc_timestamp = doc_timestamp
+        self.text = sentence_object.text
+        self.vector = sentence_object.vector
+        self.sent_index = sent_number
+        self.nlp = nlp
+
+    def doc_id(self):
+        return self.document_id
+
+    def get_timestamp(self):
+        return self.doc_timestamp
+
+    def get_sent_index(self):
+        return self.sent_index
+
+    def tokens(self):
+        return self.nlp(self.text)
 
 class Story(object):
-    def __init__(self, headline, sentences, raw_text, spans):
+    def __init__(self, headline, sentences):
         """
         A single story from a newspaper
         :param headline: string
@@ -82,8 +102,6 @@ class Story(object):
         """
         self.headline = headline
         self.sentences = sentences
-        self.raw_text = raw_text
-        self.spans = spans
 
     def get_sentences(self):
         return self.sentences
@@ -91,24 +109,20 @@ class Story(object):
     def get_headline(self):
         return self.headline
 
-    def get_raw(self, span=None):
-        """Return the raw text. If tuple is provided, return only raw text that spans over those indices"""
-        if not span:
-            return self.raw_text
-        else:
-            return self.raw_text[span[0]:span[1]]
+    def get_raw(self):
+        return ' '.join(sentence.text for sentence in self.sentences)
 
-    def get_spans(self):
-        return self.spans
-
-    def num_sentences(self):  # this counts based on spans because sometimes they disagree. Which is weird since it's the same tokenizer, but will add that to backlog
-        return len(self.spans)
+    def num_sentences(self):
+        return len(self.sentences)
 
 
 if __name__ == "__main__":
-    base_path = "/dropbox/17-18/573/AQUAINT/"
+    base_path = {
+        "aquaint": "/data/aquaint/",
+        "aquaint2": "/data/aquaint2/"
+    }
     #id = "NYT_ENG_20041001.0042"
     id = "NYT19990330.0349"
-    # doc = Document(id)
-    # print(base_path + doc.to_path())
-    # print(doc.id())
+    doc = Document(base_path, id)
+    print(base_path["aquaint"] + doc.get_path())
+    print(doc.id())

@@ -11,16 +11,11 @@ from operator import attrgetter
 
 import numpy as np
 from sklearn.metrics import pairwise
-import spacy
-from gensim.models import Doc2Vec
 
 from embeddings import SentenceEmbedding, make_tfidf_embeddings
 
 #GLOBAL SETTINGS
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
-nlp = spacy.load('en_vectors_web_lg')  #TODO this has to be downloaded in advance and is enormous, need to add to readme
-nlp.add_pipe(nlp.create_pipe('sentencizer')) #necessary to recovering sentence boundaries. If we want to speed things up later we can fuck with the sentence boundaries
-
 
 class ItemsCount(object):
     """This is absolute black magick.
@@ -123,7 +118,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         self.model = model
         self.idf_metrics = None
 
-    def summarize(self, document, num_sentences_count, max_word_count, vec_type):
+    def summarize(self, topic, num_sentences_count, max_word_count, vec_type):
         """
         Generate summary of the document
         :param document: Input document to be summarized - raw string
@@ -135,24 +130,25 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         """
 
         #tokenize the input document. This requires a full (not very fast) spacy load as it uses a dependency parse
-        spacy_doc = nlp(document)
 
         # this is a list of SentenceEmbedding objects where the vector is vec_type
         if vec_type == 'spacy':
-            sentences = [SentenceEmbedding(sent.string.strip(), [tok.text for tok in sent], vec_type, sent.vector)
-                         for sent in spacy_doc.sents]
+            sentences = [SentenceEmbedding(sent.text.strip(), [tok.text for tok in sent.tokens()], vec_type, sent.vector)
+                        for story in topic.stories for sent in story.sentences]
+
         elif vec_type == 'tfidf':
             all_sentences, tok_sentences = [], []
-            for sent in spacy_doc.sents:  # get sentence strings and tokenized sents
-                tok_sentences.append([tok.text for tok in sent])
-                all_sentences.append(sent.string.strip())
+            for story in topic.stories:
+                for sent in story.sentences:  # get sentence strings and tokenized sents
+                    tok_sentences.append([tok.text for tok in sent.tokens()])
+                    all_sentences.append(sent.text.strip())
             sentences, self.idf_metrics = make_tfidf_embeddings(all_sentences, tok_sentences)
             # when vec_type is tfidf, the SentenceEmbedding.embedding will be the tf_metrics dict and tokens will be tfidf processed
         else:
             # make sentence embeddings in a generic way before setting the vectors
-            sentences = [SentenceEmbedding(raw=sent.string.strip(),
-                                           tokens=[tok.text for tok in sent],
-                                           embed_type=vec_type) for sent in spacy_doc.sents]
+            sentences = [SentenceEmbedding(raw=sent.text.strip(),
+                                           tokens=[tok.text for tok in sent.tokens()],
+                                           embed_type=vec_type) for story in topic.stories for sent in story.sentences]
             if vec_type == 'doc2vec':
                 doc2vec_model = self.model
                 for sent_embed in sentences:
