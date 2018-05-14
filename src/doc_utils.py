@@ -78,6 +78,10 @@ class Sentence(object):
         self.vector = sentence_object.vector
         self.sent_index = sent_number
         self.nlp = nlp
+        self.embedding = None
+
+    def set_embedding(self, embedding):
+        self.embedding = embedding
 
     def doc_id(self):
         return self.document_id

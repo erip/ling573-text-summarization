@@ -42,24 +42,16 @@ def get_candidate_sentences(topic, max_word_count=None, vector_type='tfidf'):
     return sent_list
 
 
-def check_above_threshold(sent_list, max_word_count, pretokenized=False):
+def check_above_threshold(sent_list, max_word_count):
     """
     Take list of sentences return boolean of whether the total word count is below threshold
     :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
     :param max_word_count: int for max words in summary
     :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
     """
-    if pretokenized:
-       # currently only counts things with alphanumeric characters as words
-       word_count = sum([len(list(filter(str.isalnum, sent))) for sent in sent_list])
-    else:
-       # consider whitespace for wordcount
-       word_count = sum([len(sent.split()) for sent in sent_list])
+    word_count = sum(token.is_alpha for sentence in sent_list for token in sentence.tokens())
 
-    if word_count > max_word_count:
-       return True
-    else:
-       return False
+    return word_count > max_word_count
 
 if __name__ == "__main__":
 
@@ -115,7 +107,7 @@ if __name__ == "__main__":
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), args.num_words)), 'w') as outfile:
             if candidates:
                 for sentence in candidates:
-                    outfile.write('{}\n'.format(sentence))
+                    outfile.write('{}\n'.format(sentence.text))
             else:
                 outfile.write('\n')  # write blank file if no candidates
 

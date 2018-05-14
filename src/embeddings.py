@@ -15,8 +15,6 @@ import numpy as np
 
 # GLOBALS
 #necessary for spacy package
-nlp = spacy.load('en_vectors_web_lg')
-nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
 #stemmer and stopwords
 stop_words = stopwords.words('english')
@@ -34,8 +32,8 @@ class SentenceEmbedding(object):
         - doc2vec
         - tfidf
     """
-    def __init__(self, raw=None, tokens=None, embed_type=None, embedding=None):
-        self.raw = raw
+    def __init__(self, sentence=None, tokens=None, embed_type=None, embedding=None):
+        self.sentence = sentence
         self.tokens = tokens
         self.embed_type = embed_type
         self.embedding = embedding
@@ -63,9 +61,12 @@ def make_tfidf_embeddings(all_sentences, tok_sentences):
 
     tf_metrics = compute_tf(sentences_words)
     idf_metrics = compute_idf(sentences_words)
+    sentences = []
     # when vec_type is tfidf, the SentenceEmbedding.embedding will be the tf_metrics dict and tokens will be tfidf processed
-    sentences = [SentenceEmbedding(sent, tokens, 'tfidf', tf)
-                 for sent, tokens, tf in zip(all_sentences, sentences_words, tf_metrics)]
+    for sent, tokens, tf in zip(all_sentences, sentences_words, tf_metrics):
+        embedding = SentenceEmbedding(sent, tokens, 'tfidf', tf)
+        sent.set_embedding(embedding)
+        sentences.append(sent)
 
     return sentences, idf_metrics
 

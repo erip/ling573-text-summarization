@@ -91,7 +91,9 @@ class AbstractSummarizer(object):
         # sort sentences by their order in document.
         #TODO either make it so "document" ordering has meaning, or remove this line.
         #infos = sorted(infos, key=attrgetter("order"))
-        sent_list = [i.sentence.raw for i in infos]
+        sent_list = [i.sentence for i in infos]
+
+
 
         #output word count check
         '''if self.check_below_threshold(sent_list):
@@ -132,22 +134,27 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         #tokenize the input document. This requires a full (not very fast) spacy load as it uses a dependency parse
 
         # this is a list of SentenceEmbedding objects where the vector is vec_type
+        sentences = []
+
         if vec_type == 'spacy':
-            sentences = [SentenceEmbedding(sent.text.strip(), [tok.text for tok in sent.tokens()], vec_type, sent.vector)
-                        for story in topic.stories for sent in story.sentences]
+            for story in topic.stories:
+                for sent in story.sentences:
+                    embedding = SentenceEmbedding(sent.text.strip(), [tok for tok in sent.tokens()], vec_type, sent.vector)
+                    sent.set_embedding(embedding)
+                    sentences.append(sent)
 
         elif vec_type == 'tfidf':
             all_sentences, tok_sentences = [], []
             for story in topic.stories:
                 for sent in story.sentences:  # get sentence strings and tokenized sents
                     tok_sentences.append([tok.text for tok in sent.tokens()])
-                    all_sentences.append(sent.text.strip())
+                    all_sentences.append(sent)
             sentences, self.idf_metrics = make_tfidf_embeddings(all_sentences, tok_sentences)
             # when vec_type is tfidf, the SentenceEmbedding.embedding will be the tf_metrics dict and tokens will be tfidf processed
         else:
             # make sentence embeddings in a generic way before setting the vectors
             sentences = [SentenceEmbedding(raw=sent.text.strip(),
-                                           tokens=[tok.text for tok in sent.tokens()],
+                                           tokens=[tok for tok in sent.tokens()],
                                            embed_type=vec_type) for story in topic.stories for sent in story.sentences]
             if vec_type == 'doc2vec':
                 doc2vec_model = self.model
@@ -209,24 +216,28 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         :return: Returns -1.0 for opposite similarity, 1.0 for the same sentence and zero for no similarity between sentences.
         """
         if self.idf_metrics:  # this will only be set if type is tfidf. A bit hacky.
-            unique_words1 = frozenset(sentence1.tokens)
-            unique_words2 = frozenset(sentence2.tokens)
+            unique_words1 = frozenset(token for token in sentence1.embedding.tokens)
+            unique_words2 = frozenset(token for token in sentence2.embedding.tokens)
             common_words = unique_words1 & unique_words2
+
 
             numerator = 0.0
             for term in common_words:
-               numerator += sentence1.embedding[term]*sentence2.embedding[term] * self.idf_metrics[term]**2
+                sent1_embedding = sentence1.embedding.embedding[term]
+                sent2_embedding = sentence2.embedding.embedding[term]
+                idf_score = self.idf_metrics[term]
+                numerator += sent1_embedding * sent2_embedding * idf_score**2
 
-            denominator1 = sum((sentence1.embedding[t]*self.idf_metrics[t])**2 for t in unique_words1)
-            denominator2 = sum((sentence2.embedding[t]*self.idf_metrics[t])**2 for t in unique_words2)
+            denominator1 = sum((sentence1.embedding.embedding[t]*self.idf_metrics[t])**2 for t in unique_words1)
+            denominator2 = sum((sentence2.embedding.embedding[t]*self.idf_metrics[t])**2 for t in unique_words2)
 
             if denominator1 > 0 and denominator2 > 0:
                 return numerator / (np.sqrt(denominator1) * np.sqrt(denominator2))
             else:
                 return 0.0
         else:
-            return pairwise.cosine_similarity([sentence1.embedding],
-                                            [sentence2.embedding])  # TODO forcing these to be 2D is janky. cleanup
+            return pairwise.cosine_similarity([sentence1.embedding.embedding],
+                                            [sentence2.embedding.embedding])  # TODO forcing these to be 2D is janky. cleanup
 
 
     @staticmethod
