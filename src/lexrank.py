@@ -153,13 +153,16 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
             # when vec_type is tfidf, the SentenceEmbedding.embedding will be the tf_metrics dict and tokens will be tfidf processed
         else:
             # make sentence embeddings in a generic way before setting the vectors
-            sentences = [SentenceEmbedding(raw=sent.text.strip(),
-                                           tokens=[tok for tok in sent.tokens()],
-                                           embed_type=vec_type) for story in topic.stories for sent in story.sentences]
+            for story in topic.stories:
+                for sent in story.sentences:
+                    embedding = SentenceEmbedding(sent.text.strip(), [tok.text for tok in sent.tokens()], vec_type)
+                    sent.set_embedding(embedding)
+                    sentences.append(sent)
+
             if vec_type == 'doc2vec':
                 doc2vec_model = self.model
-                for sent_embed in sentences:
-                    sent_embed.set_embedding(doc2vec_model.infer_vector(sent_embed.tokens))
+                for sent in sentences:
+                    sent.embedding.set_embedding(doc2vec_model.infer_vector(sent.embedding.tokens))
             elif vec_type == 'word2vec':
                 # TODO implement this. Should not be blocker as it is extra
                 pass

@@ -138,10 +138,4 @@ if __name__ == "__main__":
                'I will face my fear. I will permit it to pass over me and through me. And when it has gone past I will ' \
                'turn the inner eye to see its path. Where the fear has gone there will be nothing. Only I will remain.'
 
-    if args.type == 'spacy':
-        doc = nlp(test_doc)
-        #print(len(doc.vector))
-        embeddings = [SentenceEmbedding(sent.string.strip(), 'spacy') for sent in doc.sents]
-        for i in embeddings:
-            for j in embeddings:
-                print(i.embedding, j.embedding, len(i), len(j))
+
