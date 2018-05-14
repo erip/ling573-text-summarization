@@ -11,9 +11,15 @@ from lexrank import LexRankSummarizer
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 from corpus import Corpus
+from information_ordering import InformationOrderer
+from experts import ChronologicalExpert
 import argparse
 
+from itertools import combinations
+
 import spacy
+
+from collections import Counter
 
 def make_filename(topic_id, num_words):
     """Given topic id and max num words, return filename for storing summary
@@ -52,6 +58,22 @@ def check_above_threshold(sent_list, max_word_count):
     word_count = sum(token.is_alpha for sentence in sent_list for token in sentence.tokens())
 
     return word_count > max_word_count
+
+
+
+def order_sentences(orderer, sentences):
+    ordering = Counter()
+
+    for doc1, doc2 in combinations(sentences, 2):
+        prefer_doc1 = orderer.order(doc1, doc2, sentences)
+        if prefer_doc1:
+            # Add a vote for doc1
+            ordering[doc1] += 1
+        else:
+            # Add a vote for doc2
+            ordering[doc2] += 1
+
+    return list(sorted(ordering, key=d.get, reverse=True))
 
 if __name__ == "__main__":
 
@@ -94,19 +116,27 @@ if __name__ == "__main__":
     stemmer = PorterStemmer()
     summarizer = LexRankSummarizer(stemmer, threshold=args.threshold, epsilon=args.epsilon, stop_words=set(stopwords.words('english')), model=model)
 
+    chronological_expert = ChronologicalExpert()
+
+    experts = { chronological_expert }
+    weight = { chronological_expert.name: 1.0 }
+
+    info_orderer = InformationOrderer(experts, weight)
+
     #get all documents in docSet 'X'
     corpusInfoObj = Corpus.from_config(args.config_file, args.topic_file, nlp)
     corpusInfoObj.preprocess_topic_docs()
 
     for topic in corpusInfoObj.topics:
 
-
         #generate a combined doc of text in all stories for this topic
         candidates = get_candidate_sentences(topic, args.num_words, args.vector_type)
 
+        summary = order_sentences(info_orderer, candidates)
+
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), args.num_words)), 'w') as outfile:
-            if candidates:
-                for sentence in candidates:
+            if summary:
+                for sentence in summary:
                     outfile.write('{}\n'.format(sentence.text))
             else:
                 outfile.write('\n')  # write blank file if no candidates
