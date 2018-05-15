@@ -14,13 +14,13 @@ Once working on a virtualenv, you can simply `pip3 install -r requirements.txt`.
 To run the system on Training data: 
 
 ```bash
-$./run_summarization.sh <method> <vec_type>../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/training/2009/ <rouge_outfile>
+$./run_summarization.sh <summarization method> <vec_type>../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/training/2009/ <rouge_outfile>
 ```
 
 To run the system on DevTest data: 
 
 ```bash
-$./run_summarization.sh <method> <vec_type> ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/devtest/ <rouge_outfile>
+$./run_summarization.sh <summarization method> <vec_type> ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/devtest/ <rouge_outfile>
 ```
 
 The currently supported summarization methods are:
@@ -30,7 +30,7 @@ The currently supported summarization methods are:
 1. **lexrank**, use lexrank to determine the summary.
 
 
-Different methods of sentence representation for lexrank are also now supported, and are:
+Different methods of sentence representation(`vec_type`) for lexrank are also now supported, and are:
 1. **tfidf**, use tfidf metrics for sentence salience.
 1. **spacy**, use spacy sentence vectors for sentence salience. Spacy sentence vectors are the averaged GloVe embeddings 
 of words
