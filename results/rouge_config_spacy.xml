@@ -1,6 +1,6 @@
 <ROUGE_EVAL version="1.5.5">
   <EVAL ID="D1001-A.M.100.A">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -14,7 +14,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1002-A.M.100.A">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -28,7 +28,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1003-A.M.100.A">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -42,7 +42,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1004-A.M.100.A">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -56,7 +56,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1005-A.M.100.A">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -70,7 +70,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1006-A.M.100.A">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -84,7 +84,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1007-A.M.100.B">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -98,7 +98,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1008-A.M.100.B">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -112,7 +112,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1009-A.M.100.B">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -126,7 +126,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1010-A.M.100.B">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -140,7 +140,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1011-A.M.100.C">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -154,7 +154,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1012-A.M.100.C">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -168,7 +168,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1013-A.M.100.C">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -182,7 +182,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1014-A.M.100.C">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -196,7 +196,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1015-A.M.100.C">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -210,7 +210,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1016-A.M.100.C">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -224,7 +224,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1017-A.M.100.D">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -238,7 +238,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1018-A.M.100.D">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -252,7 +252,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1019-A.M.100.D">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -266,7 +266,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1020-A.M.100.D">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -280,7 +280,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1021-A.M.100.D">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -294,7 +294,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1022-A.M.100.D">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -308,7 +308,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1023-A.M.100.E">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -322,7 +322,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1024-A.M.100.E">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -336,7 +336,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1025-A.M.100.E">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -350,7 +350,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1026-A.M.100.E">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -364,7 +364,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1027-A.M.100.E">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -378,7 +378,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1028-A.M.100.E">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -392,7 +392,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1029-A.M.100.F">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -406,7 +406,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1030-A.M.100.F">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -420,7 +420,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1031-A.M.100.F">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -434,7 +434,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1032-A.M.100.F">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -448,7 +448,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1033-A.M.100.F">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -462,7 +462,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1034-A.M.100.F">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -476,7 +476,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1035-A.M.100.G">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -490,7 +490,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1036-A.M.100.G">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -504,7 +504,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1037-A.M.100.G">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -518,7 +518,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1038-A.M.100.G">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -532,7 +532,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1039-A.M.100.G">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -546,7 +546,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1040-A.M.100.G">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -560,7 +560,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1041-A.M.100.H">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -574,7 +574,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1042-A.M.100.H">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -588,7 +588,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1043-A.M.100.H">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -602,7 +602,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1044-A.M.100.H">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -616,7 +616,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1045-A.M.100.H">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
@@ -630,7 +630,7 @@
     </MODELS>
   </EVAL>
   <EVAL ID="D1046-A.M.100.H">
-    <PEER-ROOT>../outputs/D3/doc2vec/</PEER-ROOT>
+    <PEER-ROOT>../outputs/D3/spacy/</PEER-ROOT>
     <MODEL-ROOT>/dropbox/17-18/573/Data/models/devtest/</MODEL-ROOT>
     <INPUT-FORMAT TYPE="SPL"/>
     <PEERS>
