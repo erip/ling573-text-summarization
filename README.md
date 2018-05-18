@@ -14,13 +14,13 @@ Once working on a virtualenv, you can simply `pip3 install -r requirements.txt`.
 To run the system on Training data: 
 
 ```bash
-$./run_summarization.sh <summarization method> <vec_type>../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/training/2009/ <rouge_outfile>
+$./run_summarization.sh <summarization method> <vec_type>../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml <output_dir> /dropbox/17-18/573/Data/models/training/2009/ <rouge_outfile>
 ```
 
 To run the system on DevTest data: 
 
 ```bash
-$./run_summarization.sh <summarization method> <vec_type> ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml ../outputs/D2/ /dropbox/17-18/573/Data/models/devtest/ <rouge_outfile>
+$./run_summarization.sh <summarization method> <vec_type> ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml <output_dir> /dropbox/17-18/573/Data/models/devtest/ <rouge_outfile>
 ```
 
 The currently supported summarization methods are:
