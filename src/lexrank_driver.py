@@ -28,53 +28,6 @@ def make_filename(topic_id, num_words):
     some_unique_alphanum = 4  # this is our groupnumber for identification
     return '{0}-A.M.{2}.{1}.{3}'.format(topic_id[:-1], topic_id[-1], num_words, some_unique_alphanum)
 
-def get_candidate_sentences(topic, max_word_count=None, vector_type='tfidf'):
-    """
-    Runs lexrank summarizer and creates list of candidate sentences for the final summary
-    :param lexrank_input_doc: a single string representing the doc or multiple docs to summarize
-    :param max_word_count: int denoting maximum number of words possible in output summary for 1 topic. Optional.
-    :param vector_type: the type of sentence representation to use
-    :return: A list of candidate sentences, truncated to be below the max word count
-    """
-    #TODO make this so it isn't hard coded
-    sent_num = 10  #random number to get the best 'sent_num' count of sentences from lexrank matrix calculations
-
-    sent_list = summarizer.summarize(topic, sent_num, max_word_count, vector_type)
-
-    if max_word_count:
-        while check_above_threshold(sent_list, max_word_count):
-            sent_list = sent_list[:-1]
-
-    return sent_list
-
-
-def check_above_threshold(sent_list, max_word_count):
-    """
-    Take list of sentences return boolean of whether the total word count is below threshold
-    :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
-    :param max_word_count: int for max words in summary
-    :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
-    """
-    word_count = sum(token.is_alpha for sentence in sent_list for token in sentence.tokens())
-
-    return word_count > max_word_count
-
-
-
-def order_sentences(orderer, sentences):
-    ordering = Counter()
-
-    for doc1, doc2 in combinations(sentences, 2):
-        prefer_doc1 = orderer.order(doc1, doc2, sentences)
-        if prefer_doc1:
-            # Add a vote for doc1
-            ordering[doc1] += 1
-        else:
-            # Add a vote for doc2
-            ordering[doc2] += 1
-
-    return list(sorted(ordering, key=ordering.get, reverse=True))
-
 if __name__ == "__main__":
 
     """

@@ -2,6 +2,9 @@
 
 import logging
 
+from itertools import combinations
+from collections import Counter
+
 class InformationOrderer(object):
     def __init__(self, experts, expert_weights, threshold=0.5):
         """
@@ -42,3 +45,16 @@ class InformationOrderer(object):
         self.logger.debug("Prefer doc1 to doc2? {0}".format(doc1_first))
 
         return doc1_first
+
+    def order_all(self, sentences):
+        ordering = Counter()
+
+        for doc1, doc2 in combinations(sentences, 2):
+
+            prefer_doc1 = self.order(doc1, doc2, sentences)
+
+            preference = doc1 if prefer_doc1 else doc2
+            # Update preference
+            ordering[preference] += 1
+
+        return list(sorted(ordering, key=ordering.get, reverse=True))

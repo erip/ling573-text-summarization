@@ -28,8 +28,8 @@ class ExpertTestCase(TestCase):
         # T(u) < T(v)
         self.assertTrue(t1 < t2)
 
-        doc1 = Sentence(doc1_id, t1, "some dummy string", doc1_sent_idx, self.nlp)
-        doc2 = Sentence(doc2_id, t2, "some other dummy string", doc2_sent_idx, self.nlp)
+        doc1 = Sentence(doc1_id, t1, self.nlp("some dummy string"), doc1_sent_idx)
+        doc2 = Sentence(doc2_id, t2, self.nlp("some other dummy string"), doc2_sent_idx)
         self.assertEqual(1, expert.order(doc1, doc2, []))
 
     def test_prefer_older_sentence(self):
@@ -48,8 +48,8 @@ class ExpertTestCase(TestCase):
         self.assertEqual(doc1_id, doc2_id)
         self.assertTrue(doc1_sent_idx < doc2_sent_idx)
 
-        doc1 = Sentence(doc1_id, t1, "some dummy string", doc1_sent_idx, self.nlp)
-        doc2 = Sentence(doc2_id, t2, "some other dummy string", doc2_sent_idx, self.nlp)
+        doc1 = Sentence(doc1_id, t1, self.nlp("some dummy string"), doc1_sent_idx)
+        doc2 = Sentence(doc2_id, t2, self.nlp("some other dummy string"), doc2_sent_idx)
         self.assertEqual(1, expert.order(doc1, doc2, []))
 
     def test_no_preference_for_same_timestamp_but_different_doc_ids(self):
@@ -68,8 +68,8 @@ class ExpertTestCase(TestCase):
         self.assertEqual(t1, t2)
         self.assertNotEqual(doc1_id, doc2_id)
 
-        doc1 = Sentence(doc1_id, t1, "some dummy string", doc1_sent_idx, self.nlp)
-        doc2 = Sentence(doc2_id, t2, "some other dummy string", doc2_sent_idx, self.nlp)
+        doc1 = Sentence(doc1_id, t1, self.nlp("some dummy string"), doc1_sent_idx)
+        doc2 = Sentence(doc2_id, t2, self.nlp("some other dummy string"), doc2_sent_idx)
         self.assertEqual(0.5, expert.order(doc1, doc2, []))
 
     def test_no_order_if_one_doc_has_no_timestamp(self):
@@ -86,8 +86,8 @@ class ExpertTestCase(TestCase):
 
         self.assertIsNone(t2)
 
-        doc1 = Sentence(doc1_id, t1, "some dummy string", doc1_sent_idx, self.nlp)
-        doc2 = Sentence(doc2_id, t2, "some other dummy string", doc2_sent_idx, self.nlp)
+        doc1 = Sentence(doc1_id, t1, self.nlp("some dummy string"), doc1_sent_idx)
+        doc2 = Sentence(doc2_id, t2, self.nlp("some other dummy string"), doc2_sent_idx)
         self.assertEqual(0, expert.order(doc1, doc2, []))
 
     def test_no_order_if_neither_doc_has_a_timestamp(self):
@@ -105,6 +105,6 @@ class ExpertTestCase(TestCase):
         self.assertIsNone(t1)
         self.assertIsNone(t2)
 
-        doc1 = Sentence(doc1_id, t1, "some dummy string", doc1_sent_idx, self.nlp)
-        doc2 = Sentence(doc2_id, t2, "some other dummy string", doc2_sent_idx, self.nlp)
+        doc1 = Sentence(doc1_id, t1, self.nlp("some dummy string"), doc1_sent_idx)
+        doc2 = Sentence(doc2_id, t2, self.nlp("some other dummy string"), doc2_sent_idx)
         self.assertEqual(0, expert.order(doc1, doc2, []))

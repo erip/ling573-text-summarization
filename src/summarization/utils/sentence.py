@@ -3,23 +3,26 @@ from datetime import date
 
 from spacy.language import Language
 
+from spacy.tokens.span import Span as SpacySent
+
 from .embedding import Embedding
 
 
 class Sentence(object):
-    def __init__(self, doc_id: str, doc_timestamp: date, text: str, sent_number: int, nlp: Language,
-                 embedding: Embedding=None):
+    def __init__(self, doc_id: str, doc_timestamp: date, sent: SpacySent, sent_number: int, embedding: Embedding=None):
 
-        self.nlp = nlp
-        self.__sentence = self.nlp(text)
+        self._sent = sent
+        self.text = sent.text
         self.document_id = doc_id
         self.doc_timestamp = doc_timestamp
-        self.text = self.__sentence.text
         self.sent_index = sent_number
         self.embedding = embedding
 
     def doc_id(self):
         return self.document_id
+
+    def text(self):
+        return self.text
 
     def get_timestamp(self):
         return self.doc_timestamp
@@ -28,8 +31,5 @@ class Sentence(object):
         return self.sent_index
 
     def tokens(self):
-        return self.nlp(self.text)
-
-    def get_embedding(self):
-        return self.embedding
+        return self._sent
 
