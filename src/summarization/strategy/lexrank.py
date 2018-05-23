@@ -6,13 +6,12 @@ Borrow heavily from https://github.com/miso-belica/sumy/blob/dev/sumy/summarizer
 """
 
 import sys
-from collections import namedtuple, Counter
+from collections import namedtuple
 from operator import attrgetter
 
 import numpy as np
-from sklearn.metrics import pairwise
 
-from . import Document
+from . import Document, Embedder
 
 from typing import Iterable
 
@@ -114,10 +113,11 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
     LexRank: Graph-based Centrality as Salience in Text Summarization
     Source: http://tangra.si.umich.edu/~radev/lexrank/lexrank.pdf
     """
-    def __init__(self, stemmer, embedder_config, threshold, epsilon, num_sentence_count):
+    def __init__(self, stemmer, embedder_config, threshold, epsilon, num_sentence_count, nlp):
         super().__init__(stemmer)
 
         self.embedder_config = embedder_config
+        self.nlp = nlp
 
         self.threshold = threshold or 0.1
         self.epsilon = epsilon or 0.1
@@ -139,15 +139,16 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         sentences = [sent for doc in docs for sent in doc.sentences]
 
         raw_sentences = [sent.text for sent in sentences]
+        embedder = Embedder.from_config(self.embedder_config, self.nlp, raw_sentences)
 
-        matrix = self._create_matrix(sentences, self.threshold)
+        matrix = self._create_matrix(embedder, sentences, self.threshold)
         scores = self.power_method(matrix, self.epsilon)
         ratings = dict(zip(sentences, scores))
 
         return self._get_best_sentences(sentences, self.num_sentence_count, ratings)
 
 
-    def _create_matrix(self, sentences, threshold):
+    def _create_matrix(self, embedder, sentences, threshold):
         """
         Creates matrix of shape |sentences|×|sentences|. Based on cosine similarity between sentences
 
@@ -161,7 +162,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
 
         for row_idx in range(sentences_count):
             for col_idx in range(sentences_count):
-                matrix[row_idx, col_idx] = self._cosine_similarity(sentences[row_idx],
+                matrix[row_idx, col_idx] = self._cosine_similarity(embedder, sentences[row_idx],
                                                                   sentences[col_idx])
 
                 if matrix[row_idx, col_idx] > threshold:
@@ -179,7 +180,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
 
         return matrix
 
-    def _cosine_similarity(self, sentence1, sentence2):
+    def _cosine_similarity(self, embedder, sentence1, sentence2):
         """
         Take 2 sentence vectors, compute cosine similarity.
         It's cosine similarity of these two sentences (vectors) A, B computed as cos(x, y) = A . B / (|A| . |B|)
@@ -189,7 +190,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         :rtype: float
         :return: Returns -1.0 for opposite similarity, 1.0 for the same sentence and zero for no similarity between sentences.
         """
-        return self.embedder.cosine_similarity(sentence1, sentence2)
+        return embedder.cosine_similarity(sentence1, sentence2)
 
     @staticmethod
     def power_method(matrix, epsilon):

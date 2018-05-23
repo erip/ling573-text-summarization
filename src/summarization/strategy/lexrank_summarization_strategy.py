@@ -15,9 +15,9 @@ from . import Document, Sentence, Embedder
 @SummarizationStrategy.register_strategy
 class LexRankSummarizationStrategy(SummarizationStrategy):
 
-    def __init__(self, embedder_config, threshold, epsilon, num_sentence_count):
+    def __init__(self, embedder_config, threshold, epsilon, num_sentence_count, nlp):
         stemmer = PorterStemmer()
-        self.lexrank = LexRankSummarizer(stemmer, embedder_config, threshold, epsilon, num_sentence_count)
+        self.lexrank = LexRankSummarizer(stemmer, embedder_config, threshold, epsilon, num_sentence_count, nlp)
 
     name = "lexrank"
 
@@ -38,7 +38,7 @@ class LexRankSummarizationStrategy(SummarizationStrategy):
         num_sentence_count = float(config.get(LexRankSummarizationStrategy.NUM_SENTENCE_COUNT) or 10)
         embedder_config = config.get(LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY)
 
-        return cls(embedder_config, threshold, epsilon, num_sentence_count)
+        return cls(embedder_config, threshold, epsilon, num_sentence_count, nlp)
 
     def get_candidate_sentences(self, docs: Iterable[Document], word_limit: int) -> Iterable[Sentence]:
 
