@@ -2,7 +2,7 @@ from .summarization_strategy import SummarizationStrategy
 
 from typing import TypeVar, Type, Dict, Set
 
-from utils import Document, Topic
+from . import Document, Topic
 
 from spacy.language import Language
 

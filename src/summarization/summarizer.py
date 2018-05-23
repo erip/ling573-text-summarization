@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from utils import Document, Topic
-from strategy import SummarizationStrategy
+from .utils import Document, Topic
+from .strategy import SummarizationStrategy
 
 import spacy
 from spacy.language import Language

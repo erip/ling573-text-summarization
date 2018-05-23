@@ -1,4 +1,4 @@
-import utils
+from ..utils import Sentence, Document, Topic, Embedder
 
 from .summarization_strategy import SummarizationStrategy
 from .lexrank_summarization_strategy import LexRankSummarizationStrategy

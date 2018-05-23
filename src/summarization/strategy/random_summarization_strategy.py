@@ -2,13 +2,11 @@ from .summarization_strategy import SummarizationStrategy
 
 from typing import TypeVar, Type, Dict, Iterable
 
-from utils import Sentence
+from . import Sentence, Document
 
 T = TypeVar("T", bound="SummarizationStrategy")
 
 from spacy.language import Language
-
-from utils import Document
 
 import random
 

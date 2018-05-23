@@ -12,7 +12,7 @@ from operator import attrgetter
 import numpy as np
 from sklearn.metrics import pairwise
 
-from utils import Document
+from . import Document
 
 from typing import Iterable
 

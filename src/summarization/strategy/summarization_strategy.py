@@ -1,5 +1,5 @@
 
-from utils import Document, Topic, Sentence
+from . import Document, Topic, Sentence
 
 from typing import TypeVar, Type, Dict, Set, Iterable
 from abc import ABCMeta, abstractmethod

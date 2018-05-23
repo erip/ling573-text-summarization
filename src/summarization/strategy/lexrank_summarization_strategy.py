@@ -10,7 +10,7 @@ from spacy.language import Language
 
 from nltk.stem import PorterStemmer
 
-from utils import Document, Sentence, Embedder
+from . import Document, Sentence, Embedder
 
 @SummarizationStrategy.register_strategy
 class LexRankSummarizationStrategy(SummarizationStrategy):
