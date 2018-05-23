@@ -114,10 +114,10 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
     LexRank: Graph-based Centrality as Salience in Text Summarization
     Source: http://tangra.si.umich.edu/~radev/lexrank/lexrank.pdf
     """
-    def __init__(self, stemmer, embedder, threshold, epsilon, num_sentence_count):
+    def __init__(self, stemmer, embedder_config, threshold, epsilon, num_sentence_count):
         super().__init__(stemmer)
 
-        self.embedder = embedder
+        self.embedder_config = embedder_config
 
         self.threshold = threshold or 0.1
         self.epsilon = epsilon or 0.1
@@ -137,6 +137,8 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         #tokenize the input document. This requires a full (not very fast) spacy load as it uses a dependency parse
 
         sentences = [sent for doc in docs for sent in doc.sentences]
+
+        raw_sentences = [sent.text for sent in sentences]
 
         matrix = self._create_matrix(sentences, self.threshold)
         scores = self.power_method(matrix, self.epsilon)

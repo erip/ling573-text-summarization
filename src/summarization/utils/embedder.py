@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod
 
 from .sentence import Sentence
 
-from typing import Type, Dict, TypeVar
+from typing import Type, Dict, TypeVar, Iterable
 
 from spacy.language import Language
 
@@ -31,7 +31,7 @@ class Embedder(metaclass=ABCMeta):
         self.nlp = nlp
 
     @classmethod
-    def from_config(cls: Type[T], config: Dict, nlp: Language) -> T:
+    def from_config(cls: Type[T], config: Dict, nlp: Language, sentences: Iterable[str]) -> T:
         """Reads the summarization strategy from a dictionary."""
 
         embedder_name = config.get(Embedder.CONFIG_EMBED_NAME_KEY)
@@ -43,11 +43,11 @@ class Embedder(metaclass=ABCMeta):
             raise ValueError("No embedder named '{0}'".format(embedder_name))
 
         # Create the strategy instance from the strategy config.
-        return embedder.from_embedding_config(config, nlp)
+        return embedder.from_embedding_config(config, nlp, sentences)
 
     @classmethod
     @abstractmethod
-    def from_embedding_config(cls, config: Dict, nlp: Language):
+    def from_embedding_config(cls, config: Dict, nlp: Language, sentences: Iterable[str]):
         pass
 
     @abstractmethod

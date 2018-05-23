@@ -14,7 +14,7 @@ class SpacyEmbedder(Embedder):
         return self.nlp(sentence).vector.reshape(1, -1)
 
     @classmethod
-    def from_embedding_config(cls, config, nlp):
+    def from_embedding_config(cls, config, nlp, sentences):
         return cls(nlp)
 
 if __name__ == "__main__":

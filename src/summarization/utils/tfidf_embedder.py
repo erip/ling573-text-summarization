@@ -1,8 +1,8 @@
-from embedder import Embedder
+from .embedder import Embedder
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from sentence import Sentence
+from .sentence import Sentence
 
 
 @Embedder.register_strategy
@@ -29,6 +29,9 @@ class TfidfEmbedder(Embedder):
         # Pull out the similarity for sentence 1 and sentence 2
         return sims[self.sent_to_index[sentence1.text]][self.sent_to_index[sentence2.text]]
 
+    @classmethod
+    def from_embedding_config(cls, config, nlp, sentences):
+        return cls(nlp, sentences)
 
 if __name__ == "__main__":
     import spacy
