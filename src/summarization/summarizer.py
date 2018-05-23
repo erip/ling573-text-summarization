@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
 from utils import Document, Topic
-
 from strategy import SummarizationStrategy
 
-from spacy.language import Language
-
 import spacy
+from spacy.language import Language
 
 from typing import Dict
 
@@ -50,9 +48,8 @@ if __name__ == "__main__":
 
     nlp = spacy.load('en')
 
-    from strategy.lexrank_summarization_strategy import LexRankSummarizationStrategy
-    from utils import Embedder
-    from utils import SpacyEmbedder
+    from strategy import LexRankSummarizationStrategy
+    from utils import Embedder, SpacyEmbedder
 
     config = {
         Summarizer.WORD_LIMIT_KEY: 100,
