@@ -11,8 +11,15 @@ from lexrank import LexRankSummarizer
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 from corpus import Corpus
+from information_ordering import InformationOrderer
+from experts import ChronologicalExpert
 import argparse
 
+from itertools import combinations
+
+import spacy
+
+from collections import Counter
 
 def make_filename(topic_id, num_words):
     """Given topic id and max num words, return filename for storing summary
@@ -21,20 +28,7 @@ def make_filename(topic_id, num_words):
     some_unique_alphanum = 4  # this is our groupnumber for identification
     return '{0}-A.M.{2}.{1}.{3}'.format(topic_id[:-1], topic_id[-1], num_words, some_unique_alphanum)
 
-
-def combine_all_sentences(topic):
-    """
-    Form one document of all stories for given topic
-    :param topic: Topic object
-    :return: string of all sentences in every document in docSet A for input to lexrank summarize
-    """
-    all_sent = ''
-    for s in topic.stories:
-        all_sent += s.get_raw()  # TODO change this to .format so that it is faster
-    return all_sent
-
-
-def get_candidate_sentences(lexrank_input_doc, max_word_count=None, vector_type='tfidf'):
+def get_candidate_sentences(topic, max_word_count=None, vector_type='tfidf'):
     """
     Runs lexrank summarizer and creates list of candidate sentences for the final summary
     :param lexrank_input_doc: a single string representing the doc or multiple docs to summarize
@@ -45,7 +39,7 @@ def get_candidate_sentences(lexrank_input_doc, max_word_count=None, vector_type=
     #TODO make this so it isn't hard coded
     sent_num = 10  #random number to get the best 'sent_num' count of sentences from lexrank matrix calculations
 
-    sent_list = summarizer.summarize(lexrank_input_doc, sent_num, max_word_count, vector_type)
+    sent_list = summarizer.summarize(topic, sent_num, max_word_count, vector_type)
 
     if max_word_count:
         while check_above_threshold(sent_list, max_word_count):
@@ -53,6 +47,33 @@ def get_candidate_sentences(lexrank_input_doc, max_word_count=None, vector_type=
 
     return sent_list
 
+
+def check_above_threshold(sent_list, max_word_count):
+    """
+    Take list of sentences return boolean of whether the total word count is below threshold
+    :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
+    :param max_word_count: int for max words in summary
+    :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
+    """
+    word_count = sum(token.is_alpha for sentence in sent_list for token in sentence.tokens())
+
+    return word_count > max_word_count
+
+
+
+def order_sentences(orderer, sentences):
+    ordering = Counter()
+
+    for doc1, doc2 in combinations(sentences, 2):
+        prefer_doc1 = orderer.order(doc1, doc2, sentences)
+        if prefer_doc1:
+            # Add a vote for doc1
+            ordering[doc1] += 1
+        else:
+            # Add a vote for doc2
+            ordering[doc2] += 1
+
+    return list(sorted(ordering, key=ordering.get, reverse=True))
 
 if __name__ == "__main__":
 
@@ -77,6 +98,9 @@ if __name__ == "__main__":
     p.add_argument('-m', dest='model_path', default='', help='path for a pre-trained embedding model')
     args = p.parse_args()
 
+    nlp = spacy.load('en_vectors_web_lg')
+    nlp.add_pipe(nlp.create_pipe('sentencizer'))
+
     #check for model params
     if args.model_path:
         if args.vector_type == 'doc2vec':
@@ -92,20 +116,28 @@ if __name__ == "__main__":
     stemmer = PorterStemmer()
     summarizer = LexRankSummarizer(stemmer, threshold=args.threshold, epsilon=args.epsilon, stop_words=set(stopwords.words('english')), model=model)
 
+    chronological_expert = ChronologicalExpert()
+
+    experts = { chronological_expert }
+    weight = { chronological_expert.name: 1.0 }
+
+    info_orderer = InformationOrderer(experts, weight)
+
     #get all documents in docSet 'X'
-    corpusInfoObj = Corpus.from_config(args.config_file, args.topic_file)
+    corpusInfoObj = Corpus.from_config(args.config_file, args.topic_file, nlp)
     corpusInfoObj.preprocess_topic_docs()
 
     for topic in corpusInfoObj.topics:
 
         #generate a combined doc of text in all stories for this topic
-        lexrank_input_doc = combine_all_sentences(topic)
-        candidates = get_candidate_sentences(lexrank_input_doc, args.num_words, args.vector_type)
+        candidates = get_candidate_sentences(topic, args.num_words, args.vector_type)
+
+        summary = order_sentences(info_orderer, candidates)
 
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), args.num_words)), 'w') as outfile:
-            if candidates:
-                for sentence in candidates:
-                    outfile.write('{}\n'.format(sentence))
+            if summary:
+                for sentence in summary:
+                    outfile.write('{}\n'.format(sentence.text))
             else:
                 outfile.write('\n')  # write blank file if no candidates
 

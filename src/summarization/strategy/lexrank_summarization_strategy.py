@@ -1,53 +1,47 @@
 from .summarization_strategy import SummarizationStrategy
 
-from typing import TypeVar, Type, Dict, Set
+from typing import TypeVar, Type, Dict, Set, Iterable
 
 T = TypeVar("T", bound="SummarizationStrategy")
 
 from .lexrank import LexRankSummarizer
 
-from . import Document
+from spacy.language import Language
+
+from nltk.stem import PorterStemmer
+
+from utils import Document, Sentence, Embedder
 
 @SummarizationStrategy.register_strategy
 class LexRankSummarizationStrategy(SummarizationStrategy):
 
-    def __init__(self):
-        self.lexrank = LexRankSummarizer(None)
+    def __init__(self, embedder, threshold, epsilon, num_sentence_count):
+        stemmer = PorterStemmer()
+        self.lexrank = LexRankSummarizer(stemmer, embedder, threshold, epsilon, num_sentence_count)
 
     name = "lexrank"
 
-    @classmethod
-    def from_strategy_config(cls: Type[T], config: Dict[str, dict]) -> T:
-        return cls()
-
-    def summarize(self, docs: Set[Document], word_limit: int) -> str:
-        return ""
+    EMBEDDER_CONFIG_KEY = "embedder"
+    THRESHOLD_CONFIG_KEY = "threshold"
+    EPSILON_CONFIG_KEY = "epsilon"
+    NUM_SENTENCE_COUNT = "num_sentence_count"
 
     @classmethod
-    def check_above_threshold(cls, sent_list, max_word_count, pretokenized=False):
-        """
-        Take list of sentences return boolean of whether the total word count is below threshold
-        :param sent_list: a list of sentences, or a nested list of sentences that have been tokenized
-        :param max_word_count: int for max words in summary
-        :param pretokenized: whether the sentences are strings or pretokenized. defaults to False
-        """
-        if pretokenized:
-            # currently only counts things with alphanumeric characters as words
-            word_count = sum([len(list(filter(str.isalnum, sent))) for sent in sent_list])
-        else:
-            # consider whitespace for wordcount
-            word_count = sum([len(sent.split()) for sent in sent_list])
+    def from_strategy_config(cls: Type[T], config: Dict[str, dict], nlp: Language) -> T:
+        embedder_name = config.get(LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY)
 
-        return word_count > max_word_count
+        if embedder_name is None:
+            raise ValueError("No lexrank strategy config entry for '{0}'".format(LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY))
 
-    def get_candidate_sentences(self, topic, word_limit):
+        threshold = float(config.get(LexRankSummarizationStrategy.THRESHOLD_CONFIG_KEY) or 0.1)
+        epsilon = float(config.get(LexRankSummarizationStrategy.EPSILON_CONFIG_KEY) or 0.1)
+        num_sentence_count = float(config.get(LexRankSummarizationStrategy.NUM_SENTENCE_COUNT) or 10)
 
-        lexrank_input_doc = ' '.join(s.get_raw() for s in topic.stories)
+        embedder = Embedder.from_config(config.get(LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY), nlp)
+        return cls(embedder, threshold, epsilon, num_sentence_count)
 
-        sent_list = self.lexrank.summarize(lexrank_input_doc, 10, word_limit)
+    def get_candidate_sentences(self, docs: Iterable[Document], word_limit: int) -> Iterable[Sentence]:
 
-        if word_limit:
-            while LexRankSummarizationStrategy.check_above_threshold(sent_list, word_limit):
-                sent_list = sent_list[:-1]
+        sent_list = self.lexrank.summarize(docs)
 
-        return sent_list
+        return self.__take_while_above_word_count(sent_list, word_limit)

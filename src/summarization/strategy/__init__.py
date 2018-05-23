@@ -1,4 +1,4 @@
-from ..utils.document import Document
+import utils
 
 from .summarization_strategy import SummarizationStrategy
 from .lexrank_summarization_strategy import LexRankSummarizationStrategy
