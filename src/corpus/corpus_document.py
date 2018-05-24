@@ -37,4 +37,4 @@ class CorpusDocument(object):
         else:
             groups = ("data", "{0}_{1}".format(self.src, self.lang), "{0}_{1}_{2}{3}.xml".format(self.src, self.lang, self.yyyy, self.mm))
 
-            return os.path.join(self.base_paths["aquaint2"], *groups).lower()
+            return os.path.join(self.base_paths["aquaint2"], map(str.lower, *groups))
