@@ -1,5 +1,4 @@
 
-import yaml
 import lxml.etree as ET
 from bs4 import BeautifulSoup
 
@@ -26,14 +25,13 @@ class Corpus(object):
         self.preprocess_topic_docs()
 
     @classmethod
-    def from_config(cls, yaml_file, xml_path, nlp):
+    def from_config(cls, yaml_conf, xml_path, nlp):
         """Given a yaml config file and xml path, this will read
         information about the corpus and return a Corpus object.
         :param yaml_file: filesystem configuration information (e.g., where the data live, etc.)
         :param xml_path: the task description
         :return: A Corpus object
         """
-        yaml_conf = yaml.load(open(yaml_file))
         xml_root = ET.parse(xml_path)
         topics = set()
         for topic in xml_root.findall("topic"):

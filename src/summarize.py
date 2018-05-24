@@ -2,6 +2,8 @@
 
 import spacy
 
+import yaml
+
 from summarization.strategy import SummarizationStrategy, LexRankSummarizationStrategy
 from summarization.utils import Embedder, SpacyEmbedder, TfidfEmbedder
 from summarization.information_ordering import InformationOrderer, ChronologicalExpert
@@ -36,6 +38,10 @@ def setup_information_orderer():
 
     return InformationOrderer(experts, weights)
 
+def read_yaml_config(config_file):
+    return yaml.load(open(config_file))
+
+
 if __name__ == "__main__":
 
     args = setup_argparse()
@@ -43,19 +49,9 @@ if __name__ == "__main__":
     nlp = spacy.load('en')
     nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
-    corpus = Corpus.from_config(args.config_file, args.topic_file, nlp)
+    config = read_yaml_config(args.config_file)
 
-    config = {
-        Summarizer.WORD_LIMIT_KEY: 100,
-        Summarizer.CONFIG_STRATEGY_KEY: {
-            SummarizationStrategy.CONFIG_STRATEGY_NAME_KEY: LexRankSummarizationStrategy.name,
-            LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY: {
-                Embedder.CONFIG_EMBED_NAME_KEY: TfidfEmbedder.name,
-            },
-            LexRankSummarizationStrategy.EPSILON_CONFIG_KEY: 0.11,
-            LexRankSummarizationStrategy.THRESHOLD_CONFIG_KEY: 0.09,
-        }
-    }
+    corpus = Corpus.from_config(config, args.topic_file, nlp)
 
     summarizer = Summarizer.from_config(config, nlp)
 
