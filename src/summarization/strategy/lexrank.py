@@ -15,6 +15,8 @@ from . import Document, Embedder
 
 from typing import Iterable
 
+from itertools import product
+
 #GLOBAL SETTINGS
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
 
@@ -141,6 +143,9 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         raw_sentences = [sent.text for sent in sentences]
         embedder = Embedder.from_config(self.embedder_config, self.nlp, raw_sentences)
 
+        for sent in sentences:
+            sent.embedding = embedder.embed(sent)
+
         matrix = self._create_matrix(embedder, sentences, self.threshold)
         scores = self.power_method(matrix, self.epsilon)
         ratings = dict(zip(sentences, scores))
@@ -157,26 +162,25 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         """
         # create matrix |sentences|×|sentences| filled with zeroes
         sentences_count = len(sentences)
+
         matrix = np.zeros((sentences_count, sentences_count))
         degrees = np.zeros((sentences_count, ))
 
-        for row_idx in range(sentences_count):
-            for col_idx in range(sentences_count):
-                matrix[row_idx, col_idx] = self._cosine_similarity(embedder, sentences[row_idx],
-                                                                  sentences[col_idx])
+        for row_idx, col_idx in product(range(sentences_count), repeat=2):
+            matrix[row_idx, col_idx] = self._cosine_similarity(embedder, sentences[row_idx],
+                                                              sentences[col_idx])
 
-                if matrix[row_idx, col_idx] > threshold:
-                    matrix[row_idx, col_idx] = 1.0
-                    degrees[row_idx] += 1
-                else:
-                    matrix[row_idx, col_idx] = 0
+            if matrix[row_idx, col_idx] > threshold:
+                matrix[row_idx, col_idx] = 1.0
+                degrees[row_idx] += 1
+            else:
+                matrix[row_idx, col_idx] = 0
 
-        for row in range(sentences_count):
-            for col in range(sentences_count):
-                if degrees[row] == 0:
-                    degrees[row] = 1
+        for row, col in product(range(sentences_count), repeat=2):
+            if degrees[row] == 0:
+                degrees[row] = 1
 
-                matrix[row][col] = matrix[row][col] / degrees[row]
+            matrix[row][col] = matrix[row][col] / degrees[row]
 
         return matrix
 

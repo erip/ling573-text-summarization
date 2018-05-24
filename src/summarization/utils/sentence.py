@@ -18,6 +18,9 @@ class Sentence(object):
         self.sent_index = sent_number
         self.embedding = embedding
 
+    def __len__(self):
+        return len(self.tokens())
+
     def doc_id(self):
         return self.document_id
 

@@ -44,4 +44,4 @@ class LexRankSummarizationStrategy(SummarizationStrategy):
 
         sent_list = self.lexrank.summarize(docs)
 
-        return self.__take_while_above_word_count(sent_list, word_limit)
+        return SummarizationStrategy.take_while_under_word_count(sent_list, word_limit)

@@ -3,7 +3,7 @@
 import spacy
 
 from summarization.strategy import SummarizationStrategy, LexRankSummarizationStrategy
-from summarization.utils import Embedder, SpacyEmbedder
+from summarization.utils import Embedder, SpacyEmbedder, TfidfEmbedder
 from summarization import Summarizer
 
 from corpus import Corpus
@@ -40,7 +40,7 @@ if __name__ == "__main__":
         Summarizer.CONFIG_STRATEGY_KEY: {
             SummarizationStrategy.CONFIG_STRATEGY_NAME_KEY: LexRankSummarizationStrategy.name,
             LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY: {
-                Embedder.CONFIG_EMBED_NAME_KEY: SpacyEmbedder.name,
+                Embedder.CONFIG_EMBED_NAME_KEY: TfidfEmbedder.name,
             },
             LexRankSummarizationStrategy.EPSILON_CONFIG_KEY: 0.11,
             LexRankSummarizationStrategy.THRESHOLD_CONFIG_KEY: 0.09,
@@ -48,3 +48,9 @@ if __name__ == "__main__":
     }
 
     summarizer = Summarizer.from_config(config, nlp)
+
+    for topic in corpus.topics:
+        candidates = summarizer.summarize(topic)
+        print("Candidates:")
+        for can in candidates:
+            print(can._sent)

@@ -16,9 +16,9 @@ class TfidfEmbedder(Embedder):
         self.tfidf_matrix = TfidfVectorizer(tokenizer=self._tokenize).fit_transform(sentences)
 
     def embed(self, sentence):
-        if sentence not in self.sent_to_index.keys():
-            raise ValueError("Sentence '{0}' has not been seen before.".format(sentence))
-        sent_number = self.sent_to_index[sentence]
+        if sentence.text not in self.sent_to_index.keys():
+            raise ValueError("Sentence '{0}' has not been seen before.".format(sentence.text))
+        sent_number = self.sent_to_index[sentence.text]
         feature_index = self.tfidf_matrix[sent_number, :].nonzero()[1]
         return self.tfidf_matrix[sent_number, feature_index]
 

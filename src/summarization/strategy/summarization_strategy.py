@@ -16,7 +16,8 @@ class SummarizationStrategy(metaclass=ABCMeta):
 
     CONFIG_STRATEGY_NAME_KEY = "name"
 
-    def __take_while_under_word_count(self, sentences: Iterable[Sentence], word_count: int) -> Iterable[Sentence]:
+    @staticmethod
+    def take_while_under_word_count(sentences: Iterable[Sentence], word_count: int) -> Iterable[Sentence]:
         kept_sentences, _ = reduce(
             # Append the sentence and update the total word count so far if
             lambda acc, sentence: (acc[0] + [sentence], acc[1] + len(sentence)) if
@@ -76,5 +77,4 @@ class SummarizationStrategy(metaclass=ABCMeta):
 
     @abstractmethod
     def get_candidate_sentences(self, docs: Set[Document], word_limit: int) -> Set[Sentence]:
-
         """Gets candidate sentences that describe the topic within the word limit"""

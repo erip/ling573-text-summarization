@@ -14,6 +14,8 @@ import logging
 
 from . import Sentence
 
+import re
+
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
     def __init__(self, topics, nlp):
@@ -58,14 +60,12 @@ class Corpus(object):
         headline = curr_doc.find(headline_text)
         if headline is not None:
             headline = headline.text.strip()  # CURRENTLY NOT PREPROCESSING HEADLINE
-        body, raw_body = [], []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
+        raw_body = []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
         for text in text_iterator:
             if text:
-                text = ' '.join(
-                    text.strip().split())  # this split and join is to get rid of all the weird kinds of whitespace characters from the xml parse
-                body.extend(token.text for token in self.nlp(text))
+                text = ' '.join(text.strip().split())  # this split and join is to get rid of all the weird kinds of whitespace characters from the xml parse
                 raw_body.append(text)
-        raw_body = " ".join(raw_body)
+        raw_body = ' '.join(raw_body)
         sents = { Sentence(doc.id(), doc_timestamp, sent, i) for i, sent in enumerate(self.nlp(raw_body).sents) }
         return Story(headline, sents)
 
@@ -112,9 +112,9 @@ class Corpus(object):
         else:
             all_topics = self.topics
 
-        self.logger.debug("Processing {0} Topics in Corpus".format(len(all_topics)))
+        print("Processing {0} Topics in Corpus".format(len(all_topics)))
         for topic in all_topics:
-            self.logger.debug("Processing {0} Docs in Topic".format(len(topic.docset)))
+            print("Processing {0} Docs in Topic".format(len(topic.docset)))
             for doc in topic.docset:
                 story = self.__process_document(doc)
                 topic.add_story(story)
