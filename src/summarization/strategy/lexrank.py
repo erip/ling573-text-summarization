@@ -17,53 +17,13 @@ from typing import Iterable
 
 from itertools import product
 
-#GLOBAL SETTINGS
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
-
-class ItemsCount(object):
-    """This is absolute black magick.
-    serif: It appears to be an object oriented way of ensuring we get the top x sentences regardless of whether a
-    hard number or a percentage is given. It could almost certainly be done more simply. But apart from headspinning is
-    not causing problems.
-    """
-    def __init__(self, value):
-        """a number, or a percentage"""
-        self._value = value
-
-    def __call__(self, sequence):
-        string_types = (bytes, str,)
-        if isinstance(self._value, string_types):
-            if self._value.endswith("%"):
-                total_count = len(sequence)
-                percentage = int(self._value[:-1])
-                # at least one sentence should be chosen
-                count = max(1, total_count*percentage // 100)
-                return sequence[:count]
-            else:
-                return sequence[:int(self._value)]
-        elif isinstance(self._value, (int, float)):
-            return sequence[:int(self._value)]
-        else:
-            ValueError("Unsuported value of items count '%s'." % self._value)
-
-    def __repr__(self):
-        return "<ItemsCount: %r>".format(self._value)
 
 class AbstractSummarizer(object):
     def __init__(self, stemmer):
         self._stemmer = stemmer
 
-    def __call__(self, document, sentences_count):
-        raise NotImplementedError("This method should be overriden in subclass")
-
-    def stem_word(self, word):  #TODO this is now in embeddings
-        s = self._stemmer.stem(word)
-        return s
-
-    def normalize_word(self, word): #TODO this is now in embeddings
-        return word.lower()
-
-    def _get_best_sentences(self, sentences, count, rating, *args, **kwargs):
+    def _get_best_sentences(self, sentences, rating, *args, **kwargs):
         """
 
         :param sentences: list of SentenceEmbedding objects. If we prefer later on, this could be raw
@@ -82,32 +42,13 @@ class AbstractSummarizer(object):
             assert not args and not kwargs
             rate = lambda s: rating[s]
 
-        infos = (SentenceInfo(s, o, rate(s, *args, **kwargs))
-            for o, s in enumerate(sentences))
+        infos = (SentenceInfo(s, o, rate(s, *args, **kwargs)) for o, s in enumerate(sentences))
 
         # sort sentences by rating in descending order
         infos = sorted(infos, key=attrgetter("rating"), reverse=True)
-        if not isinstance(count, ItemsCount):
-            count = ItemsCount(count)
 
-        infos = count(infos)
-        # sort sentences by their order in document.
-        #TODO either make it so "document" ordering has meaning, or remove this line.
-        #infos = sorted(infos, key=attrgetter("order"))
         sent_list = [i.sentence for i in infos]
 
-
-
-        #output word count check
-        '''if self.check_below_threshold(sent_list):
-            # get `count` first best rated sentences
-            #TODO: add more sentences if word count below 100
-            return tuple(sent_list)
-        else:
-            #clipped summary
-            n = self.get_output_sentence_count(sent_list)
-            return tuple(sent_list[:n+1])
-        '''
         return tuple(sent_list)
 
 class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now in embeddings
@@ -115,7 +56,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
     LexRank: Graph-based Centrality as Salience in Text Summarization
     Source: http://tangra.si.umich.edu/~radev/lexrank/lexrank.pdf
     """
-    def __init__(self, stemmer, embedder_config, threshold, epsilon, num_sentence_count, nlp):
+    def __init__(self, stemmer, embedder_config, threshold, epsilon, nlp):
         super().__init__(stemmer)
 
         self.embedder_config = embedder_config
@@ -123,7 +64,6 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
 
         self.threshold = threshold or 0.1
         self.epsilon = epsilon or 0.1
-        self.num_sentence_count = num_sentence_count or 10
 
     def summarize(self, docs: Iterable[Document]):
         """
@@ -150,7 +90,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         scores = self.power_method(matrix, self.epsilon)
         ratings = dict(zip(sentences, scores))
 
-        return self._get_best_sentences(sentences, self.num_sentence_count, ratings)
+        return self._get_best_sentences(sentences, ratings)
 
 
     def _create_matrix(self, embedder, sentences, threshold):

@@ -63,9 +63,7 @@ if __name__ == "__main__":
 
     for topic in corpus.topics:
         candidates = summarizer.summarize(topic)
-        print(len(candidates))
         summary = information_orderer.order_all(candidates)
-        print(len(summary))
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), config.get(Summarizer.WORD_LIMIT_KEY))), 'w') as outfile:
             for sentence in summary:
                 outfile.write('{}\n'.format(sentence.text))

@@ -15,16 +15,15 @@ from . import Document, Sentence, Embedder
 @SummarizationStrategy.register_strategy
 class LexRankSummarizationStrategy(SummarizationStrategy):
 
-    def __init__(self, embedder_config, threshold, epsilon, num_sentence_count, nlp):
+    def __init__(self, embedder_config, threshold, epsilon, nlp):
         stemmer = PorterStemmer()
-        self.lexrank = LexRankSummarizer(stemmer, embedder_config, threshold, epsilon, num_sentence_count, nlp)
+        self.lexrank = LexRankSummarizer(stemmer, embedder_config, threshold, epsilon, nlp)
 
     name = "lexrank"
 
     EMBEDDER_CONFIG_KEY = "embedder"
     THRESHOLD_CONFIG_KEY = "threshold"
     EPSILON_CONFIG_KEY = "epsilon"
-    NUM_SENTENCE_COUNT = "num_sentence_count"
 
     @classmethod
     def from_strategy_config(cls: Type[T], config: Dict[str, dict], nlp: Language) -> T:
@@ -35,13 +34,12 @@ class LexRankSummarizationStrategy(SummarizationStrategy):
 
         threshold = float(config.get(LexRankSummarizationStrategy.THRESHOLD_CONFIG_KEY) or 0.1)
         epsilon = float(config.get(LexRankSummarizationStrategy.EPSILON_CONFIG_KEY) or 0.1)
-        num_sentence_count = float(config.get(LexRankSummarizationStrategy.NUM_SENTENCE_COUNT) or 10)
         embedder_config = config.get(LexRankSummarizationStrategy.EMBEDDER_CONFIG_KEY)
 
-        return cls(embedder_config, threshold, epsilon, num_sentence_count, nlp)
+        return cls(embedder_config, threshold, epsilon, nlp)
 
     def get_candidate_sentences(self, docs: Iterable[Document], word_limit: int) -> Iterable[Sentence]:
 
         sent_list = self.lexrank.summarize(docs)
 
-        return SummarizationStrategy.take_while_under_word_count(sent_list, word_limit)
+        return self.take_while_under_word_count(sent_list, word_limit)
