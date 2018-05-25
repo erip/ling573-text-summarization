@@ -14,13 +14,13 @@ Once working on a virtualenv, you can simply `pip3 install -r requirements.txt`.
 To run the system on Training data: 
 
 ```bash
-$./run_summarization.sh <summarization method> <vec_type>../conf/patas_config.yaml ../conf/UpdateSumm09_test_topics.xml <output_dir> /dropbox/17-18/573/Data/models/training/2009/ <rouge_outfile>
+$./run_summarization.sh ../conf/patas_config.yaml <output_dir> /dropbox/17-18/573/Data/models/training/2009/ <rouge_outfile> <experiment_name>
 ```
 
 To run the system on DevTest data: 
 
 ```bash
-$./run_summarization.sh <summarization method> <vec_type> ../conf/patas_devtest_config.yaml /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml <output_dir> /dropbox/17-18/573/Data/models/devtest/ <rouge_outfile>
+$./run_summarization.sh ../conf/patas_devtest_config.yaml <output_dir> /dropbox/17-18/573/Data/models/devtest/ <rouge_outfile> <experiment_name>
 ```
 
 The currently supported summarization methods are:
@@ -29,15 +29,11 @@ The currently supported summarization methods are:
 1. **random**, use a random sentence as the summary.
 1. **lexrank**, use lexrank to determine the summary.
 
+Different methods of sentence representation for lexrank are also now supported, and are:
 
-Different methods of sentence representation(`vec_type`) for lexrank are also now supported, and are:
 1. **tfidf**, use tfidf metrics for sentence salience.
 1. **spacy**, use spacy sentence vectors for sentence salience. Spacy sentence vectors are the averaged GloVe embeddings 
 of words
-1. **doc2vec**, use doc2vec vectors for sentence salience. This trains word vectors on the Gigaword corpus in the 
-context of the paragraph that the words appear in.
-1. TBA in D4 **word2vec**, use word2vec metrics, trained on Google News, for sentence salience.
-
 
 
 If `en_vectors_web_lg` hasn't been downloaded from spacy before, it may be necessary to first download it. It is ~600MB.
@@ -49,14 +45,15 @@ python -m spacy download en_vectors_web_lg
 To run `run_summarization.sh` on condor: 
 
 ```bash
-condor_submit D3.cmd
+condor_submit D4_tfidf.cmd
 ```
+
 This runs the best performing of the permutations of the system. All the varied permutations are configurable via 
 `run_summarization.sh`.
 
 ### Testing
 
-Once all dependencies are installed, running `nosetests` from the project root should run all unit tests.
+Once all dependencies are installed, running `nosetests` from the `src/` directory should run all unit tests.
 
 ### Results
 
