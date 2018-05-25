@@ -8,10 +8,19 @@ import os
 from collections import defaultdict, Counter
 from itertools import chain
 
-import numpy as np
 import sys
 
-from corpus import preprocess_text
+from nltk import word_tokenize, sent_tokenize
+
+def preprocess_text(text_block):
+    """Tokenize and lowercase a block of text, return nested list of sentences and words
+
+    :param text_block: a block of English text whitespace separated
+    :return a nested list of lists of tokenized text [[w1,w2...wn],[w1,w2...wn]] where the outer list sentences and the
+    inner is words int that sentence. Note that if text_block was only one sentence, it will still be nested.
+    """
+    words = [word_tokenize(sent.lower()) for sent in sent_tokenize(text_block.strip())]
+    return words
 
 
 def process_files_in_dirs(source_directories):
@@ -66,7 +75,6 @@ def basic_metrics(data_dict):
             min_words, max_words, avg_words = get_min_max_avg(sentences)
             word_avgs.append(avg_words)
             lexical_div.append(lexical_diversity(Counter(chain.from_iterable(sentences))))
-            #print("File: {0}\nMin: {1} Max: {2} Avg: {3:f}\n".format(file, min_words, max_words, avg_words))
         print("\n***** Group: {0} Overall Words per Sent: {1:f} Overall Lexical Diversity: {2:f} *****\n".format(
             group, sum(word_avgs)/num_files, sum(lexical_div)/num_files))
         word_distributions.append(word_avgs)

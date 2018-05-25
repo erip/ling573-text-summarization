@@ -19,7 +19,7 @@ vec_model_path=${6:-""}
 rouge_dir="/mnt/dropbox/17-18/573/code/ROUGE/"
 rouge_config_file="../results/rouge_config_${experiment_number}.xml"
 
-python3 summarize.py -c ${config_file} -t ${topic_cluster_file} -d ${output_dir} 
+python3 -m cProfile -o profile.txt summarize.py -c ${config_file} -t ${topic_cluster_file} -d ${output_dir} 
 
 # generate ROUGE config file
 python3 "${rouge_dir}/create_config.py" ${output_dir} ${model_dir} ${rouge_config_file}
