@@ -9,6 +9,4 @@ word_limit: 100
 strategy:
   name: lexrank
   embedder:
-    name: spacy
-  epsilon: 0.09
-  threshold: 0.11
+    name: tfidf

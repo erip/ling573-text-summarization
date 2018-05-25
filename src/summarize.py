@@ -46,15 +46,19 @@ if __name__ == "__main__":
 
     args = setup_argparse()
 
-    nlp = spacy.load('en')
+    nlp = spacy.load('en_vectors_web_lg')
     nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
+    print("Reading config...")
     config = read_yaml_config(args.config_file)
 
+    print("Reading corpus...")
     corpus = Corpus.from_config(config, args.topic_file, nlp)
-
+ 
+    print("Summarizing...")
     summarizer = Summarizer.from_config(config, nlp)
 
+    print("Ordering...")
     information_orderer = setup_information_orderer()
 
     for topic in corpus.topics:
