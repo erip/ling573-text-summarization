@@ -20,8 +20,9 @@ class TfidfEmbedder(Embedder):
 
         self.sent2processed_sent = { sentence: self.preprocess_sentence(sentence) for sentence in sentences }
 
-        self.sent_to_index = {s: i for i, s in enumerate(sentences)}
-        self.tfidf_matrix = TfidfVectorizer().fit_transform(sentences)
+        self.sent_to_index = {s: i for i, s in enumerate(self.sent2processed_sent.values())}
+        self.tfidf_matrix = TfidfVectorizer().fit_transform(self.sent2processed_sent.values())
+
         # Compute the similarity matrix for every sentence
         self.sims = (self.tfidf_matrix * self.tfidf_matrix.T).toarray()
 
@@ -34,15 +35,15 @@ class TfidfEmbedder(Embedder):
         return ' '.join(stemmed_tokens)
 
     def embed(self, sentence):
-        preprocessed_sent = self.sent2processed_sent[sentence]
+        preprocessed_sent = self.sent2processed_sent[sentence.text]
         sent_number = self.sent_to_index[preprocessed_sent]
         feature_index = self.tfidf_matrix[sent_number, :].nonzero()[1]
         return self.tfidf_matrix[sent_number, feature_index]
 
     # Overriding Embedder's `cosine_similarity`
     def cosine_similarity(self, sentence1: Sentence, sentence2: Sentence):
-        preprocessed_sent1 = self.sent2processed_sent[sentence1]
-        preprocessed_sent2 = self.sent2processed_sent[sentence2]
+        preprocessed_sent1 = self.sent2processed_sent[sentence1.text]
+        preprocessed_sent2 = self.sent2processed_sent[sentence2.text]
         # Pull out the similarity for sentence 1 and sentence 2
         return self.sims[self.sent_to_index[preprocessed_sent1]][self.sent_to_index[preprocessed_sent2]]
 
