@@ -21,12 +21,11 @@ class TfidfEmbedder(Embedder):
         sentences = [self.preprocess_sentence(sentence) for sentence in sentences]
 
         self.sent_to_index = {s: i for i, s in enumerate(sentences)}
-        self.tfidf_matrix = TfidfVectorizer(tokenizer=self._tokenize).fit_transform(sentences)
+        self.tfidf_matrix = TfidfVectorizer().fit_transform(sentences)
 
     def preprocess_sentence(self, sentence):
-        print("Are we here?")
         # Get tokens without stopwords
-        tokens = (token.text for token in sentence.tokens() if token.text not in self.stopwords)
+        tokens = (token.text for token in self.nlp(sentence) if token.text not in self.stopwords)
         # Stem
         stemmed_tokens = map(self.stemmer.stem, tokens)
         # Join naively -- doesn't matter if this is done correctly as long as this is consistent
