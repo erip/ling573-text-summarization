@@ -19,7 +19,8 @@ class Sentence(object):
         self.embedding = embedding
 
     def __len__(self):
-        return len(self.tokens())
+        """returns word count in sentence, does not count tokens unless entirely alphanumeric"""
+        return len(list(filter(str.isalnum, self.tokens())))
 
     def doc_id(self):
         return self.document_id
