@@ -4,6 +4,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 from .sentence import Sentence
 
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
 
 @Embedder.register_strategy
 class TfidfEmbedder(Embedder):
@@ -12,22 +14,40 @@ class TfidfEmbedder(Embedder):
 
     def __init__(self, nlp, sentences):
         super().__init__(nlp)
+
+        self.stopwords = frozenset(stopwords.words('english'))
+        self.stemmer = PorterStemmer()
+
+        sentences = [self.preprocess_sentence(sentence) for sentence in sentences]
+
         self.sent_to_index = {s: i for i, s in enumerate(sentences)}
         self.tfidf_matrix = TfidfVectorizer(tokenizer=self._tokenize).fit_transform(sentences)
 
+    def preprocess_sentence(self, sentence):
+        print("Are we here?")
+        # Get tokens without stopwords
+        tokens = (token.text for token in sentence.tokens() if token.text not in self.stopwords)
+        # Stem
+        stemmed_tokens = map(self.stemmer.stem, tokens)
+        # Join naively -- doesn't matter if this is done correctly as long as this is consistent
+        return ' '.join(stemmed_tokens)
+
     def embed(self, sentence):
-        if sentence.text not in self.sent_to_index.keys():
+        preprocessed_sent = self.preprocess_sentence(sentence.text)
+        if preprocessed_sent not in self.sent_to_index.keys():
             raise ValueError("Sentence '{0}' has not been seen before.".format(sentence.text))
-        sent_number = self.sent_to_index[sentence.text]
+        sent_number = self.sent_to_index[preprocessed_sent]
         feature_index = self.tfidf_matrix[sent_number, :].nonzero()[1]
         return self.tfidf_matrix[sent_number, feature_index]
 
     # Overriding Embedder's `cosine_similarity`
     def cosine_similarity(self, sentence1: Sentence, sentence2: Sentence):
+        preprocessed_sent1 = self.preprocess_sentence(sentence1.text)
+        preprocessed_sent2 = self.preprocess_sentence(sentence2.text)
         # Compute the similarity matrix for every sentence
         sims = (self.tfidf_matrix * self.tfidf_matrix.T).toarray()
         # Pull out the similarity for sentence 1 and sentence 2
-        return sims[self.sent_to_index[sentence1.text]][self.sent_to_index[sentence2.text]]
+        return sims[self.sent_to_index[preprocessed_sent1]][self.sent_to_index[preprocessed_sent2]]
 
     @classmethod
     def from_embedding_config(cls, config, nlp, sentences):

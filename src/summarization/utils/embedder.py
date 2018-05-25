@@ -54,13 +54,5 @@ class Embedder(metaclass=ABCMeta):
     def embed(self, sentence):
         """Creates an embedding of a sentence"""
 
-    def _tokenize(self, sentence):
-        tokens = self.nlp(sentence)
-        yield from map(lambda t: t.text, tokens)
-
-    def normalize_tokens(self, token):
-        """A systematic way to normalize tokens"""
-        pass
-
     def cosine_similarity(self, sentence1: Sentence, sentence2: Sentence) -> float:
         return pairwise.cosine_similarity(sentence1.embedding, sentence2.embedding)[0][0]
