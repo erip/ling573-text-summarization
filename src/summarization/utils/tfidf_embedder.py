@@ -22,6 +22,8 @@ class TfidfEmbedder(Embedder):
 
         self.sent_to_index = {s: i for i, s in enumerate(sentences)}
         self.tfidf_matrix = TfidfVectorizer().fit_transform(sentences)
+        # Compute the similarity matrix for every sentence
+        self.sims = (self.tfidf_matrix * self.tfidf_matrix.T).toarray()
 
     def preprocess_sentence(self, sentence):
         # Get tokens without stopwords
@@ -43,10 +45,8 @@ class TfidfEmbedder(Embedder):
     def cosine_similarity(self, sentence1: Sentence, sentence2: Sentence):
         preprocessed_sent1 = self.preprocess_sentence(sentence1.text)
         preprocessed_sent2 = self.preprocess_sentence(sentence2.text)
-        # Compute the similarity matrix for every sentence
-        sims = (self.tfidf_matrix * self.tfidf_matrix.T).toarray()
         # Pull out the similarity for sentence 1 and sentence 2
-        return sims[self.sent_to_index[preprocessed_sent1]][self.sent_to_index[preprocessed_sent2]]
+        return self.sims[self.sent_to_index[preprocessed_sent1]][self.sent_to_index[preprocessed_sent2]]
 
     @classmethod
     def from_embedding_config(cls, config, nlp, sentences):

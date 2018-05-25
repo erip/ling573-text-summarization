@@ -55,15 +55,19 @@ if __name__ == "__main__":
     print("Reading corpus...")
     corpus = Corpus.from_config(config, args.topic_file, nlp)
  
-    print("Summarizing...")
+    print("Reading summarizer...")
     summarizer = Summarizer.from_config(config, nlp)
 
-    print("Ordering...")
+    print("Creating orderer...")
     information_orderer = setup_information_orderer()
+    
+    num_topics = len(corpus.topics)
 
-    for topic in corpus.topics:
+    for i, topic in enumerate(corpus.topics, 1):
         candidates = summarizer.summarize(topic)
+      
         summary = information_orderer.order_all(candidates)
+        print("Summarized {0}/{1} topics".format(i, num_topics))
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), config.get(Summarizer.WORD_LIMIT_KEY))), 'w') as outfile:
             for sentence in summary:
                 outfile.write('{}\n'.format(sentence.text))
