@@ -11,12 +11,11 @@
 #TODO add this
 
 config_file=$1
-topic_cluster_file=$2
-output_dir=$3
-model_dir=$4
-rouge_output_file=$5
-experiment_number=$6
-vec_model_path=${7:-""}
+output_dir=$2
+model_dir=$3
+rouge_output_file=$4
+experiment_number=$5
+vec_model_path=${6:-""}
 rouge_dir="/mnt/dropbox/17-18/573/code/ROUGE/"
 rouge_config_file="../results/rouge_config_${experiment_number}.xml"
 
