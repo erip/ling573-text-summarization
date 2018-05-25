@@ -37,10 +37,15 @@ of words
 
 
 If `en_vectors_web_lg` hasn't been downloaded from spacy before, it may be necessary to first download it. It is ~600MB.
+
 In the environment you intend to use:
 ```bash 
 python -m spacy download en_vectors_web_lg
 ```
+
+Because our code uses bleeding-edge features of Python (like the `typing` module for linting), you'll need to ensure that
+Python 3.6 is the python version when running the code. On patas, this can be done by adding  
+`export PATH="/opt/python-3.6/bin/:$PATH"` to your `~/.bashrc` (be sure to `. ~/.bashrc` your first time).
 
 To run `run_summarization.sh` on condor: 
 
