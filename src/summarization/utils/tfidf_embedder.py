@@ -18,7 +18,7 @@ class TfidfEmbedder(Embedder):
         self.stopwords = frozenset(stopwords.words('english'))
         self.stemmer = PorterStemmer()
 
-        sentences = [self.preprocess_sentence(sentence) for sentence in sentences]
+        self.sent2processed_sent = { sentence: self.preprocess_sentence(sentence) for sentence in sentences }
 
         self.sent_to_index = {s: i for i, s in enumerate(sentences)}
         self.tfidf_matrix = TfidfVectorizer().fit_transform(sentences)
@@ -34,17 +34,15 @@ class TfidfEmbedder(Embedder):
         return ' '.join(stemmed_tokens)
 
     def embed(self, sentence):
-        preprocessed_sent = self.preprocess_sentence(sentence.text)
-        if preprocessed_sent not in self.sent_to_index.keys():
-            raise ValueError("Sentence '{0}' has not been seen before.".format(sentence.text))
+        preprocessed_sent = self.sent2processed_sent[sentence]
         sent_number = self.sent_to_index[preprocessed_sent]
         feature_index = self.tfidf_matrix[sent_number, :].nonzero()[1]
         return self.tfidf_matrix[sent_number, feature_index]
 
     # Overriding Embedder's `cosine_similarity`
     def cosine_similarity(self, sentence1: Sentence, sentence2: Sentence):
-        preprocessed_sent1 = self.preprocess_sentence(sentence1.text)
-        preprocessed_sent2 = self.preprocess_sentence(sentence2.text)
+        preprocessed_sent1 = self.sent2processed_sent[sentence1]
+        preprocessed_sent2 = self.sent2processed_sent[sentence2]
         # Pull out the similarity for sentence 1 and sentence 2
         return self.sims[self.sent_to_index[preprocessed_sent1]][self.sent_to_index[preprocessed_sent2]]
 
