@@ -20,7 +20,7 @@ class Sentence(object):
 
     def __len__(self):
         """returns word count in sentence, does not count tokens unless entirely alphanumeric"""
-        return len(list(filter(str.isalnum, self.tokens())))
+        return len(list(filter(str.isalnum, [token.text for token in self.tokens()])))
 
     def doc_id(self):
         return self.document_id
