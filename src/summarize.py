@@ -17,8 +17,6 @@ def setup_argparse():
     p = argparse.ArgumentParser()
     p.add_argument('-c', dest='config_file', default='../conf/local_config.yaml',
                    help='a yaml config mapping the topic clustering to file locations')
-    p.add_argument('-t', dest='topic_file', default='../conf/GuidedSumm_MINE_test_topics.xml',
-                   help='an AQUAINT config file with topic clustering')
     p.add_argument('-d', dest='output_dir', default='../outputs/D4/', help='dir to write output summaries to')
     p.add_argument('-m', dest='model_path', default='', help='path for a pre-trained embedding model')
     return p.parse_args()
@@ -53,7 +51,7 @@ if __name__ == "__main__":
     config = read_yaml_config(args.config_file)
 
     print("Reading corpus...")
-    corpus = Corpus.from_config(config, args.topic_file, nlp)
+    corpus = Corpus.from_config(config, nlp)
  
     print("Reading summarizer...")
     summarizer = Summarizer.from_config(config, nlp)

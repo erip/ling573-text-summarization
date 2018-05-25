@@ -25,13 +25,20 @@ class Corpus(object):
         self.preprocess_topic_docs()
 
     @classmethod
-    def from_config(cls, yaml_conf, xml_path, nlp):
+    def from_config(cls, yaml_conf, nlp):
         """Given a yaml config file and xml path, this will read
         information about the corpus and return a Corpus object.
         :param yaml_file: filesystem configuration information (e.g., where the data live, etc.)
         :param xml_path: the task description
         :return: A Corpus object
         """
+        xml_path = yaml_conf.get('clusterPath')
+        document_collections = yaml_conf.get('documentCollections')
+        if not xml_path:
+            raise ValueError("Config is missing 'clusterPath'")
+        if not document_collections:
+            raise ValueError("Config is missing 'documentCollections'")
+
         xml_root = ET.parse(xml_path)
         topics = set()
         for topic in xml_root.findall("topic"):
@@ -44,7 +51,7 @@ class Corpus(object):
             docsetA = set()
             docset_id = docsetA_element.get("id")
             for doc in docsetA_element:
-                docsetA.add(CorpusDocument(yaml_conf['documentCollections'], doc.get("id")))
+                docsetA.add(CorpusDocument(document_collections, doc.get("id")))
             docset = Docset(docset_id, docsetA)
             topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
         return cls(topics, nlp)
