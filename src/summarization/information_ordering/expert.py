@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
+from typing import Iterable
+
+from . import Sentence
 
 class Expert(ABC):
     """The abstract base class for information ordering experts."""
@@ -17,7 +20,7 @@ class ChronologicalExpert(Expert):
     def __init__(self):
         self._name = "chronological"
 
-    def order(self, d1, d2, partial_summary):
+    def order(self, d1: Sentence, d2: Sentence, partial_summary: Iterable[Sentence]):
         sents_from_same_doc = d1.doc_id() == d2.doc_id()
         both_docs_have_time_stamp = d1.get_timestamp() and d2.get_timestamp()
         doc1_sent_index = d1.get_sent_index()
