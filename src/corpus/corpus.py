@@ -11,6 +11,10 @@ from datetime import datetime
 
 import logging
 
+from typing import Dict, List
+
+from spacy.language import Language
+
 from . import Sentence
 
 import re
@@ -25,15 +29,16 @@ class Corpus(object):
         self.preprocess_topic_docs()
 
     @classmethod
-    def from_config(cls, yaml_conf, nlp):
-        """Given a yaml config file and xml path, this will read
+    def from_config(cls, conf: Dict, nlp: Language):
+        """Given a yaml config file and a , this will read
         information about the corpus and return a Corpus object.
+
         :param yaml_file: filesystem configuration information (e.g., where the data live, etc.)
-        :param xml_path: the task description
+        :param nlp: a SpaCy language object
         :return: A Corpus object
         """
-        xml_path = yaml_conf.get('clusterPath')
-        document_collections = yaml_conf.get('documentCollections')
+        xml_path = conf.get('clusterPath')
+        document_collections = conf.get('documentCollections')
         if not xml_path:
             raise ValueError("Config is missing 'clusterPath'")
         if not document_collections:
@@ -57,7 +62,12 @@ class Corpus(object):
         return cls(topics, nlp)
 
 
-    def __process_document(self, doc):
+    def __process_document(self, doc: CorpusDocument):
+        """Given a document, parses information from the document to create a story.
+
+        :param doc: a Aquaint or Aquaint 2 document from the corpus
+        :return: the story in the document
+        """
         curr_doc, doc_timestamp, headline_text, text_iterator = \
             self.__process_aquaint2_document(doc) if doc.is_aquaint2 \
                 else self.__process_aquaint_document(doc)
@@ -74,7 +84,14 @@ class Corpus(object):
         sents = { Sentence(doc.id(), doc_timestamp, sent, i) for i, sent in enumerate(self.nlp(raw_body).sents) }
         return Story(headline, sents)
 
-    def __process_aquaint2_document(self, doc):
+    def __process_aquaint2_document(self, doc: CorpusDocument):
+        """The specific processing function for an aquaint 2 document.
+
+        :param doc: an aquaint 2 corpus document
+        :return: a tuple containing the XML document object, the timestamp
+        of the document, the headline text, and an iterator of all the text
+        in the document.
+        """
         parser = ET.XMLParser(recover=True)
         xml_root = ET.parse(doc.get_path(), parser=parser)
         curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
@@ -83,7 +100,14 @@ class Corpus(object):
         text_iterator = curr_doc.find("TEXT").itertext()
         return curr_doc, doc_timestamp, headline_text, text_iterator
 
-    def __process_aquaint_document(self, doc):
+    def __process_aquaint_document(self, doc: CorpusDocument):
+        """The specific processing function for an aquaint document.
+
+        :param doc: an aquaint corpus document
+        :return: a tuple containing the XML document object, the timestamp
+        of the document, the headline text, and an iterator of all the text
+        in the document.
+        """
         with open(doc.get_path(), "r") as infile:
             xml_root = BeautifulSoup(infile, "lxml")
         curr_doc = xml_root.find("docno", text=" {} ".format(doc.id())).parent
@@ -92,15 +116,15 @@ class Corpus(object):
             doc_timestamp = None
         else:
             date = time.text.strip().split()[0]
+            # Accounts for multiple date formats.
             format = "%Y-%m-%d" if '-' in date else "%m/%d/%Y"
             doc_timestamp = datetime.strptime(date, format)
         headline_text = "headline"
         text_iterator = [tag.text for tag in curr_doc.find_all("text")]
         return curr_doc, doc_timestamp, headline_text, text_iterator
 
-    def preprocess_topic_docs(self, topic_ids=None):
-        """
-        Process newswire style xml into text and Story objects
+    def preprocess_topic_docs(self, topic_ids: List[str] = None):
+        """Process newswire style xml into text and Story objects
 
         Grabs headline elements and body text elements, preprocesses them, creates Story objects, and stores them in
         Topic objects.
