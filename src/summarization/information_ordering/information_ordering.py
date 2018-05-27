@@ -5,8 +5,14 @@ import logging
 from itertools import combinations
 from collections import Counter
 
+from .expert import Expert
+
+from . import Sentence
+
+from typing import Dict, Iterable
+
 class InformationOrderer(object):
-    def __init__(self, experts, expert_weights, threshold=0.5):
+    def __init__(self, experts: Iterable[Expert], expert_weights: Dict[str, float], threshold: float=0.5):
         """
         :param experts: a set of experts
         :param expert_weights: a dictionary specifying the weight we place on each expert's prediction.
@@ -31,7 +37,7 @@ class InformationOrderer(object):
         self.expert_weights = expert_weights
 
 
-    def order(self, doc1, doc2, partial_summary):
+    def order(self, doc1: Sentence, doc2: Sentence, partial_summary: Iterable[Sentence]):
         """Given two documents, this method will use the provided experts to order the documents"""
 
         # Given an expert, its contribution will be its weight times its ordering score.
@@ -46,7 +52,7 @@ class InformationOrderer(object):
 
         return doc1_first
 
-    def order_all(self, sentences):
+    def order_all(self, sentences: Iterable[Sentence]):
         ordering = Counter()
 
         for doc1, doc2 in combinations(sentences, 2):
