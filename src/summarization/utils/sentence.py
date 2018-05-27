@@ -1,15 +1,11 @@
 
 from datetime import date
 
-from spacy.language import Language
-
+import numpy as np
 from spacy.tokens.span import Span as SpacySent
 
-from .embedding import Embedding
-
-
 class Sentence(object):
-    def __init__(self, doc_id: str, doc_timestamp: date, sent: SpacySent, sent_number: int, embedding: Embedding=None):
+    def __init__(self, doc_id: str, doc_timestamp: date, sent: SpacySent, sent_number: int, embedding: np.array=None):
 
         self._sent = sent
         self.text = sent.text
