@@ -7,24 +7,19 @@
 #devtest
 # ./run_summarization.sh ../conf/patas_devtest_config.yaml ../outputs/D#/ /dropbox/17-18/573/Data/models/devtest/ ../results/D3_rouge_scores.out some_experiment_name
 
-#example run command with pretrained model
-# ./run_summarization.sh ../conf/patas_devtest_config.yaml ../outputs/D#/ /dropbox/17-18/573/Data/models/devtest/ ../results/D3_rouge_scores.out some_experiment_name
+
 
 config_file=$1
 output_dir=$2
 model_dir=$3
 rouge_output_file=$4
 experiment_number=$5
-vec_model_path=${6:-""}
 rouge_dir="/mnt/dropbox/17-18/573/code/ROUGE/"
 rouge_config_file="../results/rouge_config_${experiment_number}.xml"
 
-if [ vec_model_path = "" ]
-then
-    python3 summarize.py -c ${config_file} -d ${output_dir}
-else
-    python3 summarize.py -c ${config_file} -d ${output_dir} -m ${vec_model_path}
-fi
+
+python3 summarize.py -c ${config_file} -d ${output_dir}
+
 
 # generate ROUGE config file
 python3 "${rouge_dir}/create_config.py" ${output_dir} ${model_dir} ${rouge_config_file}
