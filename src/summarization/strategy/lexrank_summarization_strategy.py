@@ -24,6 +24,7 @@ class LexRankSummarizationStrategy(SummarizationStrategy):
     EMBEDDER_CONFIG_KEY = "embedder"
     THRESHOLD_CONFIG_KEY = "threshold"
     EPSILON_CONFIG_KEY = "epsilon"
+    REDUNDANCY_THRESHOLD_KEY = 'redundancy_tuner'  #comment out to turn off redundany removal based on thresholding
 
     @classmethod
     def from_strategy_config(cls: Type[T], config: Dict[str, dict], nlp: Language) -> T:
@@ -38,8 +39,12 @@ class LexRankSummarizationStrategy(SummarizationStrategy):
 
         return cls(embedder_config, threshold, epsilon, nlp)
 
+
     def get_candidate_sentences(self, docs: Iterable[Document], word_limit: int) -> Iterable[Sentence]:
 
         sent_list = self.lexrank.summarize(docs)
 
-        return self.take_while_under_word_count(sent_list, word_limit)
+        #near full-sentence redundancy removal during selecting top ranked sentences within word-limit
+        sent_list_no_duplicates = self.lexrank.remove_duplicate_sent(sent_list, LexRankSummarizationStrategy.REDUNDANCY_THRESHOLD_KEY)
+
+        return self.take_while_under_word_count(sent_list_no_duplicates, word_limit)

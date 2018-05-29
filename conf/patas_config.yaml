@@ -12,3 +12,4 @@ strategy:
     name: spacy
   epsilon: 0.09
   threshold: 0.11
+  redundancy_tuner: 1.0

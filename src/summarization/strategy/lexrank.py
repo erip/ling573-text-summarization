@@ -33,10 +33,9 @@ class AbstractSummarizer(object):
         :param rating: sentence rating
         :param args:
         :param kwargs: tuple of final summary sentences
-        :return:
+        :return: sentences sorted by descending order of lexrank ratings
         """
-        #TODO consider moving max_word_count here from the lexrank driver. Post discussion around where it belongs. Leaving here for now as changing it is not important
-        #TODO why args and kwargs??
+
         rate = rating
         if isinstance(rating, dict):
             assert not args and not kwargs
@@ -149,3 +148,28 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
             p_vector = next_p
 
         return p_vector
+
+
+    def remove_duplicate_sent(self, sentences, redundancy_threshold):
+        """Remove sentences that have high similarity to top sentences - must be called after summary candidate are generated"""
+
+        final_sentences_list = []
+        sent_idx_to_remove = []
+
+        sentences_count = len(sentences)
+        matrix = np.zeros((sentences_count, sentences_count))
+
+        for row_idx, col_idx in product(range(sentences_count), repeat=2):
+            matrix[row_idx, col_idx] = self._cosine_similarity(embedder, sentences[row_idx],
+                                                              sentences[col_idx])
+
+
+        for i in range(0, len(sentences)-1):
+            for j in range(i+1, len(sentences)):
+                if matrix[i][j] >= redundancy_threshold: #add to result if less than threshold; else remove
+                    sent_idx_to_remove.append(j) #adding sent index
+
+        final_sentences_list = [sentences[idx] for idx in range(0, sentences_count) if idx not in sent_idx_to_remove]
+
+        #list of sentence objects
+        return final_sentences_list
