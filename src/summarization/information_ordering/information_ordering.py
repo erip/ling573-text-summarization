@@ -11,6 +11,11 @@ from . import Sentence
 
 from typing import Dict, Iterable
 
+from ..utils import tfidf_embedder
+from ..utils import spacy_embedder
+from ..utils import embedder
+
+
 class InformationOrderer(object):
     def __init__(self, experts: Iterable[Expert], expert_weights: Dict[str, float], threshold: float=0.5):
         """
@@ -35,6 +40,14 @@ class InformationOrderer(object):
             raise ValueError("The confidences of the experts' weights should sum to 1.0")
 
         self.expert_weights = expert_weights
+
+    EMBEDDER_CONFIG_KEY = 'embedder'
+
+    def set_embedder(self, config):
+        """Given config, set the embedder config and embedder"""
+        embedder_config = config.get(InformationOrderer.EMBEDDER_CONFIG_KEY)
+
+        return embedder.Embedder.from_config(embedder_config, self.nlp, raw_sentences)
 
 
     def order(self, doc1: Sentence, doc2: Sentence, partial_summary: Iterable[Sentence]):
