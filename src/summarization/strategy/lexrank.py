@@ -159,6 +159,9 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         sentences_count = len(sentences)
         matrix = np.zeros((sentences_count, sentences_count))
 
+        raw_sentences = [sent.text for sent in sentences]
+        embedder = Embedder.from_config(self.embedder_config, self.nlp, raw_sentences)
+
         for row_idx, col_idx in product(range(sentences_count), repeat=2):
             matrix[row_idx, col_idx] = self._cosine_similarity(embedder, sentences[row_idx],
                                                               sentences[col_idx])
