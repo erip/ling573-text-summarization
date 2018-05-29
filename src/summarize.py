@@ -6,7 +6,7 @@ import yaml
 
 from summarization.strategy import SummarizationStrategy, LexRankSummarizationStrategy
 from summarization.utils import Embedder, SpacyEmbedder, TfidfEmbedder
-from summarization.information_ordering import InformationOrderer, ChronologicalExpert
+from summarization.information_ordering import InformationOrderer, ChronologicalExpert, TopicalClosenessExpert
 from summarization import Summarizer
 
 from corpus import Corpus
@@ -31,7 +31,10 @@ def make_filename(topic_id, num_words):
 def setup_information_orderer():
 
     chronological_expert = ChronologicalExpert()
-    experts = { chronological_expert }
+    topical_expert = TopicalClosenessExpert()
+    #experts = { chronological_expert, topical_expert}
+    #weights = { ChronologicalExpert.name: 1.0 , TopicalClosenessExpert.name: 0.0 }
+    experts = { chronological_expert } #testing chronological with topical
     weights = { ChronologicalExpert.name: 1.0 }
 
     return InformationOrderer(experts, weights)
@@ -52,18 +55,18 @@ if __name__ == "__main__":
 
     print("Reading corpus...")
     corpus = Corpus.from_config(config, nlp)
- 
+
     print("Reading summarizer...")
     summarizer = Summarizer.from_config(config, nlp)
 
     print("Creating orderer...")
     information_orderer = setup_information_orderer()
-    
+
     num_topics = len(corpus.topics)
 
     for i, topic in enumerate(corpus.topics, 1):
         candidates = summarizer.summarize(topic)
-      
+
         summary = information_orderer.order_all(candidates)
         print("Summarized {0}/{1} topics".format(i, num_topics))
         with open('{0}{1}'.format(args.output_dir, make_filename(topic.id(), config.get(Summarizer.WORD_LIMIT_KEY))), 'w') as outfile:
