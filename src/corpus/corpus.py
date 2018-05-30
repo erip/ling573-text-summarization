@@ -88,9 +88,17 @@ class Corpus(object):
         of the document, the headline text, and an iterator of all the text
         in the document.
         """
+
+        # Create an artificial root
+        xml_root = ET.Element("root")
+
         parser = ET.XMLParser(recover=True)
         with gzip.open(doc.get_path()) as f:
-            xml_root = ET.parse(f, parser=parser)
+            tree = ET.parse(f, parser=parser)
+            # Hacky way to artificially insert a root.
+            fake_root = tree.getroot()
+            xml_root.insert(0, fake_root)
+
             curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
             print("Current doc is {0}".format(curr_doc))
             doc_timestamp = None
