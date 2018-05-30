@@ -169,7 +169,7 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
 
         for i in range(0, len(sentences)-1):
             for j in range(i+1, len(sentences)):
-                if matrix[i][j] >= redundancy_threshold: #add to result if less than threshold; else remove
+                if matrix[i][j] >= float(redundancy_threshold): #add to result if less than threshold; else remove
                     sent_idx_to_remove.append(j) #adding sent index
 
         final_sentences_list = [sentences[idx] for idx in range(0, sentences_count) if idx not in sent_idx_to_remove]
