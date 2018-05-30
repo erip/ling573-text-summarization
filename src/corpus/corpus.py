@@ -1,23 +1,19 @@
 
-import lxml.etree as ET
-from bs4 import BeautifulSoup
-
-from .corpus_document import CorpusDocument
-from .story import Story
-from .topic import Topic
-from .docset import Docset
-
-from datetime import datetime
-
+import gzip
 import logging
-
+from datetime import datetime
 from typing import Dict, List
 
+import lxml.etree as ET
+from bs4 import BeautifulSoup
 from spacy.language import Language
 
 from . import Sentence
+from .corpus_document import CorpusDocument
+from .docset import Docset
+from .story import Story
+from .topic import Topic
 
-import re
 
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
@@ -93,12 +89,13 @@ class Corpus(object):
         in the document.
         """
         parser = ET.XMLParser(recover=True)
-        xml_root = ET.parse(doc.get_path(), parser=parser)
-        curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
-        doc_timestamp = None
-        headline_text = "HEADLINE"
-        text_iterator = curr_doc.find("TEXT").itertext()
-        return curr_doc, doc_timestamp, headline_text, text_iterator
+        with gzip.open(doc.get_path()) as f:
+            xml_root = ET.parse(f, parser=parser)
+            curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+            doc_timestamp = None
+            headline_text = "HEADLINE"
+            text_iterator = curr_doc.find("TEXT").itertext()
+            return curr_doc, doc_timestamp, headline_text, text_iterator
 
     def __process_aquaint_document(self, doc: CorpusDocument):
         """The specific processing function for an aquaint document.
