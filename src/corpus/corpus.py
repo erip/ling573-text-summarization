@@ -92,6 +92,7 @@ class Corpus(object):
         with gzip.open(doc.get_path()) as f:
             xml_root = ET.parse(f, parser=parser)
             curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+            print("Current doc is {0}".format(curr_doc))
             doc_timestamp = None
             headline_text = "HEADLINE"
             text_iterator = curr_doc.find("TEXT").itertext()
