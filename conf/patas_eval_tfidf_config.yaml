@@ -1,5 +1,5 @@
 # clusterPath is the path to the task data definition file
-clusterPath: /dropbox/17-18/573/Data/Documents/training/2009/UpdateSumm09_test_topics.xml
+clusterPath: /dropbox/17-18/573/Data/Documents/evaltest/GuidedSumm11_test_topics.xml
 # Paths to directories containing documents
 documentCollections:
   aquaint: /dropbox/17-18/573/AQUAINT/

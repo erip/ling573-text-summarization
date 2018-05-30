@@ -2,10 +2,12 @@
 import os
 import gzip
 import logging
+import itertools
 from datetime import datetime
 from typing import Dict, List
 
 import lxml.etree as ET
+from lxml import html
 from bs4 import BeautifulSoup
 from spacy.language import Language
 
@@ -83,16 +85,21 @@ class Corpus(object):
         return Story(headline, sents)
 
     def __process_gw_document(self, doc: CorpusDocument):
-        xml_root = ET.Element("root")
-
         parser = ET.XMLParser(recover=True)
-        with gzip.open(os.path.join(self.base_paths.get("GW"), doc.get_path())) as f:
-            tree = ET.parse(f, parser=parser)
-            # Hacky way to artificially insert a root.
-            fake_root = tree.getroot()
-            xml_root.insert(0, fake_root)
-
-            curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+        path = os.path.join(self.base_paths.get("gw"), doc.get_path().replace(".xml", ".gz"))
+        with gzip.open(path, 'rt') as f:
+            fragments = html.fragments_fromstring(f.read(), parser=parser)
+            print("Trying to find '{0}' in '{1}'".format(doc.id(), path))
+            curr_doc = None
+            for frag in fragments:
+                try:
+                   _id = frag.get("id")
+                   if doc.id() == _id: 
+                       curr_doc = frag
+                except AttributeError:
+                    print(ET.tostring(frag))
+            if curr_doc is None: 
+                raise ValueError("Doc '{0}' not found in '{1}'".format(doc.id(), path))
             print("Current doc is {0}".format(curr_doc))
             doc_timestamp = None
             headline_text = "HEADLINE"
