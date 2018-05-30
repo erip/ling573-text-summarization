@@ -99,6 +99,7 @@ class Corpus(object):
             fake_root = tree.getroot()
             xml_root.insert(0, fake_root)
 
+            print("Trying to find '{0}' in '{1}'".format('.//DOC[@id="{0}"]'.format(doc.id()), doc.get_path()))
             curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
             print("Current doc is {0}".format(curr_doc))
             doc_timestamp = None
