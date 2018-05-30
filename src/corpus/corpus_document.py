@@ -2,8 +2,7 @@
 import os
 
 class CorpusDocument(object):
-    def __init__(self, base_paths, _id):
-        self.base_paths = base_paths
+    def __init__(self, _id):
         self._id = _id
         self.is_aquaint2 = "_" in _id
         self.is_aquaint = not self.is_aquaint2
@@ -32,9 +31,9 @@ class CorpusDocument(object):
                 groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_XIN_ENG".format(self.yyyy, self.mm, self.dd))
             else:
                 groups = (self.src.lower(), self.yyyy, "{0}{1}{2}_{3}_ENG".format(self.yyyy, self.mm, self.dd, self.src))
-            return os.path.join(self.base_paths["aquaint"], *groups)
+            return os.path.join(*groups)
 
         else:
             groups = ("data", "{0}_{1}".format(self.src, self.lang), "{0}_{1}_{2}{3}.xml".format(self.src, self.lang, self.yyyy, self.mm))
 
-            return os.path.join(self.base_paths["aquaint2"], *map(str.lower, groups))
+            return os.path.join(*map(str.lower, groups))

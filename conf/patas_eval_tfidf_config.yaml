@@ -1,5 +1,5 @@
 # clusterPath is the path to the task data definition file
-clusterPath: /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.xml
+clusterPath: /dropbox/17-18/573/Data/Documents/evaltest/GuidedSumm11_test_topics.xml
 # Paths to directories containing documents
 documentCollections:
   aquaint: /dropbox/17-18/573/AQUAINT/
@@ -10,4 +10,3 @@ strategy:
   name: lexrank
   embedder:
     name: tfidf
-  redundancy_tuner: 1.0

@@ -1,28 +1,28 @@
 
-import lxml.etree as ET
-from bs4 import BeautifulSoup
-
-from .corpus_document import CorpusDocument
-from .story import Story
-from .topic import Topic
-from .docset import Docset
-
-from datetime import datetime
-
+import os
+import gzip
 import logging
-
+import itertools
+from datetime import datetime
 from typing import Dict, List
 
+import lxml.etree as ET
+from lxml import html
+from bs4 import BeautifulSoup
 from spacy.language import Language
 
 from . import Sentence
+from .corpus_document import CorpusDocument
+from .docset import Docset
+from .story import Story
+from .topic import Topic
 
-import re
 
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
-    def __init__(self, topics, nlp):
+    def __init__(self, topics, base_paths, nlp):
         self.topics = topics
+        self.base_paths = base_paths
         self.nlp = nlp
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
@@ -56,10 +56,10 @@ class Corpus(object):
             docsetA = set()
             docset_id = docsetA_element.get("id")
             for doc in docsetA_element:
-                docsetA.add(CorpusDocument(document_collections, doc.get("id")))
+                docsetA.add(CorpusDocument(doc.get("id")))
             docset = Docset(docset_id, docsetA)
             topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
-        return cls(topics, nlp)
+        return cls(topics, document_collections, nlp)
 
 
     def __process_document(self, doc: CorpusDocument):
@@ -84,6 +84,28 @@ class Corpus(object):
         sents = { Sentence(doc.id(), doc_timestamp, sent, i) for i, sent in enumerate(self.nlp(raw_body).sents) }
         return Story(headline, sents)
 
+    def __process_gw_document(self, doc: CorpusDocument):
+        parser = ET.XMLParser(recover=True)
+        path = os.path.join(self.base_paths.get("gw"), doc.get_path().replace(".xml", ".gz"))
+        with gzip.open(path, 'rt') as f:
+            fragments = html.fragments_fromstring(f.read(), parser=parser)
+            print("Trying to find '{0}' in '{1}'".format(doc.id(), path))
+            curr_doc = None
+            for frag in fragments:
+                try:
+                   _id = frag.get("id")
+                   if doc.id() == _id: 
+                       curr_doc = frag
+                except AttributeError:
+                    print(ET.tostring(frag))
+            if curr_doc is None: 
+                raise ValueError("Doc '{0}' not found in '{1}'".format(doc.id(), path))
+            print("Current doc is {0}".format(curr_doc))
+            doc_timestamp = None
+            headline_text = "HEADLINE"
+            text_iterator = curr_doc.find("TEXT").itertext()
+            return curr_doc, doc_timestamp, headline_text, text_iterator
+
     def __process_aquaint2_document(self, doc: CorpusDocument):
         """The specific processing function for an aquaint 2 document.
 
@@ -92,13 +114,18 @@ class Corpus(object):
         of the document, the headline text, and an iterator of all the text
         in the document.
         """
-        parser = ET.XMLParser(recover=True)
-        xml_root = ET.parse(doc.get_path(), parser=parser)
-        curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
-        doc_timestamp = None
-        headline_text = "HEADLINE"
-        text_iterator = curr_doc.find("TEXT").itertext()
-        return curr_doc, doc_timestamp, headline_text, text_iterator
+
+        # Create an artificial root
+        try:
+            parser = ET.XMLParser(recover=True)
+            xml_root = ET.parse(os.path.join(self.base_paths.get("aquaint2"), doc.get_path()), parser=parser)
+            curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+            doc_timestamp = None
+            headline_text = "HEADLINE"
+            text_iterator = curr_doc.find("TEXT").itertext()
+            return curr_doc, doc_timestamp, headline_text, text_iterator
+        except:
+            return self.__process_gw_document(doc)
 
     def __process_aquaint_document(self, doc: CorpusDocument):
         """The specific processing function for an aquaint document.
@@ -108,7 +135,7 @@ class Corpus(object):
         of the document, the headline text, and an iterator of all the text
         in the document.
         """
-        with open(doc.get_path(), "r") as infile:
+        with open(os.path.join(self.base_paths.get("aquaint"), doc.get_path()), "r") as infile:
             xml_root = BeautifulSoup(infile, "lxml")
         curr_doc = xml_root.find("docno", text=" {} ".format(doc.id())).parent
         time = curr_doc.find("date_time")
