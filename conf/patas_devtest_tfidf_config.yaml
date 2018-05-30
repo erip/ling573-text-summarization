@@ -4,7 +4,7 @@ clusterPath: /dropbox/17-18/573/Data/Documents/devtest/GuidedSumm10_test_topics.
 documentCollections:
   aquaint: /dropbox/17-18/573/AQUAINT/
   aquaint2: /dropbox/17-18/573/AQUAINT-2/
-
+  gw: /dropbox/17-18/573/ENG-GW/
 word_limit: 100
 strategy:
   name: lexrank

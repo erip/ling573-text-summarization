@@ -1,4 +1,5 @@
 
+import os
 import gzip
 import logging
 from datetime import datetime
@@ -17,8 +18,9 @@ from .topic import Topic
 
 class Corpus(object):
     """Stores information about the corpus, including topic descriptions and docsets."""
-    def __init__(self, topics, nlp):
+    def __init__(self, topics, base_paths, nlp):
         self.topics = topics
+        self.base_paths = base_paths
         self.nlp = nlp
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
@@ -52,10 +54,10 @@ class Corpus(object):
             docsetA = set()
             docset_id = docsetA_element.get("id")
             for doc in docsetA_element:
-                docsetA.add(CorpusDocument(document_collections, doc.get("id")))
+                docsetA.add(CorpusDocument(doc.get("id")))
             docset = Docset(docset_id, docsetA)
             topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
-        return cls(topics, nlp)
+        return cls(topics, document_collections, nlp)
 
 
     def __process_document(self, doc: CorpusDocument):
@@ -80,6 +82,23 @@ class Corpus(object):
         sents = { Sentence(doc.id(), doc_timestamp, sent, i) for i, sent in enumerate(self.nlp(raw_body).sents) }
         return Story(headline, sents)
 
+    def __process_gw_document(self, doc: CorpusDocument):
+        xml_root = ET.Element("root")
+
+        parser = ET.XMLParser(recover=True)
+        with gzip.open(os.path.join(self.base_paths.get("GW"), doc.get_path())) as f:
+            tree = ET.parse(f, parser=parser)
+            # Hacky way to artificially insert a root.
+            fake_root = tree.getroot()
+            xml_root.insert(0, fake_root)
+
+            curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
+            print("Current doc is {0}".format(curr_doc))
+            doc_timestamp = None
+            headline_text = "HEADLINE"
+            text_iterator = curr_doc.find("TEXT").itertext()
+            return curr_doc, doc_timestamp, headline_text, text_iterator
+
     def __process_aquaint2_document(self, doc: CorpusDocument):
         """The specific processing function for an aquaint 2 document.
 
@@ -90,22 +109,16 @@ class Corpus(object):
         """
 
         # Create an artificial root
-        xml_root = ET.Element("root")
-
-        parser = ET.XMLParser(recover=True)
-        with gzip.open(doc.get_path()) as f:
-            tree = ET.parse(f, parser=parser)
-            # Hacky way to artificially insert a root.
-            fake_root = tree.getroot()
-            xml_root.insert(0, fake_root)
-
-            print("Trying to find '{0}' in '{1}'".format('.//DOC[@id="{0}"]'.format(doc.id()), doc.get_path()))
+        try:
+            parser = ET.XMLParser(recover=True)
+            xml_root = ET.parse(os.path.join(self.base_paths.get("aquaint2"), doc.get_path()), parser=parser)
             curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
-            print("Current doc is {0}".format(curr_doc))
             doc_timestamp = None
             headline_text = "HEADLINE"
             text_iterator = curr_doc.find("TEXT").itertext()
             return curr_doc, doc_timestamp, headline_text, text_iterator
+        except:
+            return self.__process_gw_document(doc)
 
     def __process_aquaint_document(self, doc: CorpusDocument):
         """The specific processing function for an aquaint document.
@@ -115,7 +128,7 @@ class Corpus(object):
         of the document, the headline text, and an iterator of all the text
         in the document.
         """
-        with open(doc.get_path(), "r") as infile:
+        with open(os.path.join(self.base_paths.get("aquaint"), doc.get_path()), "r") as infile:
             xml_root = BeautifulSoup(infile, "lxml")
         curr_doc = xml_root.find("docno", text=" {} ".format(doc.id())).parent
         time = curr_doc.find("date_time")
