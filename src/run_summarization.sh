@@ -19,12 +19,7 @@ vec_model_path=${6:-""}
 rouge_dir="/mnt/dropbox/17-18/573/code/ROUGE/"
 rouge_config_file="../results/rouge_config_${experiment_number}.xml"
 
-if [ vec_model_path = "" ]
-then
-    python3 summarize.py -c ${config_file} -d ${output_dir}
-else
-    python3 summarize.py -c ${config_file} -d ${output_dir} -m ${vec_model_path}
-fi
+python3 summarize.py -c ${config_file} -d ${output_dir}
 
 # generate ROUGE config file
 python3 "${rouge_dir}/create_config.py" ${output_dir} ${model_dir} ${rouge_config_file}
