@@ -47,10 +47,22 @@ Because our code uses bleeding-edge features of Python (like the `typing` module
 Python 3.6 is the python version when running the code. On patas, this can be done by adding  
 `export PATH="/opt/python-3.6/bin/:$PATH"` to your `~/.bashrc` (be sure to `. ~/.bashrc` your first time).
 
-To run `run_summarization.sh` on condor: 
+To run `run_summarization.sh` on condor with devtest: 
 
 ```bash
 condor_submit D4_tfidf.cmd
+```
+
+or simple
+
+```bash
+condor_submit D4.cmd
+```
+
+To run on evaltest:
+
+```bash
+condor_submit D4_tfidf_eval.cmd
 ```
 
 This runs the best performing of the permutations of the system. All the varied permutations are configurable via 

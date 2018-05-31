@@ -1,0 +1,977 @@
+Reading config...
+Reading corpus...
+Processing 44 Topics in Corpus
+Processing 10 Docs in Topic
+Trying to find 'LTW_ENG_20070108.0006' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9358b6c8>
+Trying to find 'NYT_ENG_20070307.0269' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab9368b748>
+Trying to find 'APW_ENG_20070124.0065' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93781948>
+Trying to find 'AFP_ENG_20070118.0496' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab936ee548>
+Trying to find 'APW_ENG_20070316.1531' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93739c08>
+Trying to find 'APW_ENG_20070306.0257' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93698e48>
+Trying to find 'LTW_ENG_20070110.0053' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab7afa5b88>
+Trying to find 'NYT_ENG_20070107.0108' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93688748>
+Trying to find 'NYT_ENG_20070309.0019' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93693908>
+Trying to find 'APW_ENG_20070214.0271' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab936e0288>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20070630.0152' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab936adb08>
+Trying to find 'AFP_ENG_20070630.0363' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9374bbc8>
+Trying to find 'XIN_ENG_20070630.0187' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab936a0dc8>
+Trying to find 'XIN_ENG_20070630.0171' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab936a7a08>
+Trying to find 'NYT_ENG_20070630.0124' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93738508>
+Trying to find 'AFP_ENG_20070630.0365' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93717fc8>
+Trying to find 'AFP_ENG_20070630.0269' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab937d8c48>
+Trying to find 'XIN_ENG_20070630.0164' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9372d948>
+Trying to find 'AFP_ENG_20070630.0364' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9375fdc8>
+Trying to find 'XIN_ENG_20070630.0217' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93730748>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070821.0383' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab93746f08>
+Trying to find 'XIN_ENG_20070607.0461' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab936f1f08>
+Trying to find 'AFP_ENG_20070206.0414' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab937062c8>
+Trying to find 'XIN_ENG_20071019.0243' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200710.gz'
+Current doc is <Element DOC at 0x2aab936ad7c8>
+Trying to find 'APW_ENG_20070608.1530' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab936b9488>
+Trying to find 'LTW_ENG_20070222.0004' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93703c08>
+Trying to find 'XIN_ENG_20070206.0280' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab937007c8>
+Trying to find 'NYT_ENG_20071017.0071' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200710.gz'
+Current doc is <Element DOC at 0x2aab93769948>
+Trying to find 'APW_ENG_20070608.0216' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab936c0c48>
+Trying to find 'NYT_ENG_20070214.0046' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab936ac808>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070122.0128' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937ac948>
+Trying to find 'APW_ENG_20070125.0916' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937e71c8>
+Trying to find 'AFP_ENG_20070117.0267' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937a9648>
+Trying to find 'XIN_ENG_20070122.0190' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab936be3c8>
+Trying to find 'APW_ENG_20070121.0254' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93771e88>
+Trying to find 'AFP_ENG_20070122.0069' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9375f448>
+Trying to find 'AFP_ENG_20070125.0743' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab936d4588>
+Trying to find 'APW_ENG_20070124.0423' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937e7088>
+Trying to find 'AFP_ENG_20070122.0002' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937aa588>
+Trying to find 'APW_ENG_20070122.0198' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9378f488>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20080316.0266' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab936c6608>
+Trying to find 'APW_ENG_20080316.0086' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab937cd608>
+Trying to find 'APW_ENG_20080315.1491' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab936d27c8>
+Trying to find 'APW_ENG_20080316.1130' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab9376a0c8>
+Trying to find 'NYT_ENG_20080316.0231' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab936a4488>
+Trying to find 'LTW_ENG_20080316.0053' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab936d4208>
+Trying to find 'APW_ENG_20080315.1422' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab9376b2c8>
+Trying to find 'APW_ENG_20080316.0792' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab93774508>
+Trying to find 'NYT_ENG_20080316.0191' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab936cab48>
+Trying to find 'LTW_ENG_20080316.0047' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200803.gz'
+Current doc is <Element DOC at 0x2aab936b5248>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070127.0103' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93779a08>
+Trying to find 'XIN_ENG_20070629.0237' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab938450c8>
+Trying to find 'APW_ENG_20070610.0133' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9384cfc8>
+Trying to find 'XIN_ENG_20070308.0026' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab936d7088>
+Trying to find 'XIN_ENG_20070114.0054' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9382fcc8>
+Trying to find 'XIN_ENG_20070702.0010' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93599388>
+Trying to find 'XIN_ENG_20070628.0129' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93847948>
+Trying to find 'XIN_ENG_20070129.0208' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937d9408>
+Trying to find 'XIN_ENG_20070629.0267' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9382f7c8>
+Trying to find 'APW_ENG_20070618.0037' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab937b7808>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20080513.0052' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab9375c4c8>
+Trying to find 'XIN_ENG_20080513.0375' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab937646c8>
+Trying to find 'AFP_ENG_20080512.0153' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab937a0488>
+Trying to find 'XIN_ENG_20080513.0150' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab93765e08>
+Trying to find 'XIN_ENG_20080513.0172' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab93768408>
+Trying to find 'XIN_ENG_20080513.0143' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab9376ccc8>
+Trying to find 'AFP_ENG_20080512.0212' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab937a7488>
+Trying to find 'AFP_ENG_20080513.0199' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab937bba48>
+Trying to find 'XIN_ENG_20080513.0097' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab93773248>
+Trying to find 'AFP_ENG_20080512.0198' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab937af1c8>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070802.1609' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9377db08>
+Trying to find 'APW_ENG_20070802.0825' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9373c8c8>
+Trying to find 'AFP_ENG_20070802.0658' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9384ee48>
+Trying to find 'AFP_ENG_20070802.0631' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9384e788>
+Trying to find 'APW_ENG_20070802.1275' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab934b8148>
+Trying to find 'AFP_ENG_20070802.0667' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab934a0f08>
+Trying to find 'APW_ENG_20070802.0650' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9352aac8>
+Trying to find 'APW_ENG_20070802.0936' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9352a348>
+Trying to find 'AFP_ENG_20070802.0663' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab934a0f08>
+Trying to find 'AFP_ENG_20070802.0642' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9352a388>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20071115.0155' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93857ec8>
+Trying to find 'AFP_ENG_20071116.0074' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938645c8>
+Trying to find 'AFP_ENG_20071116.0162' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93823c48>
+Trying to find 'XIN_ENG_20071116.0023' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab9382d148>
+Trying to find 'XIN_ENG_20071116.0210' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93833108>
+Trying to find 'AFP_ENG_20071115.0634' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938669c8>
+Trying to find 'AFP_ENG_20071116.0116' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab9382a1c8>
+Trying to find 'AFP_ENG_20071115.0294' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93865408>
+Trying to find 'APW_ENG_20071116.0307' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938489c8>
+Trying to find 'XIN_ENG_20071115.0304' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93835f48>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070220.0594' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93892408>
+Trying to find 'APW_ENG_20070224.0158' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938d59c8>
+Trying to find 'NYT_ENG_20070223.0170' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938d0a08>
+Trying to find 'LTW_ENG_20070222.0119' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab937c3c08>
+Trying to find 'LTW_ENG_20070222.0002' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93894e88>
+Trying to find 'LTW_ENG_20070224.0090' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93862888>
+Trying to find 'LTW_ENG_20070223.0147' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93861fc8>
+Trying to find 'LTW_ENG_20070221.0121' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93861708>
+Trying to find 'LTW_ENG_20070224.0089' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93875948>
+Trying to find 'LTW_ENG_20070223.0118' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9387a948>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20070730.0197' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab938c6dc8>
+Trying to find 'NYT_ENG_20070727.0221' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab938c3348>
+Trying to find 'APW_ENG_20070726.0948' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93902cc8>
+Trying to find 'AFP_ENG_20070731.0643' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93907488>
+Trying to find 'NYT_ENG_20070731.0236' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab937e3508>
+Trying to find 'NYT_ENG_20070730.0133' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab938a3f08>
+Trying to find 'NYT_ENG_20070727.0080' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab9389ee08>
+Trying to find 'APW_ENG_20070730.0699' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93949c88>
+Trying to find 'AFP_ENG_20070730.0133' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93910f08>
+Trying to find 'APW_ENG_20070726.1576' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab9392fc88>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070207.0611' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938d43c8>
+Trying to find 'AFP_ENG_20070228.0283' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab939976c8>
+Trying to find 'XIN_ENG_20070407.0175' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab938d2cc8>
+Trying to find 'APW_ENG_20070228.0381' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9392d588>
+Trying to find 'LTW_ENG_20070227.0105' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93812e88>
+Trying to find 'NYT_ENG_20070226.0111' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938d1888>
+Trying to find 'AFP_ENG_20070327.0193' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab938f3fc8>
+Trying to find 'AFP_ENG_20070227.0691' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93969f08>
+Trying to find 'APW_ENG_20070226.0895' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9392c348>
+Trying to find 'APW_ENG_20070228.0917' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93909b48>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070214.0108' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93827cc8>
+Trying to find 'AFP_ENG_20070215.0125' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938407c8>
+Trying to find 'AFP_ENG_20070215.0143' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93844c08>
+Trying to find 'APW_ENG_20070213.1627' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab939327c8>
+Trying to find 'AFP_ENG_20070214.0712' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93849b88>
+Trying to find 'AFP_ENG_20070215.0111' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93852548>
+Trying to find 'NYT_ENG_20070215.0007' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938cf2c8>
+Trying to find 'AFP_ENG_20070214.0627' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93859848>
+Trying to find 'XIN_ENG_20070215.0093' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938473c8>
+Trying to find 'AFP_ENG_20070212.0504' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93836ec8>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070208.0824' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93832248>
+Trying to find 'AFP_ENG_20070413.0233' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93853e08>
+Trying to find 'APW_ENG_20070329.0207' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93937e88>
+Trying to find 'APW_ENG_20070110.0490' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9383aa08>
+Trying to find 'APW_ENG_20070501.0682' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab937d2d88>
+Trying to find 'APW_ENG_20070412.0394' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab939a8148>
+Trying to find 'AFP_ENG_20070329.0065' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab9394b1c8>
+Trying to find 'APW_ENG_20070222.0162' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9397e488>
+Trying to find 'NYT_ENG_20070425.0166' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93832948>
+Trying to find 'AFP_ENG_20070412.0099' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93823d08>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070507.0189' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab939bcb08>
+Trying to find 'APW_ENG_20070131.0303' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab939fcb48>
+Trying to find 'AFP_ENG_20070126.0424' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab939fc348>
+Trying to find 'APW_ENG_20070501.0292' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab7a2179c8>
+Trying to find 'APW_ENG_20070126.1027' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93a0f708>
+Trying to find 'AFP_ENG_20070105.0425' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab7af61b08>
+Trying to find 'AFP_ENG_20070530.0392' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab93933f88>
+Trying to find 'APW_ENG_20070507.0378' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab9392c108>
+Trying to find 'AFP_ENG_20070425.0620' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93841e08>
+Trying to find 'APW_ENG_20070126.0696' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab939dad08>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070222.0088' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93855908>
+Trying to find 'APW_ENG_20070206.0259' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938365c8>
+Trying to find 'XIN_ENG_20070109.0030' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab7af7a588>
+Trying to find 'AFP_ENG_20070221.0738' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93924c08>
+Trying to find 'XIN_ENG_20070118.0130' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93950488>
+Trying to find 'XIN_ENG_20070103.0095' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab934a0188>
+Trying to find 'AFP_ENG_20070228.0760' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938f54c8>
+Trying to find 'XIN_ENG_20070226.0084' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9397df48>
+Trying to find 'XIN_ENG_20070217.0205' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab939932c8>
+Trying to find 'XIN_ENG_20070111.0222' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9392ecc8>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070730.0032' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93960d08>
+Trying to find 'XIN_ENG_20070801.0281' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab93761e48>
+Trying to find 'XIN_ENG_20070731.0032' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab9396ec88>
+Trying to find 'AFP_ENG_20070729.0335' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab939049c8>
+Trying to find 'APW_ENG_20070801.0936' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9352a848>
+Trying to find 'XIN_ENG_20070801.0269' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab936abcc8>
+Trying to find 'AFP_ENG_20070730.0514' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93a0ddc8>
+Trying to find 'AFP_ENG_20070730.0421' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93855648>
+Trying to find 'AFP_ENG_20070801.0321' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab936abbc8>
+Trying to find 'XIN_ENG_20070731.0279' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab9384fb48>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070803.0007' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab934e0648>
+Trying to find 'NYT_ENG_20070801.0173' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab937618c8>
+Trying to find 'NYT_ENG_20070618.0158' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93a37648>
+Trying to find 'APW_ENG_20070802.1294' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab93882cc8>
+Trying to find 'NYT_ENG_20070725.0294' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200707.gz'
+Current doc is <Element DOC at 0x2aab93a50e88>
+Trying to find 'NYT_ENG_20070615.0016' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93a340c8>
+Trying to find 'LTW_ENG_20070803.0053' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9384e5c8>
+Trying to find 'LTW_ENG_20070803.0019' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9373cd88>
+Trying to find 'APW_ENG_20070801.1518' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab9377d308>
+Trying to find 'NYT_ENG_20070622.0219' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab939e2a08>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20080429.0005' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200804.gz'
+Current doc is <Element DOC at 0x2aab939f1b48>
+Trying to find 'APW_ENG_20080528.0096' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab938e4948>
+Trying to find 'AFP_ENG_20080715.0034' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200807.gz'
+Current doc is <Element DOC at 0x2aab93a19388>
+Trying to find 'APW_ENG_20080715.0175' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200807.gz'
+Current doc is <Element DOC at 0x2aab93841c48>
+Trying to find 'APW_ENG_20080403.1262' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200804.gz'
+Current doc is <Element DOC at 0x2aab939def48>
+Trying to find 'NYT_ENG_20080711.0001' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200807.gz'
+Current doc is <Element DOC at 0x2aab939de1c8>
+Trying to find 'APW_ENG_20080527.1344' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab938fac08>
+Trying to find 'NYT_ENG_20080707.0246' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200807.gz'
+Current doc is <Element DOC at 0x2aab938635c8>
+Trying to find 'NYT_ENG_20080529.0020' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab93a10088>
+Trying to find 'NYT_ENG_20080126.0005' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200801.gz'
+Current doc is <Element DOC at 0x2aab93a13108>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20061002.1245' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab9374d188>
+Trying to find 'APW_ENG_20061002.1126' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab934fdbc8>
+Trying to find 'LTW_ENG_20061003.0131' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab9352a948>
+Trying to find 'APW_ENG_20061005.1272' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab939fe7c8>
+Trying to find 'AFP_ENG_20061002.0523' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab934fd508>
+Trying to find 'LTW_ENG_20061003.0126' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab9352acc8>
+Trying to find 'APW_ENG_20061004.1882' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab93a01688>
+Trying to find 'APW_ENG_20061003.0134' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab9358be88>
+Trying to find 'APW_ENG_20061004.1377' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab93761f88>
+Trying to find 'APW_ENG_20061003.1335' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200610.gz'
+Current doc is <Element DOC at 0x2aab7af7adc8>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20070416.0286' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab9396e3c8>
+Trying to find 'XIN_ENG_20070417.0319' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab9395fa88>
+Trying to find 'LTW_ENG_20070417.0131' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab939a6188>
+Trying to find 'AFP_ENG_20070416.0634' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab938ec408>
+Trying to find 'AFP_ENG_20070417.0268' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab938f4948>
+Trying to find 'APW_ENG_20070416.1219' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93918a08>
+Trying to find 'AFP_ENG_20070416.0570' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab938eb608>
+Trying to find 'XIN_ENG_20070416.0312' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93967c48>
+Trying to find 'XIN_ENG_20070417.0193' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93972c88>
+Trying to find 'APW_ENG_20070416.0773' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93ac5f08>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070117.0192' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93a9c648>
+Trying to find 'AFP_ENG_20070220.0705' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938400c8>
+Trying to find 'XIN_ENG_20070213.0088' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9396cb48>
+Trying to find 'AFP_ENG_20070202.0072' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938ae548>
+Trying to find 'AFP_ENG_20070220.0164' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93849448>
+Trying to find 'AFP_ENG_20070212.0043' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93823d88>
+Trying to find 'AFP_ENG_20070123.0339' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93aaef88>
+Trying to find 'AFP_ENG_20070118.0071' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938eecc8>
+Trying to find 'AFP_ENG_20070213.0135' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938e2cc8>
+Trying to find 'AFP_ENG_20070211.0350' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93908088>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20071103.0118' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938ae688>
+Trying to find 'LTW_ENG_20070406.0109' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab93553408>
+Trying to find 'NYT_ENG_20070128.0009' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab939142c8>
+Trying to find 'LTW_ENG_20071214.0121' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab7afa5a08>
+Trying to find 'LTW_ENG_20070921.0056' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200709.gz'
+Current doc is <Element DOC at 0x2aab7af9c808>
+Trying to find 'NYT_ENG_20070403.0242' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab938864c8>
+Trying to find 'NYT_ENG_20071209.0148' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab7af7f6c8>
+Trying to find 'NYT_ENG_20071124.0044' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93916d88>
+Trying to find 'LTW_ENG_20070821.0064' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab939dca48>
+Trying to find 'LTW_ENG_20070222.0148' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab934c1b88>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20070318.0134' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93a9e608>
+Trying to find 'APW_ENG_20070317.0441' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab9383ac48>
+Trying to find 'NYT_ENG_20070319.0212' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93ab1bc8>
+Trying to find 'NYT_ENG_20070318.0013' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93ab2888>
+Trying to find 'APW_ENG_20070318.0073' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93b01748>
+Trying to find 'NYT_ENG_20070319.0211' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93ac2a08>
+Trying to find 'NYT_ENG_20070318.0131' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93ac0748>
+Trying to find 'XIN_ENG_20070318.0206' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93af0dc8>
+Trying to find 'APW_ENG_20070316.1634' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab9382c788>
+Trying to find 'APW_ENG_20070317.0836' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab9384a188>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070102.0074' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938582c8>
+Trying to find 'AFP_ENG_20070101.0317' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93858448>
+Trying to find 'XIN_ENG_20070102.0108' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab84145dc8>
+Trying to find 'APW_ENG_20070102.0086' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab937d0248>
+Trying to find 'XIN_ENG_20070101.0215' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9b752408>
+Trying to find 'AFP_ENG_20070102.0010' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab84145cc8>
+Trying to find 'APW_ENG_20070101.0575' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93858688>
+Trying to find 'XIN_ENG_20070102.0002' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9b752248>
+Trying to find 'APW_ENG_20070102.0100' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938ae148>
+Trying to find 'XIN_ENG_20070102.0055' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab84145ec8>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070615.0356' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93837508>
+Trying to find 'APW_ENG_20070609.0426' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93b0cf08>
+Trying to find 'NYT_ENG_20070409.0066' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab7afad548>
+Trying to find 'AFP_ENG_20070228.0194' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93b34a88>
+Trying to find 'NYT_ENG_20070624.0022' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93b18708>
+Trying to find 'APW_ENG_20070613.1071' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9383dec8>
+Trying to find 'AFP_ENG_20070607.0607' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93afb988>
+Trying to find 'AFP_ENG_20070615.0455' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93838688>
+Trying to find 'AFP_ENG_20070613.0396' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab9384ba88>
+Trying to find 'NYT_ENG_20070430.0144' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200704.gz'
+Current doc is <Element DOC at 0x2aab9382d348>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20081118.0287' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b2a348>
+Trying to find 'XIN_ENG_20081118.0115' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab9384f848>
+Trying to find 'APW_ENG_20081117.0607' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b25c88>
+Trying to find 'AFP_ENG_20081117.0155' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b58f48>
+Trying to find 'APW_ENG_20081118.0341' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b37b88>
+Trying to find 'APW_ENG_20081118.0222' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b3ac08>
+Trying to find 'APW_ENG_20081117.0971' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b3fa08>
+Trying to find 'AFP_ENG_20081118.0306' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200811.gz'
+Current doc is <Element DOC at 0x2aabed05ea88>
+Trying to find 'NYT_ENG_20081118.0137' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200811.gz'
+Current doc is <Element DOC at 0x2aab93b3d948>
+Trying to find 'APW_ENG_20081117.0739' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200811.gz'
+Current doc is <Element DOC at 0x2aabed06be48>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070613.0035' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200706.gz'
+Current doc is <Element DOC at 0x2aabed056bc8>
+Trying to find 'XIN_ENG_20070114.0178' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93852948>
+Trying to find 'LTW_ENG_20070809.0043' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab938b4b48>
+Trying to find 'NYT_ENG_20070806.0068' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200708.gz'
+Current doc is <Element DOC at 0x2aab7afa5288>
+Trying to find 'XIN_ENG_20070612.0291' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab7a119f48>
+Trying to find 'NYT_ENG_20070107.0144' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938f5b48>
+Trying to find 'XIN_ENG_20070907.0247' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200709.gz'
+Current doc is <Element DOC at 0x2aab93b12648>
+Trying to find 'LTW_ENG_20070621.0048' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200706.gz'
+Current doc is <Element DOC at 0x2aab93ad5cc8>
+Trying to find 'NYT_ENG_20070212.0089' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93902b08>
+Trying to find 'AFP_ENG_20070906.0414' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200709.gz'
+Current doc is <Element DOC at 0x2aab93a8cbc8>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20081214.0083' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed061748>
+Trying to find 'AFP_ENG_20081213.0171' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed05ddc8>
+Trying to find 'APW_ENG_20081214.0489' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed044088>
+Trying to find 'AFP_ENG_20081214.0173' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed071ec8>
+Trying to find 'AFP_ENG_20081214.0043' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed072e08>
+Trying to find 'APW_ENG_20081212.1276' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed046148>
+Trying to find 'APW_ENG_20081214.0787' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed054608>
+Trying to find 'NYT_ENG_20081214.0144' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab93ad93c8>
+Trying to find 'LTW_ENG_20081214.0011' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab9394e108>
+Trying to find 'APW_ENG_20081214.0662' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabed06d588>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070916.0825' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200709.gz'
+Current doc is <Element DOC at 0x2aabea98cb08>
+Trying to find 'AFP_ENG_20070916.0089' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200709.gz'
+Current doc is <Element DOC at 0x2aabea971488>
+Trying to find 'APW_ENG_20070921.1011' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200709.gz'
+Current doc is <Element DOC at 0x2aabea9123c8>
+Trying to find 'APW_ENG_20070919.0958' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200709.gz'
+Current doc is <Element DOC at 0x2aab93b408c8>
+Trying to find 'APW_ENG_20070916.0646' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200709.gz'
+Current doc is <Element DOC at 0x2aab93b58308>
+Trying to find 'AFP_ENG_20070914.0631' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200709.gz'
+Current doc is <Element DOC at 0x2aabea974688>
+Trying to find 'APW_ENG_20071015.0731' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200710.gz'
+Current doc is <Element DOC at 0x2aabea97fe08>
+Trying to find 'AFP_ENG_20070918.0028' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200709.gz'
+Current doc is <Element DOC at 0x2aab93b51308>
+Trying to find 'XIN_ENG_20070916.0195' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200709.gz'
+Current doc is <Element DOC at 0x2aabed073308>
+Trying to find 'APW_ENG_20071012.1383' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200710.gz'
+Current doc is <Element DOC at 0x2aabea975088>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20071208.0139' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabed05bc48>
+Trying to find 'APW_ENG_20071207.0597' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea943c48>
+Trying to find 'AFP_ENG_20071207.0436' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabed058d88>
+Trying to find 'NYT_ENG_20071207.0070' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab93991d48>
+Trying to find 'APW_ENG_20071207.1125' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabed063ac8>
+Trying to find 'AFP_ENG_20071207.0505' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabed06efc8>
+Trying to find 'APW_ENG_20071207.0400' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea9430c8>
+Trying to find 'APW_ENG_20071207.0712' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea9c6608>
+Trying to find 'APW_ENG_20071207.0470' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea9437c8>
+Trying to find 'XIN_ENG_20071207.0175' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab93ad9d88>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070112.1673' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea994a88>
+Trying to find 'APW_ENG_20070112.0926' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea992b08>
+Trying to find 'APW_ENG_20070112.0441' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea991d88>
+Trying to find 'AFP_ENG_20070112.0245' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea959f48>
+Trying to find 'APW_ENG_20070112.1131' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea99f688>
+Trying to find 'APW_ENG_20070112.0570' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea99bb48>
+Trying to find 'AFP_ENG_20070112.0384' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea96a0c8>
+Trying to find 'APW_ENG_20070112.1129' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea9a9708>
+Trying to find 'AFP_ENG_20070112.0514' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea97bf48>
+Trying to find 'AFP_ENG_20070112.0278' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea9e1888>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070816.0724' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200708.gz'
+Current doc is <Element DOC at 0x2aabea9d5cc8>
+Trying to find 'NYT_ENG_20070301.0203' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93863b08>
+Trying to find 'APW_ENG_20071011.0919' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200710.gz'
+Current doc is <Element DOC at 0x2aabea9ae348>
+Trying to find 'NYT_ENG_20071011.0192' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200710.gz'
+Current doc is <Element DOC at 0x2aab93547088>
+Trying to find 'NYT_ENG_20071011.0089' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200710.gz'
+Current doc is <Element DOC at 0x2aab9384e848>
+Trying to find 'APW_ENG_20070302.1433' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab934c1b88>
+Trying to find 'APW_ENG_20071011.0885' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200710.gz'
+Current doc is <Element DOC at 0x2aabea9c2048>
+Trying to find 'NYT_ENG_20070928.0204' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200709.gz'
+Current doc is <Element DOC at 0x2aabea9afa08>
+Trying to find 'APW_ENG_20070302.0391' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93991988>
+Trying to find 'NYT_ENG_20071011.0236' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200710.gz'
+Current doc is <Element DOC at 0x2aab93a8c648>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070102.0172' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938de508>
+Trying to find 'AFP_ENG_20070102.0070' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938b49c8>
+Trying to find 'APW_ENG_20070101.0127' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93863808>
+Trying to find 'AFP_ENG_20070103.0074' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab939def88>
+Trying to find 'APW_ENG_20070102.0166' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938deb08>
+Trying to find 'APW_ENG_20070101.0501' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9395ed08>
+Trying to find 'AFP_ENG_20070101.0006' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938d2808>
+Trying to find 'APW_ENG_20070102.0277' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9394db88>
+Trying to find 'APW_ENG_20070102.0109' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9394d248>
+Trying to find 'APW_ENG_20070101.0174' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab934e0a88>
+Processing 10 Docs in Topic
+Trying to find 'LTW_ENG_20070228.0122' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93498dc8>
+Trying to find 'APW_ENG_20070212.1398' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabea9e7e88>
+Trying to find 'AFP_ENG_20070131.0610' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea90ec88>
+Trying to find 'APW_ENG_20070308.1503' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93b31f48>
+Trying to find 'XIN_ENG_20070224.0089' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabea9189c8>
+Trying to find 'AFP_ENG_20070206.0059' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938548c8>
+Trying to find 'AFP_ENG_20070124.0469' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea9d1688>
+Trying to find 'XIN_ENG_20070308.0415' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab93a853c8>
+Trying to find 'LTW_ENG_20070217.0035' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93ad5748>
+Trying to find 'NYT_ENG_20070205.0035' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab7af95888>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20081214.0641' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabea9215c8>
+Trying to find 'AFP_ENG_20081214.0015' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabea947908>
+Trying to find 'LTW_ENG_20081215.0032' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab937d2588>
+Trying to find 'APW_ENG_20081214.0537' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabea92c948>
+Trying to find 'LTW_ENG_20070525.0117' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab9377d988>
+Trying to find 'XIN_ENG_20081215.0049' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab93b45308>
+Trying to find 'LTW_ENG_20081215.0021' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab937d2448>
+Trying to find 'APW_ENG_20081214.0714' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200812.gz'
+Current doc is <Element DOC at 0x2aabea93e108>
+Trying to find 'NYT_ENG_20081214.0102' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab93854608>
+Trying to find 'XIN_ENG_20081215.0041' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200812.gz'
+Current doc is <Element DOC at 0x2aab93b451c8>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20070221.1256' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabeaa62b08>
+Trying to find 'APW_ENG_20070131.1455' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeaae2b88>
+Trying to find 'APW_ENG_20070222.1137' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabeaa3d0c8>
+Trying to find 'AFP_ENG_20070207.0456' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93b45408>
+Trying to find 'XIN_ENG_20070129.0374' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeaa9c548>
+Trying to find 'LTW_ENG_20070226.0052' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab9381c148>
+Trying to find 'AFP_ENG_20070222.0463' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabeaac5b08>
+Trying to find 'XIN_ENG_20070222.0217' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabea9f9448>
+Trying to find 'XIN_ENG_20070202.0303' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93991508>
+Trying to find 'APW_ENG_20070224.0106' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabeaa69e88>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20070207.0460' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93b457c8>
+Trying to find 'AFP_ENG_20070201.0750' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab7af7fc08>
+Trying to find 'NYT_ENG_20070208.0019' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab936ab1c8>
+Trying to find 'APW_ENG_20070416.0075' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200704.gz'
+Current doc is <Element DOC at 0x2aabeaab9248>
+Trying to find 'APW_ENG_20070208.0259' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabea9fab48>
+Trying to find 'APW_ENG_20070207.0141' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200702.gz'
+Current doc is <Element DOC at 0x2aabeaa8fe48>
+Trying to find 'XIN_ENG_20070323.0084' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aabeaaaf688>
+Trying to find 'NYT_ENG_20070106.0077' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab9374d4c8>
+Trying to find 'XIN_ENG_20070213.0051' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab938d2808>
+Trying to find 'NYT_ENG_20070208.0367' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93afc908>
+Processing 10 Docs in Topic
+Trying to find 'NYT_ENG_20080513.0142' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200805.gz'
+Current doc is <Element DOC at 0x2aab9381cec8>
+Trying to find 'AFP_ENG_20080513.0109' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaaa8888>
+Trying to find 'APW_ENG_20080513.1354' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaab8348>
+Trying to find 'XIN_ENG_20080513.0122' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabed03e9c8>
+Trying to find 'AFP_ENG_20080513.0075' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaaac0c8>
+Trying to find 'AFP_ENG_20080514.0043' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaac2b88>
+Trying to find 'APW_ENG_20080513.1181' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaac9e48>
+Trying to find 'AFP_ENG_20080513.0248' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaabcd48>
+Trying to find 'AFP_ENG_20080513.0110' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaabaa88>
+Trying to find 'APW_ENG_20080513.1465' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200805.gz'
+Current doc is <Element DOC at 0x2aabeaace248>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070315.0247' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aabeaa9ea48>
+Trying to find 'XIN_ENG_20070511.0224' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200705.gz'
+Current doc is <Element DOC at 0x2aab93882588>
+Trying to find 'XIN_ENG_20070314.0430' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aabeaaa2308>
+Trying to find 'XIN_ENG_20070418.0108' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200704.gz'
+Current doc is <Element DOC at 0x2aabeaa9b708>
+Trying to find 'XIN_ENG_20070303.0035' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200703.gz'
+Current doc is <Element DOC at 0x2aab939dc7c8>
+Trying to find 'AFP_ENG_20070115.0196' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeaaa4988>
+Trying to find 'XIN_ENG_20070114.0266' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab938de5c8>
+Trying to find 'XIN_ENG_20070201.0069' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab7afa5548>
+Trying to find 'XIN_ENG_20070105.0041' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93761c88>
+Trying to find 'XIN_ENG_20070509.0236' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200705.gz'
+Current doc is <Element DOC at 0x2aabea9c8088>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20080204.0144' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab93a1ad88>
+Trying to find 'XIN_ENG_20080204.0263' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab93a314c8>
+Trying to find 'NYT_ENG_20080204.0244' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab934c1988>
+Trying to find 'XIN_ENG_20080204.0254' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab93a312c8>
+Trying to find 'XIN_ENG_20080204.0134' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab939dce88>
+Trying to find 'XIN_ENG_20080204.0205' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab7a0e5208>
+Trying to find 'XIN_ENG_20080204.0220' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab934c1608>
+Trying to find 'AFP_ENG_20080204.0028' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab9352a348>
+Trying to find 'XIN_ENG_20080204.0093' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab939dc3c8>
+Trying to find 'XIN_ENG_20080204.0104' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200802.gz'
+Current doc is <Element DOC at 0x2aab939dc6c8>
+Processing 10 Docs in Topic
+Trying to find 'APW_ENG_20071107.0922' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200711.gz'
+Current doc is <Element DOC at 0x2aabeaa8f688>
+Trying to find 'AFP_ENG_20071108.0078' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938de688>
+Trying to find 'XIN_ENG_20071107.0355' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab93498f48>
+Trying to find 'AFP_ENG_20071107.0239' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938d2d48>
+Trying to find 'AFP_ENG_20071108.0176' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aabeaac6608>
+Trying to find 'AFP_ENG_20071107.0033' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aab938824c8>
+Trying to find 'AFP_ENG_20071108.0322' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aabeab0b808>
+Trying to find 'APW_ENG_20071107.1071' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200711.gz'
+Current doc is <Element DOC at 0x2aabeab04d88>
+Trying to find 'XIN_ENG_20071108.0247' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200711.gz'
+Current doc is <Element DOC at 0x2aabea9c8948>
+Trying to find 'AFP_ENG_20071107.0119' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200711.gz'
+Current doc is <Element DOC at 0x2aabeaa67a48>
+Processing 10 Docs in Topic
+Trying to find 'XIN_ENG_20070201.0347' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200702.gz'
+Current doc is <Element DOC at 0x2aab93a243c8>
+Trying to find 'XIN_ENG_20070120.0132' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeab20248>
+Trying to find 'XIN_ENG_20070112.0198' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabea920948>
+Trying to find 'NYT_ENG_20070109.0237' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab934983c8>
+Trying to find 'AFP_ENG_20070131.0713' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeab7eec8>
+Trying to find 'LTW_ENG_20070118.0020' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93afcc08>
+Trying to find 'XIN_ENG_20070111.0426' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeaa67788>
+Trying to find 'NYT_ENG_20070131.0064' in '/dropbox/17-18/573/ENG-GW/data/nyt_eng/nyt_eng_200701.gz'
+Current doc is <Element DOC at 0x2aabeab3c148>
+Trying to find 'LTW_ENG_20070118.0007' in '/dropbox/17-18/573/ENG-GW/data/ltw_eng/ltw_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93afcd88>
+Trying to find 'AFP_ENG_20070111.0306' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200701.gz'
+Current doc is <Element DOC at 0x2aab93882e08>
+Processing 10 Docs in Topic
+Trying to find 'AFP_ENG_20071206.0723' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea920908>
+Trying to find 'XIN_ENG_20071206.0363' in '/dropbox/17-18/573/ENG-GW/data/xin_eng/xin_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab93498508>
+Trying to find 'APW_ENG_20071206.1496' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea9fe808>
+Trying to find 'APW_ENG_20071206.1087' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabeaa67188>
+Trying to find 'APW_ENG_20071206.0650' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab937d0048>
+Trying to find 'APW_ENG_20071206.1406' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea9fe508>
+Trying to find 'APW_ENG_20071206.0821' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab93599848>
+Trying to find 'APW_ENG_20071206.0743' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aab93882bc8>
+Trying to find 'AFP_ENG_20071206.0571' in '/dropbox/17-18/573/ENG-GW/data/afp_eng/afp_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea912748>
+Trying to find 'APW_ENG_20071206.1258' in '/dropbox/17-18/573/ENG-GW/data/apw_eng/apw_eng_200712.gz'
+Current doc is <Element DOC at 0x2aabea9fe048>
+Reading summarizer...
+Creating orderer...
+Summarized 1/44 topics
+Summarized 2/44 topics
+Summarized 3/44 topics
+Summarized 4/44 topics
+Summarized 5/44 topics
+Summarized 6/44 topics
+Summarized 7/44 topics
+Summarized 8/44 topics
+Summarized 9/44 topics
+Summarized 10/44 topics
+Summarized 11/44 topics
+Summarized 12/44 topics
+Summarized 13/44 topics
+Summarized 14/44 topics
+Summarized 15/44 topics
+Summarized 16/44 topics
+Summarized 17/44 topics
+Summarized 18/44 topics
+Summarized 19/44 topics
+Summarized 20/44 topics
+Summarized 21/44 topics
+Summarized 22/44 topics
+Summarized 23/44 topics
+Summarized 24/44 topics
+Summarized 25/44 topics
+Summarized 26/44 topics
+Summarized 27/44 topics
+Summarized 28/44 topics
+Summarized 29/44 topics
+Summarized 30/44 topics
+Summarized 31/44 topics
+Summarized 32/44 topics
+Summarized 33/44 topics
+Summarized 34/44 topics
+Summarized 35/44 topics
+Summarized 36/44 topics
+Summarized 37/44 topics
+Summarized 38/44 topics
+Summarized 39/44 topics
+Summarized 40/44 topics
+Summarized 41/44 topics
+Summarized 42/44 topics
+Summarized 43/44 topics
+Summarized 44/44 topics
+Scanning for model files...
+Scanning for system output files...
+Opening "../results/rouge_config_eval.xml" for writing...
+Success.
