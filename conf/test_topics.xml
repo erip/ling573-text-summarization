@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TACtaskdata [
+
+<!-- ======================================================================
+      TAC 2010 Guided Summarization task data definition
+
+      Written 2010-06-18 by Karolina Owczarzak <karolina.owczarzak@nist.gov>
+     ====================================================================== -->
+
+    <!ELEMENT TACtaskdata  (topic+)           >
+    <!ELEMENT topic       (title, docsetA, docsetB) >
+    <!ELEMENT title       (#PCDATA)           >
+    <!ELEMENT docsetA     (doc+)              >
+    <!ELEMENT docsetB     (doc+)              >
+    <!ELEMENT doc          EMPTY              >
+
+    <!ATTLIST TACtaskdata
+                      year    CDATA              #REQUIRED
+		      track   (SUMMARIZATION)    #REQUIRED
+                      task    (GUIDED)           #REQUIRED
+		      dataset (SAMPLE|TEST)      #REQUIRED >
+
+    <!ATTLIST topic  id       ID    #REQUIRED
+		     category CDATA #REQUIRED >
+
+    <!ATTLIST docsetA  id     ID    #REQUIRED >
+
+    <!ATTLIST docsetB  id     ID    #REQUIRED >
+
+    <!ATTLIST doc      id     CDATA #REQUIRED >
+
+
+<!-- ====================================================================== -->
+]>
+
+<TACtaskdata year="2010" track="SUMMARIZATION" task="GUIDED"  dataset="TEST">
+
+<topic id = "D1001A" category = "2">
+
+	<title> Columbine Massacre </title>
+
+	<docsetA id = "D1001A-A">
+		<doc id = "APW19990421.0284" />
+		<doc id = "APW19990422.0082" />
+		<doc id = "APW19990422.0095" />
+		<doc id = "NYT19990423.0262" />
+		<doc id = "NYT19990424.0231" />
+		<doc id = "APW19990425.0023" />
+		<doc id = "APW19990425.0114" />
+		<doc id = "NYT19990425.0192" />
+		<doc id = "APW19990427.0078" />
+		<doc id = "APW19990428.0297" />
+	</docsetA>
+
+	<docsetB id = "D1001A-B">
+		<doc id = "APW19990502.0104" />
+		<doc id = "APW19990503.0128" />
+		<doc id = "APW19990503.0161" />
+		<doc id = "APW19990503.0260" />
+		<doc id = "NYT19990503.0397" />
+		<doc id = "XIE19990504.0020" />
+		<doc id = "XIE19990504.0328" />
+		<doc id = "APW19990506.0070" />
+		<doc id = "APW19990510.0131" />
+		<doc id = "APW19990511.0210" />
+	</docsetB>
+
+</topic>
+
+
+
+
+</TACtaskdata>

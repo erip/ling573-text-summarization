@@ -1,0 +1,14 @@
+# clusterPath is the path to the task data definition file
+clusterPath: /Users/seraphinagoldfarb-tarrant/PycharmProjects/573Homework/ling573-text-summarization/conf/test_topics.xml
+# Paths to directories containing documents
+documentCollections:
+  aquaint: /Users/seraphinagoldfarb-tarrant/PycharmProjects/573Homework/AQUAINT
+  aquaint2: /Users/seraphinagoldfarb-tarrant/PycharmProjects/573Homework/AQUAINT-2/
+
+word_limit: 100
+strategy:
+  name: lexrank
+  embedder:
+    name: tfidf
+  epsilon: 0.1
+  threshold: 0.1
