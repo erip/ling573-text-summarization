@@ -107,8 +107,13 @@ class LexRankSummarizer(AbstractSummarizer): #TODO stemmer and stopwords are now
         degrees = np.zeros((sentences_count, ))
 
         for row_idx, col_idx in product(range(sentences_count), repeat=2):
-            matrix[row_idx, col_idx] = self._cosine_similarity(embedder, sentences[row_idx],
+            sim_score = self._cosine_similarity(embedder, sentences[row_idx],
                                                               sentences[col_idx])
+
+            ##score normalization for sentence length
+            min_sent_length = min(len(sentences[row_idx].tokens()), len(sentences[col_idx].tokens()))
+
+            matrix[row_idx, col_idx] = sim_score/min_sent_length
 
             if matrix[row_idx, col_idx] > threshold:
                 matrix[row_idx, col_idx] = 1.0
