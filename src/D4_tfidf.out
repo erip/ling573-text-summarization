@@ -1,0 +1,101 @@
+Reading config...
+Reading corpus...
+Processing 46 Topics in Corpus
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Processing 10 Docs in Topic
+Reading summarizer...
+Creating orderer...
+Summarized 1/46 topics
+Summarized 2/46 topics
+Summarized 3/46 topics
+Summarized 4/46 topics
+Summarized 5/46 topics
+Summarized 6/46 topics
+Summarized 7/46 topics
+Summarized 8/46 topics
+Summarized 9/46 topics
+Summarized 10/46 topics
+Summarized 11/46 topics
+Summarized 12/46 topics
+Summarized 13/46 topics
+Summarized 14/46 topics
+Summarized 15/46 topics
+Summarized 16/46 topics
+Summarized 17/46 topics
+Summarized 18/46 topics
+Summarized 19/46 topics
+Summarized 20/46 topics
+Summarized 21/46 topics
+Summarized 22/46 topics
+Summarized 23/46 topics
+Summarized 24/46 topics
+Summarized 25/46 topics
+Summarized 26/46 topics
+Summarized 27/46 topics
+Summarized 28/46 topics
+Summarized 29/46 topics
+Summarized 30/46 topics
+Summarized 31/46 topics
+Summarized 32/46 topics
+Summarized 33/46 topics
+Summarized 34/46 topics
+Summarized 35/46 topics
+Summarized 36/46 topics
+Summarized 37/46 topics
+Summarized 38/46 topics
+Summarized 39/46 topics
+Summarized 40/46 topics
+Summarized 41/46 topics
+Summarized 42/46 topics
+Summarized 43/46 topics
+Summarized 44/46 topics
+Summarized 45/46 topics
+Summarized 46/46 topics
+Scanning for model files...
+Scanning for system output files...
+Opening "../results/rouge_config_devtest.xml" for writing...
+Success.

@@ -10,4 +10,4 @@ strategy:
   name: lexrank
   embedder:
     name: tfidf
-  redundancy_tuner: 0.9
+  redundancy_tuner: 0.6
