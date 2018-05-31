@@ -49,36 +49,6 @@ class TopicalClosenessExpert(Expert):
 
     EMBEDDER_CONFIG_KEY = 'embedder'
 
-    #UNUSED FUNCTION #TODO: remove
-    ##TODO: After code refactor: remove this method if able to pass sentences and partial summary as vectors and vector matrix respectively
-    def getSimilarity(self, sentence1, sentence2, vec_type):
-        '''
-        Computes the cosine similarity of vector A and B as A.dot(B)/(magnitude(A) * magnitude(B))
-        :param sentence1: vector representation of first sentence
-        :param sentence2: vector representation of second sentence
-        :return: cosine similarity value
-        '''
-
-        if vec_type == "tfidf":
-            unique_words1 = frozenset(sentence1.tokens)
-            unique_words2 = frozenset(sentence2.tokens)
-            common_words = unique_words1 & unique_words2
-
-            numerator = 0.0
-            for term in common_words:
-               numerator += sentence1.embedding[term]*sentence2.embedding[term] * self.idf_metrics[term]**2
-
-            denominator1 = sum((sentence1.embedding[t]*self.idf_metrics[t])**2 for t in unique_words1)
-            denominator2 = sum((sentence2.embedding[t]*self.idf_metrics[t])**2 for t in unique_words2)
-
-            if denominator1 > 0 and denominator2 > 0:
-                return numerator / (np.sqrt(denominator1) * np.sqrt(denominator2))
-            else:
-                return 0.0
-        else:
-            return pairwise.cosine_similarity([sentence1.embedding],
-                                            [sentence2.embedding])
-
     def getTopic(self, doc: Sentence, all_sentences_matrix, m1):
         '''
         Finds the sentence that is closest to the given sentence by using cosine similarity measure computed for vector A and B as A.dot(B)/(magnitude(A) * magnitude(B))
