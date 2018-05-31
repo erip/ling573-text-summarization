@@ -54,7 +54,7 @@ class TopicalClosenessExpert(Expert):
         Finds the sentence that is closest to the given sentence by using cosine similarity measure computed for vector A and B as A.dot(B)/(magnitude(A) * magnitude(B))
         :param doc: document as Sentence object
         :param all_sentences_matrix: all sentences in summary as vectors
-        :param m1 : vector magnitude of the all_sentences_matrix
+        :param m1 : magnitude of the all_sentences_matrix
         :return: Sentence that has the more similar value to the given document
         '''
 
@@ -79,14 +79,22 @@ class TopicalClosenessExpert(Expert):
         :param partial_summary: current state of the summary - an iterable of Sentence Objects
         :return: 1, if d1 preferred over d2
                 0, if d2 preferred over d1
-                0.5, equal preferrence for both documents
+                0.5, equal preference for both documents
         '''
 
         ##create a matrix of all sentence embeddings
 
         #Store the norm of each sentence in the magnitude vector to avoid recomputation
+        sentences_count = len(partial_summary)
 
+        partial_summary_matrix = np.zeros((sentences_count, sentences_count))
 
+        idx = 0
+        for sent in partial_summary:
+            partial_summary_matrix[idx] = partial_summary[sent]
+            idx += 1
+
+        #compute magnitude of complete matrix once
         m1 = np.linalg.norm(partial_summary_matrix, axis=1)
 
         if self.getTopic(d1, partial_summary_matrix, m1) == self.getTopic(d2, partial_summary_matrix, m1):
@@ -95,6 +103,3 @@ class TopicalClosenessExpert(Expert):
             return 1
         else:
             return 0
-
-
-if __name__ == "__main__":
