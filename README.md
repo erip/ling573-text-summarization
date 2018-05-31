@@ -53,7 +53,7 @@ To run `run_summarization.sh` on condor with devtest:
 condor_submit D4_tfidf.cmd
 ```
 
-or simple
+or simply
 
 ```bash
 condor_submit D4.cmd
