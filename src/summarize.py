@@ -33,8 +33,8 @@ def setup_information_orderer():
     chronological_expert = ChronologicalExpert()
     topical_expert = TopicalClosenessExpert()
     #experts = { chronological_expert, topical_expert}
-    #weights = { ChronologicalExpert.name: 1.0 , TopicalClosenessExpert.name: 0.0 }
-    experts = { chronological_expert } #testing chronological with topical
+    #weights = { ChronologicalExpert.name:  , TopicalClosenessExpert.name: 0.0 }
+    experts = { chronological_expert } #testing chronological
     weights = { ChronologicalExpert.name: 1.0 }
 
     return InformationOrderer(experts, weights)
