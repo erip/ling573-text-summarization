@@ -1,7 +1,7 @@
 from typing import Dict, List
 
 import numpy as np
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from spacy.language import Language
@@ -18,7 +18,7 @@ class TfidfEmbedder(Embedder):
     def __init__(self, nlp, sentences):
         super().__init__(nlp)
 
-        self.stopwords = frozenset(stopwords.words('english'))
+        #self.stopwords = frozenset(stopwords.words('english')) # switched to using spacy since then
         self.stemmer = PorterStemmer()
 
         # Cache the preprocessed sentence since calling it is expensive.
@@ -40,7 +40,7 @@ class TfidfEmbedder(Embedder):
         :return: a normalized sentence
         """
         # Get tokens without stopwords
-        tokens = (token.text for token in self.nlp(sentence) if token.text not in self.stopwords)
+        tokens = (token.text for token in self.nlp(sentence) if not token.is_stop)
         # Stem
         stemmed_tokens = map(self.stemmer.stem, tokens)
         # Join naively -- doesn't matter if this is done correctly as long as this is consistent

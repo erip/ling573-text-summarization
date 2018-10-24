@@ -1,10 +1,10 @@
 
 class Topic(object):
-    def __init__(self, _id, title, narrative, docset):
+    def __init__(self, _id, title, narrative, parent_file):
         self._id = _id
         self.title = title
         self.narrative = narrative
-        self.docset = docset
+        self.parent_file = parent_file
         self.stories = set()
 
     def id(self):

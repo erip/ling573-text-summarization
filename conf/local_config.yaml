@@ -1,0 +1,15 @@
+# Paths to directories containing documents
+documentCollections:
+  dir1: /Users/seraphinagoldfarb-tarrant/PycharmProjects/573Homework/ling573-text-summarization/examples/test/
+  # additional directories can be added here ad infinitum
+
+word_limit: 100
+title_boundary: null
+sentence_boundary: {</s>}
+special_chars: {'<EOL>', '<EOT>', '<eos>', '</s>', '#', '<P>', '<unk>'}
+strategy:
+  name: lexrank
+  embedder:
+    name: tfidf
+  epsilon: 0.1
+  threshold: 0.1

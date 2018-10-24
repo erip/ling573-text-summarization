@@ -6,9 +6,6 @@ import itertools
 from datetime import datetime
 from typing import Dict, List
 
-import lxml.etree as ET
-from lxml import html
-from bs4 import BeautifulSoup
 from spacy.language import Language
 
 from . import Sentence
@@ -19,10 +16,11 @@ from .topic import Topic
 
 
 class Corpus(object):
-    """Stores information about the corpus, including topic descriptions and docsets."""
-    def __init__(self, topics, base_paths, nlp):
+    """Stores information about the corpus."""
+    def __init__(self, topics, base_paths, documents, nlp):
         self.topics = topics
         self.base_paths = base_paths
+        self.documents = documents
         self.nlp = nlp
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
@@ -37,127 +35,45 @@ class Corpus(object):
         :param nlp: a SpaCy language object
         :return: A Corpus object
         """
-        xml_path = conf.get('clusterPath')
-        document_collections = conf.get('documentCollections')
-        if not xml_path:
-            raise ValueError("Config is missing 'clusterPath'")
+        document_collections = conf.get('documentCollections') # This is a nested dict of directory paths
         if not document_collections:
             raise ValueError("Config is missing 'documentCollections'")
 
-        xml_root = ET.parse(xml_path)
-        topics = set()
-        for topic in xml_root.findall("topic"):
-            topic_id = topic.get("id")
-            topic_title = topic.find("title").text.strip()
-            topic_narrative = topic.find("narrative")
-            if topic_narrative is not None:
-                topic_narrative = topic_narrative.text.strip()
-            docsetA_element = topic.find("docsetA")
-            docsetA = set()
-            docset_id = docsetA_element.get("id")
-            for doc in docsetA_element:
-                docsetA.add(CorpusDocument(doc.get("id")))
-            docset = Docset(docset_id, docsetA)
-            topics.add(Topic(topic_id, topic_title, topic_narrative, docset))
-        return cls(topics, document_collections, nlp)
+        topics, documents = set(), set()
+        # assume file is raw text
+        title_end = conf.get("title_boundary")
+        for dir_path in document_collections.values():
+            with os.scandir(dir_path) as source_dir:
+                files = [file.path for file in source_dir if file.is_file() and not file.name.startswith('.')]
+                for file_path in files:
+                    this_doc = CorpusDocument(file_path, set())
+                    with open(file_path, "r") as fin:
+                        for i, line in enumerate(fin):
+                            if title_end and title_end != "None":
+                                topic_title, topic_narrative = line.strip().split(title_end)
+                            else:
+                                topic_title, topic_narrative = "", line.strip()
+                            # i is the id,
+                            topics.add(Topic(i, topic_title, topic_narrative, file_path))
+                    this_doc.add_topics(topics)
+                    assert(this_doc not in documents), "Two documents have same full path. " \
+                                                       "If content differs, only one will be preserved, so we won't let you do that"
+                    documents.add(this_doc)
+
+        return cls(topics, document_collections, documents, nlp)
 
 
-    def __process_document(self, doc: CorpusDocument):
+    def __process_document(self, doc: Topic):
         """Given a document, parses information from the document to create a story.
 
-        :param doc: a Aquaint or Aquaint 2 document from the corpus
+        :param doc: a Topic
         :return: the story in the document
         """
-        curr_doc, doc_timestamp, headline_text, text_iterator = \
-            self.__process_aquaint2_document(doc) if doc.is_aquaint2 \
-                else self.__process_aquaint_document(doc)
-
-        headline = curr_doc.find(headline_text)
-        if headline is not None:
-            headline = headline.text.strip()  # CURRENTLY NOT PREPROCESSING HEADLINE
-        raw_body = []  # less elegant than a list comprehension, but with a comp we'd have to flatten a nest later
-        for text in text_iterator:
-            if text:
-                text = ' '.join(text.strip().split())  # this split and join is to get rid of all the weird kinds of whitespace characters from the xml parse
-                raw_body.append(text)
-        raw_body = ' '.join(raw_body)
-        sents = { Sentence(doc.id(), doc_timestamp, sent, i) for i, sent in enumerate(self.nlp(raw_body).sents) }
-        return Story(headline, sents)
-
-    def __process_gw_document(self, doc: CorpusDocument):
-        parser = ET.XMLParser(recover=True)
-        path = os.path.join(self.base_paths.get("gw"), doc.get_path().replace(".xml", ".gz"))
-        with gzip.open(path, 'rt') as f:
-            fragments = html.fragments_fromstring(f.read(), parser=parser)
-            print("Trying to find '{0}' in '{1}'".format(doc.id(), path))
-            curr_doc = None
-            for frag in fragments:
-                try:
-                   _id = frag.get("id")
-                   if doc.id() == _id: 
-                       curr_doc = frag
-                except AttributeError:
-                    print(ET.tostring(frag))
-            if curr_doc is None: 
-                raise ValueError("Doc '{0}' not found in '{1}'".format(doc.id(), path))
-            print("Current doc is {0}".format(curr_doc))
-            doc_timestamp = None
-            headline_text = "HEADLINE"
-            text_iterator = curr_doc.find("TEXT").itertext()
-            return curr_doc, doc_timestamp, headline_text, text_iterator
-
-    def __process_aquaint2_document(self, doc: CorpusDocument):
-        """The specific processing function for an aquaint 2 document.
-
-        :param doc: an aquaint 2 corpus document
-        :return: a tuple containing the XML document object, the timestamp
-        of the document, the headline text, and an iterator of all the text
-        in the document.
-        """
-
-        # Create an artificial root
-        try:
-            parser = ET.XMLParser(recover=True)
-            xml_root = ET.parse(os.path.join(self.base_paths.get("aquaint2"), doc.get_path()), parser=parser)
-            curr_doc = xml_root.find('.//DOC[@id="{0}"]'.format(doc.id()))  # find (vs findall): should only be one
-            doc_timestamp = None
-            headline_text = "HEADLINE"
-            text_iterator = curr_doc.find("TEXT").itertext()
-            return curr_doc, doc_timestamp, headline_text, text_iterator
-        except:
-            return self.__process_gw_document(doc)
-
-    def __process_aquaint_document(self, doc: CorpusDocument):
-        """The specific processing function for an aquaint document.
-
-        :param doc: an aquaint corpus document
-        :return: a tuple containing the XML document object, the timestamp
-        of the document, the headline text, and an iterator of all the text
-        in the document.
-        """
-        with open(os.path.join(self.base_paths.get("aquaint"), doc.get_path()), "r") as infile:
-            xml_root = BeautifulSoup(infile, "lxml")
-        curr_doc = xml_root.find("docno", text=" {} ".format(doc.id())).parent
-        time = curr_doc.find("date_time")
-        if time is None:
-            doc_timestamp = None
-        else:
-            date = time.text.strip().split()[0]
-            # Accounts for multiple date formats.
-            format = "%Y-%m-%d" if '-' in date else "%m/%d/%Y"
-            doc_timestamp = datetime.strptime(date, format)
-        headline_text = "headline"
-        text_iterator = [tag.text for tag in curr_doc.find_all("text")]
-        return curr_doc, doc_timestamp, headline_text, text_iterator
+        sents = { Sentence(sent, i) for i, sent in enumerate(self.nlp(doc.narrative).sents) }
+        return Story(sents)
 
     def preprocess_topic_docs(self, topic_ids: List[str] = None):
-        """Process newswire style xml into text and Story objects
-
-        Grabs headline elements and body text elements, preprocesses them, creates Story objects, and stores them in
-        Topic objects.
-        Stories are an attribute of Topics rather than of Documents (which represent large collections
-        of stories) because for current implementation, we don't care what Document a story comes from, just what Topic
-        it belongs to.
+        """Process topics into text and Story objects
 
         :param topic_ids: an optional set of strings matching topic ids. If not provided, preprocesses entire corpus.
         :return: None, modifies Corpus object
@@ -170,8 +86,6 @@ class Corpus(object):
 
         print("Processing {0} Topics in Corpus".format(len(all_topics)))
         for topic in all_topics:
-            print("Processing {0} Docs in Topic".format(len(topic.docset)))
-            for doc in topic.docset:
-                story = self.__process_document(doc)
-                topic.add_story(story)
+            story = self.__process_document(topic)
+            topic.add_story(story)
 
